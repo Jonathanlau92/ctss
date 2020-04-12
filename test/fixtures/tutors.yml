@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  personal_consent: false
+  full_name: MyString
+  school_email: MyString
+  alternate_email: MyString
+  sex: 1
+  subjects: 
+  hours_to_teach: 1
+  match_count: 1
+
+two:
+  personal_consent: false
+  full_name: MyString
+  school_email: MyString
+  alternate_email: MyString
+  sex: 1
+  subjects: 
+  hours_to_teach: 1
+  match_count: 1
