@@ -1,4 +1,8 @@
 class StudentsController < ApplicationController
+  def student_welcome
+
+  end
+  
   def new
     @student = Student.new
   end
