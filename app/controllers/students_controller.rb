@@ -4,7 +4,13 @@ class StudentsController < ApplicationController
   end
 
   def create
-    
+    @student = Student.new(student_params)
+    if @student.save
+      session[:student_id] = @student.id
+      redirect_to student_step_build_index_path(@student.id)
+    else
+      render :new
+    end
   end
   
   private

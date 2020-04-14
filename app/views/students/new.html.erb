@@ -1,16 +1,27 @@
-<form>
+<%= form_for @student do |f| %>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <%= f.label :school_email %>
+    <%= f.text_field :school_email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :alternate_email %>
+    <%= f.text_field :alternate_email, class: 'form-control' %>
   </div>
   <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <%= f.radio_button :sex, 'male', class: 'form-check-input' %> 
+    <%= f.label :sex, 'Male', value: 0 %>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <div class="form-check">
+    <%= f.radio_button :sex, 'female', class: 'form-check-input' %>
+    <%= f.label :sex, 'Female', value: 1 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :education_level %>
+    <%= f.select :education_level, Student.education_levels.keys.map { |w| [w.humanize, w] }, {  include_blank: true} , {class: 'custom-select'} %>
+  </div>
+  <%= f.submit "Next", class: 'btn btn-sm btn-primary' %>
+<% end %>
