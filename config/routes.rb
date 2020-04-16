@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :build, controller: 'student_steps/build'
   end
 
+  resources :tutor_steps do
+    resources :build, controller: 'tutor_steps/build'
+  end
+
   get 'welcome-students', to: 'students#student_welcome', as: :student_welcome
   root to: 'pages#home'
 end
