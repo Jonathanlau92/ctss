@@ -1,0 +1,14 @@
+<h1 class="mt-3">Terms and Conditions</h1>
+<ol>
+  <li>I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative.</li>
+  <li>I have read and consent to the online code of conduct </li>
+  <li>By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. If you would like specific details on how your data might be used, please contact us at enquiries.ctss@gmail.com.</li>
+</ol>
+<%= form_for @student do |f|%>
+  <div class="form-check">
+    <%= f.check_box :personal_consent, {class: 'form-check-input'}, true, false %>
+    <%= f.label 'I agree', class: 'form-check-label' %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-warning mt-2'%>
+<% end %>
+    

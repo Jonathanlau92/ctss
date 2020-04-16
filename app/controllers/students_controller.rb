@@ -17,6 +17,15 @@ class StudentsController < ApplicationController
     end
   end
   
+  def update
+    @student = Student.find(params[:id])
+    if @student.update_attributes(personal_consent: params[:student][:personal_consent])
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
   private
   def student_params
     params.require(:student).permit(:personal_consent, :full_name, :school_email, :alternate_email, :sex, :education_level, :parental_consent, :match_count, :subject_preferences)
