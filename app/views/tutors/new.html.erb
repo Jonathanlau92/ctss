@@ -20,5 +20,9 @@
     <%= f.radio_button :sex, 'female', class: 'form-check-input' %>
     <%= f.label :sex, 'Female', value: 1 %>
   </div>
+  <div class="form-group">
+    <%= f.label :hours_to_teach, 'How many hours can you commit per week?' %>
+    <%= f.number_field :hours_to_teach, class: 'form-control' %>
+  </div>
   <%= f.submit "Next", class: 'btn btn-sm btn-primary' %>
 <% end %>

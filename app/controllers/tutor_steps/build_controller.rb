@@ -1,6 +1,6 @@
 class TutorSteps::BuildController < ApplicationController
   include Wicked::Wizard
-  steps :subjects, :terms_and_conditions
+  steps :vetting, :subjects, :terms_and_conditions
 
   def show
     @tutor = Tutor.find(session[:tutor_id])
@@ -9,7 +9,7 @@ class TutorSteps::BuildController < ApplicationController
 
   def update
     @tutor = Tutor.find(session[:tutor_id])
-    @tutor.update_attributes(subject_1: params[:student][:subject_1], subject_2: params[:student][:subject_2], subject_3: params[:student][:subject_3])
+    @tutor.update_attributes(qualification: params[:tutor][:qualification], past_experiences: params[:tutor][:past_experiences], reason_for_volunteering: params[:tutor][:reason_for_volunteering])
     render_wizard @tutor
   end
 end
