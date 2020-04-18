@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_120901) do
+ActiveRecord::Schema.define(version: 2020_04_18_112504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_120901) do
     t.integer "match_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "qualification"
+    t.string "qualification"
     t.text "past_experiences"
     t.text "reason_for_volunteering"
     t.string "level_to_teach"
