@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_112504) do
+ActiveRecord::Schema.define(version: 2020_04_20_125807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_112504) do
     t.text "past_experiences"
     t.text "reason_for_volunteering"
     t.string "level_to_teach"
+    t.boolean "code_of_conduct"
   end
 
 end
