@@ -43,7 +43,7 @@ body{
     border: 1px solid #333333;
     box-sizing: border-box;
     border-radius: 6px;
-    width: 88px;
+    width: 120px;
     height: 40px;
     margin: 22px;
 
@@ -71,4 +71,13 @@ h2 span::before {
   
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 575.98px) {
+    h1{
+        font-size: 1.7rem;
+    }
+    h2{
+        font-size: 1.3rem;
+    }
 }
