@@ -1,0 +1,39 @@
+body{
+    background: #1B597C;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.next-button, .submit-button{
+    background: #FFC857;
+    border: 1px solid #333333;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 88px;
+    height: 40px;
+    margin: 22px;
+
+    /* font in button */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000;
+}
+
+.back-button{
+    background: #1B597C;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 88px;
+    height: 40px;
+    margin: 22px;
+
+    /* font in button */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #fff;
+}
