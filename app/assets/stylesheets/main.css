@@ -54,3 +54,21 @@ body{
     line-height: 18px;
     color: #000;
 }
+
+h1 span::before {
+    content: "\A";
+    white-space: pre;
+}
+
+h2 span::before {
+    content: "\A";
+    white-space: pre;
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+}
