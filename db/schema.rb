@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_125807) do
+ActiveRecord::Schema.define(version: 2020_04_26_110836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classrooms", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "tutor_id", null: false
+    t.index ["student_id"], name: "index_classrooms_on_student_id"
+    t.index ["tutor_id"], name: "index_classrooms_on_tutor_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.boolean "personal_consent"
@@ -51,4 +58,6 @@ ActiveRecord::Schema.define(version: 2020_04_20_125807) do
     t.boolean "code_of_conduct"
   end
 
+  add_foreign_key "classrooms", "students"
+  add_foreign_key "classrooms", "tutors"
 end
