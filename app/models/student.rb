@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
   enum sex: {male: 0, female: 1}
-  enum education_level: {PSLE: 0, NT_level: 1, NA_level: 2, O_level: 3, A_level: 4}
+  enum education_level: {'Primary School': 0, 'Secondary N(T)-Level': 1, 'Secondary N(A)-Level': 2, 'Secondary O-Level': 3, 'Junior College A-Level': 4}
 
   def psle
     ['English', 'Chinese', 'Malay', 'Tamil', 'Math', 'Science', 'Hindi', 'Higher Chinese', 'Higher Malay', 'Higher Tamil', 'Foundation Malay','Foundation Chinese','Foundation Hindi','Foundation Tamil','Foundation English','Foundation Math','Foundation Science']
