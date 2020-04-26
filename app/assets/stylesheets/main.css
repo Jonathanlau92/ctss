@@ -39,20 +39,15 @@ body{
 }
 
 .primary-button{
-    background: #BDD9BF;
+    background-color: #BDD9BF;
     border: 1px solid #333333;
     box-sizing: border-box;
     border-radius: 6px;
-    width: 120px;
-    height: 40px;
     margin: 22px;
-
-    /* font in button */
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 18px;
     color: #000;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 h1 span::before {
