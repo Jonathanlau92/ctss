@@ -12,6 +12,7 @@ body{
     font-weight: 500;
     font-size: 20px;
     color: #000;
+    margin: 22px;
 }
 
 .back-button{
@@ -25,7 +26,7 @@ body{
     margin: 22px;
 }
 
-#welcome-page .back-button{
+#welcome-page .back-button, #welcome-page .next-button{
     margin: 0;
 }
 
@@ -49,6 +50,19 @@ h1 span::before {
 h2 span::before {
     content: "\A";
     white-space: pre;
+}
+
+label{
+    margin: 0;
+}
+
+input[type=radio]{
+    transform:scale(1.5);
+}
+
+div.form-group > span{
+    font-size: 0.8em;
+    display: block;
 }
 
 .vertical-center {
