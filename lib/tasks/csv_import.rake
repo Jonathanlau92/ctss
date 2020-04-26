@@ -57,6 +57,7 @@ namespace :csv_import do
         s.subject_3 = row['3rd Most Important (A-Level)']
         s.others_subject = row['Subjects you really require help in other than those listed above. (We will try our best to take into consideration these subjects) - A Level']
       end
+      s.created_at = row['Timestamp']
       s.save
       puts "#{s.full_name} saved"
     end
@@ -64,7 +65,46 @@ namespace :csv_import do
   end
 
   desc "TODO"
-  task import_tutors_data: :environment do
+  task import_tutors_data_1: :environment do
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'volunteers_responses_1.csv'))
+    csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+    csv.each do |row|
+      t = Tutor.new
+      t.full_name = row['Full Name']
+      t.school_email = row['Email']
+      t.hours_to_teach = row['How many hours can you commit per week?']
+      t.sex = row['Sex'] == 'Male' ? 0 : 1
+      t.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
+      t.created_at = row['Timestamp']
+      t.save
+      puts "#{t.full_name} saved"
+    end
+    puts "There are now #{Tutor.count} rows in the transactions table"
   end
 
+  desc "TODO"
+  task import_tutors_data_2: :environment do
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'volunteers_responses_2.csv'))
+    csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+    csv.each do |row|
+      t = Tutor.new
+      t.full_name = row['Full Name']
+      t.school_email = row['School Email']
+      t.alternate_email = row['Alternative Email']
+      t.hours_to_teach = row['How many hours can you commit per week?']
+      t.sex = row['Sex'] == 'Male' ? 0 : 1
+      t.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
+      t.created_at = row['Timestamp']
+      # If the following questions are NO, then consent passed. This is for vetting
+      if row['Have you ever been charged in a Court of Law in Singapore or in any other country?'] == 'No' and row['Have you ever been involved in care proceedings or in a child protection investigation or enquiry in Singapore or any other country? '] == "No" and row['Are you previously or currently known to the Family Court for Personal Protection Order/ Expedited Order or family violence issues in Singapore or any other country? '] == 'No' and row['Have you been or are you under any financial embarrassment i.e. (a) an undischarged bankrupt, (b) a judgement debtor, (c) have unsecured debts and liabilities of more than 3 months of last-drawn pay, (d) have signed a promissory note or an acknowledgement of indebtedness?'] == 'No'
+        t.personal_consent = true
+      end
+      t.qualification = row['What is the highest educational qualification/certification you have received so far? (E.g. A-Level/Poly Diploma/O-Level/PSLE certificate) ']
+      t.past_experiences = row['What past experiences in tutoring do you have? ']
+      t.reason_for_volunteering = row['Why do you want to sign up as a volunteer under the CTSS initiative? ']
+      t.save
+      puts "#{t.full_name} saved"
+    end
+    puts "There are now #{Tutor.count} rows in the transactions table"
+  end
 end
