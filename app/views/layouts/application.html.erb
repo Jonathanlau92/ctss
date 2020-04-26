@@ -12,7 +12,11 @@
   </head>
 
   <body>
-    <%= flash_messages %>
-    <%= yield %>
+    <div class="vertical-center">
+      <div class="container">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
