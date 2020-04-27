@@ -32,8 +32,9 @@ namespace :csv_import do
         biology: row[' [Biology]'],
         principle_of_accounts: row[' [Principles of Accounting (H2 only)]']
       }
-      end
       s.created_at = row['F']
+      s.contact_number = row['Contact Number']
+      s.imported_data = true
       s.save
       puts "#{s.full_name} saved"
     end
@@ -80,13 +81,14 @@ namespace :csv_import do
         s.others_subject = row['Subjects you really require help in other than those listed above. (We will try our best to take into consideration these subjects) - A Level']
       end
       s.created_at = row['Timestamp']
+      s.contact_number = row['Contact Number']
+      s.imported_data = true
       s.save
       puts "#{s.full_name} saved"
     end
     puts "There are now #{Student.count} rows in the transactions table"
   end
 
-  desc "TODO"
   task import_tutors_data_1: :environment do
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'volunteers_responses_1.csv'))
     csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
@@ -99,7 +101,7 @@ namespace :csv_import do
       t.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       t.created_at = row['Timestamp']
       t.subjects = {
-        primary_subjects: row['Subjects (pri)']
+        primary_subjects: row['Subjects (pri)'],
         nt_subjects: row['Subjects (NT'],
         na_subjects: row['Subjects (NA)'],
         o_subjects: row['Subjects (O LEVEL)'],
@@ -131,13 +133,14 @@ namespace :csv_import do
         management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
         principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]']
       }
+      t.contact_number = row['Contact Number']
+      t.imported_data = true
       t.save
       puts "#{t.full_name} saved"
     end
     puts "There are now #{Tutor.count} rows in the transactions table"
   end
 
-  desc "TODO"
   task import_tutors_data_2: :environment do
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'volunteers_responses_2.csv'))
     csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
@@ -196,8 +199,9 @@ namespace :csv_import do
         computing: row['Sciences, Mathematics, Business and Computing [Computing (H2 only)]'],
         management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
         principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]'],
-        computing: row['Sciences, Mathematics, Business and Computing [Computing (H2 only)]'],
       }
+      t.contact_number = row['Contact Number']
+      t.imported_data = true
       t.save
       puts "#{t.full_name} saved"
     end
