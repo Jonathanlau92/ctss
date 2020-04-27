@@ -35,7 +35,7 @@
     <%  @education={"PSLE"=>"Primary School", "NT_level"=>"Secondary N(T)-Level", "NA_level"=>"Secondary N(A)-Level", "O_level"=>"Secondary O-Level", "A_level"=>"Junior College A-Level"} %>
     <div class='form-group'>
       <%= f.label :education_level %>
-      <%= f.select :education_level, options_for_select(@education.map {|key, value| [value, key]}), {}, class: 'form-control' %>
+      <%= f.select :education_level, options_for_select(@education.map {|key, value| [value, key]}), {include_blank: true}, class: 'form-control' %>
     </div>
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', student_welcome_path, class: 'btn back-button' %>
