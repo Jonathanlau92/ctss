@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   end
 
   get 'welcome-students', to: 'students#student_welcome', as: :student_welcome
+  get 'welcome-tutors', to: 'tutors#tutor_welcome', as: :tutor_welcome
   root to: 'pages#home'
 end
