@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_125807) do
+ActiveRecord::Schema.define(version: 2020_04_27_005755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_125807) do
     t.string "subject_2"
     t.string "subject_3"
     t.string "others_subject"
+    t.string "contact_number"
   end
 
   create_table "tutors", force: :cascade do |t|
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_125807) do
     t.text "reason_for_volunteering"
     t.string "level_to_teach"
     t.boolean "code_of_conduct"
+    t.string "contact_number"
   end
 
 end
