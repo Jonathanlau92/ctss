@@ -52,6 +52,11 @@ h2 span::before {
   white-space: pre;
 }
 
+h3 span::before {
+  content: "\A\A";
+  white-space: pre;
+}
+
 label{
   margin: 0;
 }
@@ -79,6 +84,9 @@ div.form-group > span{
   }
   h2{
       font-size: 1.3rem;
+  }
+  h3{
+    font-size: 1rem;
   }
 }
 
