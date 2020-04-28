@@ -25,6 +25,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# User registration, login,logout etc
+gem 'devise'
+# Admin page
+gem "administrate"
+
 # Multi Pages form
 gem 'wicked'
 
