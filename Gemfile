@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 
 # User registration, login,logout etc
 gem 'devise'
+# Admin page
+gem "administrate"
 
 # Multi Pages form
 gem 'wicked'
