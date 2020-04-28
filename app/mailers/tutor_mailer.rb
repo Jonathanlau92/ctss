@@ -1,0 +1,2 @@
+class TutorMailer < ApplicationMailer
+end
