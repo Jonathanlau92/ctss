@@ -1,1 +1,17 @@
-<%= link_to 'Register', new_student_path, class: 'btn btn-warning'%>
+<div id='welcome-page'>
+    <%= link_to 'Back', root_path, class: 'btn back-button', method: :get %>
+    <div class='mt-4'>
+        <h2 class='font-weight-bold mb-4'>Welcome Student</h2>
+    </div>
+    <div class='text-center mb-4'>
+        <p class='font-weight-normal'>If you need more help with home-based learning, we are here to help!</p>
+        <p class='font-weight-normal'>This should NOT be your main platform of getting academic help. Please complete your HBL and approach your teachers first.</p>
+        <p class='font-weight-normal'>Please only indicate the subjects that you foresee yourself needing help with! If not, it may be hard to match you with a tutor.</p>
+        <p class='font-weight-normal'>This is meant for students who do not have access to tuition services now. Please register only if you truly need it. 
+            If there are too many signups, we may have to conduct random means testing.</p>
+        <p class='font-weight-normal'>Thank you!</p>
+    </div>
+    <div class="row justify-content-center align-items-center">
+    <%= link_to 'Find me a tutor', new_student_path, class: 'btn next-button' %>
+</div>
+</div>
