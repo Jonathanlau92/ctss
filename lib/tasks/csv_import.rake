@@ -34,7 +34,7 @@ namespace :csv_import do
       }
       s.created_at = row['F']
       s.contact_number = row['Contact Number']
-      s.imported_data = true
+      s.imported_data = "Existing student form 1"
       s.save
       puts "#{s.full_name} saved"
     end
@@ -82,7 +82,7 @@ namespace :csv_import do
       end
       s.created_at = row['Timestamp']
       s.contact_number = row['Contact Number']
-      s.imported_data = true
+      s.imported_data = "Existing student form 2"
       s.save
       puts "#{s.full_name} saved"
     end
@@ -134,7 +134,7 @@ namespace :csv_import do
         principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]']
       }
       t.contact_number = row['Contact Number']
-      t.imported_data = true
+      t.imported_data = "Existing tutor form 1"
       t.save
       puts "#{t.full_name} saved"
     end
@@ -201,7 +201,7 @@ namespace :csv_import do
         principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]'],
       }
       t.contact_number = row['Contact Number']
-      t.imported_data = true
+      t.imported_data = "Existing tutor form 2"
       t.save
       puts "#{t.full_name} saved"
     end

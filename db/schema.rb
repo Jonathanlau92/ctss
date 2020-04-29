@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_131523) do
+ActiveRecord::Schema.define(version: 2020_04_29_132022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_131523) do
     t.string "others_subject"
     t.string "contact_number"
     t.string "existing_educational_level_data"
-    t.boolean "imported_data"
+    t.string "imported_data"
   end
 
   create_table "tutors", force: :cascade do |t|
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_131523) do
     t.string "level_to_teach"
     t.boolean "code_of_conduct"
     t.string "contact_number"
-    t.boolean "imported_data"
+    t.string "imported_data"
   end
 
   create_table "users", force: :cascade do |t|
