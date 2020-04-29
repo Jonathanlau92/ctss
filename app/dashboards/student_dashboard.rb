@@ -25,6 +25,7 @@ class StudentDashboard < Administrate::BaseDashboard
     subject_3: Field::String,
     others_subject: Field::String,
     contact_number: Field::String,
+    existing_educational_level_data: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,9 +35,11 @@ class StudentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  personal_consent
   full_name
   school_email
+  sex
+  contact_number
+  existing_educational_level_data
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
