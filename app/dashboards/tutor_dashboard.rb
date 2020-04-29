@@ -34,9 +34,11 @@ class TutorDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  personal_consent
   full_name
   school_email
+  sex
+  hours_to_teach
+  qualification
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
