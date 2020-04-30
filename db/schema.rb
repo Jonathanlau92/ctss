@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_132022) do
+ActiveRecord::Schema.define(version: 2020_04_30_130905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_04_29_132022) do
   create_table "classrooms", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "tutor_id", null: false
+    t.string "existing_matching_id"
+    t.string "imported_data"
     t.index ["student_id"], name: "index_classrooms_on_student_id"
     t.index ["tutor_id"], name: "index_classrooms_on_tutor_id"
   end
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_04_29_132022) do
     t.string "contact_number"
     t.string "existing_educational_level_data"
     t.string "imported_data"
+    t.boolean "matched"
+    t.boolean "sent_intro_email"
   end
 
   create_table "tutors", force: :cascade do |t|
@@ -61,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_04_29_132022) do
     t.boolean "code_of_conduct"
     t.string "contact_number"
     t.string "imported_data"
+    t.boolean "matched"
+    t.boolean "sent_intro_email"
   end
 
   create_table "users", force: :cascade do |t|
