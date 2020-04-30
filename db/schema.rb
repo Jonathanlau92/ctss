@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_130905) do
+ActiveRecord::Schema.define(version: 2020_04_30_141346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "classrooms", force: :cascade do |t|
+  create_table "matches", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "tutor_id", null: false
     t.string "existing_matching_id"
     t.string "imported_data"
-    t.index ["student_id"], name: "index_classrooms_on_student_id"
-    t.index ["tutor_id"], name: "index_classrooms_on_tutor_id"
+    t.index ["student_id"], name: "index_matches_on_student_id"
+    t.index ["tutor_id"], name: "index_matches_on_tutor_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -81,6 +81,6 @@ ActiveRecord::Schema.define(version: 2020_04_30_130905) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "classrooms", "students"
-  add_foreign_key "classrooms", "tutors"
+  add_foreign_key "matches", "students"
+  add_foreign_key "matches", "tutors"
 end
