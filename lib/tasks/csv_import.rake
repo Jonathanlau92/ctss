@@ -1,5 +1,6 @@
 namespace :csv_import do
   require 'csv'
+
   desc "TODO"
   task import_students_data_1: :environment do
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'students_responses_1.csv'))
@@ -206,5 +207,22 @@ namespace :csv_import do
       puts "#{t.full_name} saved"
     end
     puts "There are now #{Tutor.count} rows in the transactions table"
+  end
+
+  task import_matching_a_level: :environment do
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'matching-a-level.csv'))
+    csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+    lines = 0
+    csv.each do |row|
+      # Extract email from string
+      volunteer_email = row["Volunteer's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
+      student_email = row["Student's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
+      tutor_id = Tutor.find_by(school_email: volunteer_email)&.full_name
+      student_id = Student.find_by(school_email: student_email)&.full_name
+      puts "Match student: #{student_id} with tutor: #{tutor_id}} on #{student_email}"
+      # Count the number of rows!
+      lines += 1
+    end
+    puts "Total lines: #{lines}"
   end
 end
