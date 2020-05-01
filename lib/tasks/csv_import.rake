@@ -1,5 +1,6 @@
 namespace :csv_import do
   require 'csv'
+
   desc "TODO"
   task import_students_data_1: :environment do
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'students_responses_1.csv'))
@@ -206,5 +207,42 @@ namespace :csv_import do
       puts "#{t.full_name} saved"
     end
     puts "There are now #{Tutor.count} rows in the transactions table"
+  end
+
+  task import_matching_a_level: :environment do
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'matching-a-level.csv'))
+    csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+    lines = 0
+    csv.each do |row|
+      # Extract email from string
+      volunteer_name_contains_email = row["Name of Volunteer "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
+      volunteer_email = row["Volunteer's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
+      student_email = row["Student's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
+      tutor_unexpected_id = Tutor.find_by(school_email: volunteer_name_contains_email)&.id
+      tutor_id = Tutor.find_by(school_email: volunteer_email)&.id
+      student_id = Student.find_by(school_email: student_email)&.id
+
+      # If present, then create a match
+      if tutor_id.present? and student_id.present?
+        match = Match.new
+        match.student_id = student_id
+        match.tutor_id = tutor_id
+        match.existing_matching_id = row['Match identifier']
+        match.save
+      end
+
+      # If volunteer name's column contains email, create another match with no identifier
+      if volunteer_name_contains_email.present?
+        match = Match.new
+        match.student_id = student_id
+        match.tutor_id = tutor_unexpected_id
+        match.save
+      end
+
+      puts "Match student: #{student_id} with tutor: #{tutor_id}} on #{student_email}"
+      # Count the number of rows!
+      lines += 1
+    end
+    puts "Total lines: #{lines}"
   end
 end
