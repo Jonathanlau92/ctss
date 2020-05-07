@@ -15,6 +15,15 @@ namespace :csv_import do
       s.parental_consent = row['I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative. '].present? ? true : false
       s.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       # Other subject students need help with (cross-checked with google spreadsheet )
+      if row['Most important subject (Pri)'].present?
+        s.subject_1 = row['Most important subject (Pri)']
+      elsif row['Most important subject N(T)'].present?
+        s.subject_1 = row['Most important subject N(T)']
+      elsif row['Most Important N(A)'].present?
+        s.subject_1 = row['Most Important N(A)']
+      elsif row['Most Important (O-level)'].present?
+        s.subject_1 = row['Most Important (O-level)']
+      end
       s.others_subject = row['Subjects you really require help in other than those indicated above. (We will try our best to take into consideration these subjects) - O Level'] if row['Subjects you really require help in other than those indicated above. (We will try our best to take into consideration these subjects) - O Level'].present?
       # Specific A level subject to be stored in JSON subject
       s.subject_preferences = {
@@ -36,6 +45,10 @@ namespace :csv_import do
       s.created_at = row['F']
       s.contact_number = row['Contact Number']
       s.imported_data = "Existing student form 1"
+      # Check if introductory email is sent out
+      s.sent_intro_email = row["Sent introductory email?"].present? ? true : false
+      # Check if student is matched
+      s.matched = row['Matched?'].present? ? true : false
       s.save
       puts "#{s.full_name} saved"
     end
@@ -84,6 +97,10 @@ namespace :csv_import do
       s.created_at = row['Timestamp']
       s.contact_number = row['Contact Number']
       s.imported_data = "Existing student form 2"
+      # Check if introductory email is sent out
+      s.sent_intro_email = row["Sent intro email? "].present? ? true : false
+      # Check if student is matched
+      s.matched = row['Matched? '].present? ? true : false
       s.save
       puts "#{s.full_name} saved"
     end
@@ -136,6 +153,10 @@ namespace :csv_import do
       }
       t.contact_number = row['Contact Number']
       t.imported_data = "Existing tutor form 1"
+      # Check if introductory email is sent out
+      t.sent_intro_email = row["Sent intro email?"].present? ? true : false
+      # Check if student is matched
+      t.matched = row['Matched?'].present? ? true : false
       t.save
       puts "#{t.full_name} saved"
     end
@@ -203,6 +224,10 @@ namespace :csv_import do
       }
       t.contact_number = row['Contact Number']
       t.imported_data = "Existing tutor form 2"
+      # Check if introductory email is sent out
+      t.sent_intro_email = row["Sent intro email?"].present? ? true : false
+      # Check if student is matched
+      t.matched = row['Matched?'].present? ? true : false
       t.save
       puts "#{t.full_name} saved"
     end
