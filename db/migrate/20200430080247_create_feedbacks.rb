@@ -11,14 +11,10 @@ class CreateFeedbacks < ActiveRecord::Migration[6.0]
       t.string :understand_concepts
       t.boolean :observe_code_of_conduct
       t.string :eleborate
-      t.text :topics_covered
+      t.text :topics
       t.boolean :comfortable_with_tutor
       t.text :other_feedbacks
-      t.string :know_about_programme
-      t.string :platform
-      t.text :difficulties_with_tutoring
-      t.references :student, null: false, foreign_key: true
-      t.references :tutor, null: false, foreign_key: true
+      t.string :know_about_program
 
       t.timestamps
     end
