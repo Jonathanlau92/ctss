@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_141346) do
+ActiveRecord::Schema.define(version: 2020_05_07_131119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_141346) do
     t.string "imported_data"
     t.boolean "matched"
     t.boolean "sent_intro_email"
+    t.text "topics_to_go_through"
   end
 
   create_table "tutors", force: :cascade do |t|
