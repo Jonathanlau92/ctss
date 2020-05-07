@@ -7,8 +7,8 @@
       <%= f.text_field :matching_number, class: 'form-control' %>
     </div>
     <div class='form-group'>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :full_name %>
+      <%= f.text_field :full_name, class: 'form-control' %>
     </div>
     <div class='form-group'>
       <%= f.label :date_of_session %>
@@ -21,6 +21,10 @@
     <div class='form-group'>
       <%= f.label :end_time %>
       <%= f.time_field :end_time, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
+      <%= f.text_field :topics_covered, class: 'form-control' %>
     </div>
 
     <div class='form-group'>
