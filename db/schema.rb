@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_141346) do
+ActiveRecord::Schema.define(version: 2020_05_07_094305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_141346) do
     t.bigint "tutor_id", null: false
     t.string "existing_matching_id"
     t.string "imported_data"
+    t.string "subject_matched"
     t.index ["student_id"], name: "index_matches_on_student_id"
     t.index ["tutor_id"], name: "index_matches_on_tutor_id"
   end
