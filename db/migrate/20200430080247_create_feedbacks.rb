@@ -15,6 +15,8 @@ class CreateFeedbacks < ActiveRecord::Migration[6.0]
       t.boolean :comfortable_with_tutor
       t.text :other_feedbacks
       t.string :know_about_program
+      t.string :platform
+      t.text :difficulties_with_tutoring
 
       t.timestamps
     end

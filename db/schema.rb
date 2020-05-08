@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2020_04_30_080247) do
     t.boolean "comfortable_with_tutor"
     t.text "other_feedbacks"
     t.string "know_about_program"
+    t.string "platform"
+    t.text "difficulties_with_tutoring"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

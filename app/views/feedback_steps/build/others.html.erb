@@ -1,0 +1,7 @@
+<h1 class="mt-3"> You are in </h1>
+<p>We have listed every examinable subject here but it is subject to availability of volunteer tutors. We'll try our best to match you to a volunteer tutor who has expertise in your chosen subjects.  Please rank the subjects you need help with in order of importance! </p>
+
+<%= form_for @feedback, url: wizard_path do |f|%>
+  <%= f.submit "Next", class: 'btn btn-sm btn-primary'%>
+<%end%>
+
