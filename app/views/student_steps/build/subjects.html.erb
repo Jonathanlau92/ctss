@@ -72,6 +72,17 @@
     <%= f.label 'Other subjects not in the list (if any): '%>
     <%= f.text_field :others_subject, {class: 'form-control'} %>
   </div>
+  <div class='form-group'>
+    <%= f.label :topics_to_go_through, 'What would you like your tutor to go through with you during your tutoring sessions?' %>
+    <span>E.G</span>
+    <span>- the current topic that you're studying</span>
+    <span>- topics/skills that you need help with specifically</span>
+    <%= f.text_area :topics_to_go_through, class: 'form-control', cols: 3, rows: 3 %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :special_request, 'Do you have any specific needs?' %>
+    <%= f.text_field :special_request, class: 'form-control' %>
+  </div>
   <%= f.submit "Next", class: 'btn btn-sm btn-primary'%>
 <%end%>
 
