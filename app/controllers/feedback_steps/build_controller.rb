@@ -1,9 +1,7 @@
-class FeedbackStepsController::BuildController < ApplicationController
+class FeedbackSteps::BuildController < ApplicationController
   include Wicked::Wizard
   steps :others
 
-  def index
-  end
   def show
 	@feedback = Feedback.find(session[:feedback_id])
 	render_wizard
