@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2020_04_30_080247) do
   enable_extension "plpgsql"
 
   create_table "feedbacks", force: :cascade do |t|
-    t.datetime "timestamp"
     t.string "matching_number"
     t.string "full_name"
     t.text "action"
@@ -32,8 +31,12 @@ ActiveRecord::Schema.define(version: 2020_04_30_080247) do
     t.string "know_about_program"
     t.string "platform"
     t.text "difficulties_with_tutoring"
+    t.bigint "student_id"
+    t.bigint "tutor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_feedbacks_on_student_id"
+    t.index ["tutor_id"], name: "index_feedbacks_on_tutor_id"
   end
 
   create_table "students", force: :cascade do |t|

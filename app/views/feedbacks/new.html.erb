@@ -28,7 +28,8 @@
       <%= f.text_field :topics_covered, class: 'form-control' %>
     </div>
 
-    <!-- <div class='form-group'>
+    <div class='form-group'>
+
       <%= f.label :observe_code_of_conduct, 'Did your tutor observe the code of conduct?' %>
       <div class="ml-5 form-check form-check-inline">
         <%= f.radio_button :observe_code_of_conduct, true, :value => true , class:'mr-1 form-check-label' %> 
@@ -38,7 +39,9 @@
         <%= f.radio_button :observe_code_of_conduct, false, :value => false, class:'mr-1 form-check-label' %>
         <%= f.label :observe_code_of_conduct, 'No', value:false, class: 'form-check-input' %>
       </div>
-    </div> -->
+
+       <span> Tutor's COC: 1) Photography and videography of the students are strictly not allowed. 2) You have to observe online etiquette. If you and your student are using the webcam, ensure that whatever is visible to the student is neither rude, offensive, nor have the appearance of being sexual. 3) Any interaction with the student beyond regular tutoring sessions and the subject of teaching (for e.g. the student texting you a question) must be reported to the CTSS team at enquiries.ctss@gmail.com. 4) During a tutoring session, if you observe that the student's basic well-being or safety is compromised, please let the CTSS team know immediately so we can render further assistance. If the student alerts you to his/her difficult family situation, let us know as well.5) Never speak to students in a derogatory way, or in a way which discriminates or alienates them. Discrimination and racism will not be tolerated. </span>
+    </div>
     
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', root_path, class: 'btn back-button' %>

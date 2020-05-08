@@ -7,7 +7,7 @@ class FeedbacksController < ApplicationController
 
 	def create
 		@feedback = Feedback.new(feedback_params)
-		if @feedback.save
+		if @feedback.save!
 			session[:feedback_id] = @feedback.id
 			flash[:notice] = 'User saved successfully'
 			redirect_to feedback_step_build_index_path(@feedback.id)
@@ -20,7 +20,7 @@ class FeedbacksController < ApplicationController
 	def update
 		@feedback = Feedback.find(params[:id])
 		#if @student.update_attributes(personal_consent: params[:student][:personal_consent])
-		#  redirect_to root_path
+		#  redirect_to root_paths
 		#else
 		#  render :new
 		#end

@@ -1,7 +1,6 @@
 class CreateFeedbacks < ActiveRecord::Migration[6.0]
   def change
     create_table :feedbacks do |t|
-      t.datetime :timestamp
       t.string :matching_number
       t.string :full_name
       t.text :action
@@ -17,6 +16,8 @@ class CreateFeedbacks < ActiveRecord::Migration[6.0]
       t.string :know_about_program
       t.string :platform
       t.text :difficulties_with_tutoring
+      t.references :student, null:true, foreign_key:false
+      t.references :tutor, null:true, foreign_key:false
 
       t.timestamps
     end
