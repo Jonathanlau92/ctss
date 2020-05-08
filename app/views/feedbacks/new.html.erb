@@ -42,6 +42,9 @@
 
        <span> Tutor's COC: 1) Photography and videography of the students are strictly not allowed. 2) You have to observe online etiquette. If you and your student are using the webcam, ensure that whatever is visible to the student is neither rude, offensive, nor have the appearance of being sexual. 3) Any interaction with the student beyond regular tutoring sessions and the subject of teaching (for e.g. the student texting you a question) must be reported to the CTSS team at enquiries.ctss@gmail.com. 4) During a tutoring session, if you observe that the student's basic well-being or safety is compromised, please let the CTSS team know immediately so we can render further assistance. If the student alerts you to his/her difficult family situation, let us know as well.5) Never speak to students in a derogatory way, or in a way which discriminates or alienates them. Discrimination and racism will not be tolerated. </span>
     </div>
+
+    <%= f.collection_select :student_id, @students, :id, :full_name, prompt:true %>
+    <%= f.collection_select :tutor_id, @tutors, :id, :full_name, prompt:true %>
     
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', root_path, class: 'btn back-button' %>

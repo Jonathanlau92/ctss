@@ -16,8 +16,8 @@ class CreateFeedbacks < ActiveRecord::Migration[6.0]
       t.string :know_about_program
       t.string :platform
       t.text :difficulties_with_tutoring
-      t.references :student, null:true, foreign_key:false
-      t.references :tutor, null:true, foreign_key:false
+      t.references :student, null:false, foreign_key:true
+      t.references :tutor, null:false, foreign_key:true
 
       t.timestamps
     end
