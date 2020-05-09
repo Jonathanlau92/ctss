@@ -8,6 +8,7 @@ class FeedbackSteps::BuildController < ApplicationController
   end
 
   def update
+  	@feedback = Feedback.find(session[:feedback_id])
 	render_wizard 
   end
  end
