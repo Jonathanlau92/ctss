@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_005755) do
+ActiveRecord::Schema.define(version: 2020_04_30_141346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "tutor_id", null: false
+    t.string "existing_matching_id"
+    t.string "imported_data"
+    t.index ["student_id"], name: "index_matches_on_student_id"
+    t.index ["tutor_id"], name: "index_matches_on_tutor_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.boolean "personal_consent"
@@ -32,6 +41,10 @@ ActiveRecord::Schema.define(version: 2020_04_27_005755) do
     t.string "subject_3"
     t.string "others_subject"
     t.string "contact_number"
+    t.string "existing_educational_level_data"
+    t.string "imported_data"
+    t.boolean "matched"
+    t.boolean "sent_intro_email"
   end
 
   create_table "tutors", force: :cascade do |t|
@@ -51,6 +64,23 @@ ActiveRecord::Schema.define(version: 2020_04_27_005755) do
     t.string "level_to_teach"
     t.boolean "code_of_conduct"
     t.string "contact_number"
+    t.string "imported_data"
+    t.boolean "matched"
+    t.boolean "sent_intro_email"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "matches", "students"
+  add_foreign_key "matches", "tutors"
 end

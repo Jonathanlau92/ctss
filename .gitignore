@@ -26,6 +26,9 @@
 # Ignore database config
 /config/database.yml
 
+# Ignore secrets
+.env
+
 /public/packs
 /public/packs-test
 /node_modules

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class='text-center'>Add progress bar here</div>
 <h1 class="text-center">
   <span>You are in:</span>
@@ -9,6 +10,10 @@
   <span>We have listed every examinable subject here but it is subject to availability of volunteer tutors. We'll try our best to match you to a volunteer tutor who has expertise in your chosen subjects.</span>
   <span>Please rank the subjects you need help with in order of importance!</span>
 </h3>
+=======
+<h1 class="mt-3"> You are in: <%= @student.education_level&.humanize %> </h1>
+<p>We have listed every examinable subject here but it is subject to availability of volunteer tutors. We'll try our best to match you to a volunteer tutor who has expertise in your chosen subjects.  Please rank the subjects you need help with in order of importance! </p>
+>>>>>>> master
 
 <%= form_for @student, url: wizard_path do |f|%>
   <% if @student.PSLE? %>
