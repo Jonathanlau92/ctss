@@ -11,7 +11,7 @@ class FeedbacksController < ApplicationController
 		@feedback = Feedback.new(feedback_params)
 		if @feedback.save
 			session[:feedback_id] = @feedback.id
-			redirect_to feedback_step_build_index_path(@feedback.id)
+			redirect_to feedback_step_build_index_path(@feedback.id, :type => params[:feedback][:type])
 		else
 			render :new
 		end

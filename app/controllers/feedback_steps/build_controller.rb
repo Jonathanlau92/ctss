@@ -3,6 +3,7 @@ class FeedbackSteps::BuildController < ApplicationController
   steps :others
 
   def show
+  	@feedback_type = params[:type]
 	@feedback = Feedback.find(session[:feedback_id])
 	render_wizard
   end
