@@ -1,14 +1,42 @@
-<h1 class="mt-3">Terms and Conditions</h1>
-<ol>
-  <li>I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative.</li>
-  <li>I have read and consent to the online code of conduct </li>
-  <li>By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. If you would like specific details on how your data might be used, please contact us at enquiries.ctss@gmail.com.</li>
-</ol>
+<div class='text-center'>Add progress bar here</div>
+<h1 class='mb-3 text-center'>
+  <span>Terms and Conditions</span>
+</h1>
+<div class='container'>
+<div class='mt-3 form-check'>
+  <input class='form-check-input consent' type='checkbox' id='parentalconsent'>
+  <label class='form-check-label' for='parentalconsent'>
+    I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students initiative. It is compulsory to tell your parents and keep them informed about the initiative.
+  </label>
+</div>
+<div class='mt-3 form-check'>
+  <input class='form-check-input consent' type='checkbox' id='conductconsent'>
+  <label class='form-check-label' for='conductconsent'>
+    I have read and consent to the online code of conduct.
+  </label>
+</div>
+<div class='mt-3 form-check'>
+  <input class='form-check-input consent' type='checkbox' id='generalconsent'>
+  <label class='form-check-label' for='generalconsent'>
+    By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. For more information, contact us at enquiries.ctss@gmail.com.
+  </label>
+</div>
 <%= form_for @student do |f|%>
-  <div class="form-check">
-    <%= f.check_box :personal_consent, {class: 'form-check-input'}, true, false %>
+  <div class='form-check'>
+    <%= f.check_box :personal_consent, {class: 'form-check-input d-none'}, true, false %>
     <%= f.label 'I agree', class: 'form-check-label' %>
   </div>
-  <%= f.submit 'Submit', class: 'btn btn-warning mt-2'%>
+  <div class='d-flex justify-content-center'>
+    <%
+      path=request.path
+      student_step_id=path.split('/')[2]
+      url='/student_steps/#{student_step_id}/build'
+    %>
+    <%= link_to 'Back', url, class: 'btn back-button' %>
+    <%= f.submit 'Submit', class: 'btn submit-button'%>
+  </div>
 <% end %>
+</div>
+
+
     
