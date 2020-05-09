@@ -1,4 +1,4 @@
-<div class='text-center'>Add progress bar here</div>
+<div class='text-center'>Part 2</div> <br>
 
 <div class='form-group'>
 <%= form_for @feedback, url: wizard_path do |f|%>
@@ -9,7 +9,7 @@
     <%end%>
   </div>
   <div class='form-group'>
-    <%= f.label :observe_code_of_conduct, 'Did your '+ '@feedback_type' + ' observe the code of conduct?' %>
+    <%= f.label :observe_code_of_conduct, 'Did your '+ @feedback_type + ' observe the code of conduct?' %>
     <br>
     <div class="ml-5 form-check form-check-inline">
       <%= f.radio_button :observe_code_of_conduct, true, :value => true , class:'mr-1 form-check-label' %> 
@@ -26,8 +26,55 @@
     <%= f.label :eleborate,'If your answer to the question above was No, do elaborate the reason for your answer.' %>
     <%= f.text_field :eleborate, class: 'form-control' %>
   </div>
+
+   <div class='form-group'>
+      <%if @feedback_type == "student"%>
+        <%= f.label :comfortable_with_tutor, 'Are you comfortable with your tutor?' %>
+        <br>
+        <div class="ml-5 form-check form-check-inline">
+          <%= f.radio_button :comfortable_with_tutor, true, :value => true , class:'mr-1 form-check-label' %> 
+          <%= f.label :comfortable_with_tutor, 'Yes', value:true, class: 'form-check-input' %>
+        </div>
+        <div class="ml-5 form-check form-check-inline">
+          <%= f.radio_button :comfortable_with_tutor, false, :value => false, class:'mr-1 form-check-label' %>
+          <%= f.label :comfortable_with_tutor, 'No', value:false, class: 'form-check-input' %>
+        </div>
+      <%end%>
+    </div>
+
+    <div class='form-group'>
+      <%if @feedback_type == "tutor"%>
+        <%= f.label :platform, 'Which platform did you use to conduct your tutoring session today?' %>
+        <%= f.text_field :platform, class: 'form-control' %>
+      <%end%>
+    </div>
+
+    <div class='form-group'>
+      <%if @feedback_type == "tutor"%>
+        <%= f.label :difficulties_with_tutoring, 'Did you meet any difficulties with tutoring today? Be it technical or teaching issues? If no, please enter "NIL".' %>
+        <%= f.text_field :difficulties_with_tutoring, class: 'form-control' %>
+      <%end%>
+    </div>
+    <div class='form-group'>
+      <%if @feedback_type == "student"%>
+        <%= f.label :know_about_program, "How did you know about our program?" %>
+        <br>
+        <% @feedback.know_about_program.each do |platform| %>
+          <%= check_box_tag "know_about_program_ids[]", platform %>
+          <%= label_tag platform %>
+          <br>
+        <% end %>
+      <% end %>  
+    </div>
+
+    <div class='form-group'>
+      <%if @feedback_type == "student"%>
+        <%= f.label :other_feedbacks, 'Do you have other feedback?' %>
+        <%= f.text_field :other_feedbacks, class: 'form-control' %>
+      <%end%>
+    </div>
   
-  <%= f.submit "Next", class: 'btn btn-sm btn-primary'%>
+  <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
 <%end%>
 </div>
 
