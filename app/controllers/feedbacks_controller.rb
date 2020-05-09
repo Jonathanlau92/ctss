@@ -1,6 +1,7 @@
 class FeedbacksController < ApplicationController
 
 	def new
+		@feedback_type = params[:type]
 		@feedback = Feedback.new
 		@students = Student.all
 		@tutors = Tutor.all
@@ -10,10 +11,8 @@ class FeedbacksController < ApplicationController
 		@feedback = Feedback.new(feedback_params)
 		if @feedback.save
 			session[:feedback_id] = @feedback.id
-			flash[:notice] = 'User saved successfully'
 			redirect_to feedback_step_build_index_path(@feedback.id)
 		else
-			flash[:alert] = 'User was not saved.'
 			render :new
 		end
 	end

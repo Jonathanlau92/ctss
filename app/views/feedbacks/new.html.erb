@@ -1,7 +1,13 @@
 <div class='text-center'>Add progress bar here</div>
-  <h1 class='mt-3 text-center'>Feedback form</h1>
+  
+  <%if @feedback_type == "student"%>
+    <h1 class='mt-3 text-center'>Feedback form for Students</h1>
+  <%elsif @feedback_type == "tutor"%>
+    <h1 class='mt-3 text-center'>Feedback form for Tutors</h1>
+  <% end %>  
+  
   <div class='form-group'>
-    
+
   <%= form_for @feedback do |f| %>
     <div class='form-group'>
       <%= f.label :matching_number %>
@@ -23,10 +29,13 @@
       <%= f.label :end_time %>
       <%= f.time_field :end_time, class: 'form-control' %>
     </div>
-    <div class='form-group'>
-      <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
-      <%= f.text_field :topics_covered, class: 'form-control' %>
-    </div>
+
+    <%if @feedback_type == "student"%>
+      <div class='form-group'>
+        <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
+        <%= f.text_field :topics_covered, class: 'form-control' %>
+      </div>
+    <%end%>
 
     <div class='form-group'>
 
