@@ -37,10 +37,10 @@
         <%= f.text_field :topics_covered, class: 'form-control' %>
       <%end%>  
     </div>
-
+    
+    <%= f.hidden_field :type, value: @feedback_type %>
     <%= f.collection_select :student_id, @students, :id, :full_name, prompt:true %>
     <%= f.collection_select :tutor_id, @tutors, :id, :full_name, prompt:true %>
-    <%= f.hidden_field :type, value: @feedback_type %>
     
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', root_path, class: 'btn back-button' %>

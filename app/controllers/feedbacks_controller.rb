@@ -5,13 +5,17 @@ class FeedbacksController < ApplicationController
 		@feedback = Feedback.new
 		@students = Student.all
 		@tutors = Tutor.all
+		@matches = Match.all
 	end
 
 	def create
 		@feedback = Feedback.new(feedback_params)
+		@feedback.student_id = Match.find_by("existing_matching_id":@feedback.matching_number).student_id
+		@feedback.tutor_id = Match.find_by("existing_matching_id":@feedback.matching_number).tutor_id
+		#flash[:alert] = Match.find_by(params[:feedback][:existing_matching_id])
 		if @feedback.save
 			session[:feedback_id] = @feedback.id
-			redirect_to feedback_step_build_index_path(@feedback.id, :type => params[:feedback][:type])
+			redirect_to feedback_step_build_index_path(@feedback.id, :type => params[:feedback][:type], :matches => params[:feedback][:existing_matching_id])
 		else
 			render :new
 		end

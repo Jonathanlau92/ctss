@@ -8,6 +8,16 @@
 
 admin = User.create(email: 'admin@ctss.com', password: 'password')
 
-Student.create ([
-	{full_name:"Tom"}
-])
+match_attributes = [
+  { student_id: 1, tutor_id: 1, existing_matching_id: "A1a", imported_data: "Nil"},
+  { student_id: 2, tutor_id: 2, existing_matching_id: "NA1a", imported_data: "Nil"},
+]
+
+match_attributes.each do |attributes|
+  Match.where(attributes).first_or_create
+end
+
+student_attributes = [
+  { student_id: 1, tutor_id: 1, existing_matching_id: "A1a", imported_data: "Nil"},
+  { student_id: 2, tutor_id: 2, existing_matching_id: "NA1a", imported_data: "Nil"},
+]
