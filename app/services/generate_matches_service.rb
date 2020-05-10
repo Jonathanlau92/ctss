@@ -7,7 +7,7 @@ class GenerateMatchesService
 
   def run
     create_match
-    update_student_and_tutor_matched_status
+    # update_student_and_tutor_matched_status
   end
 
   private
