@@ -14,7 +14,7 @@ class StudentDashboard < Administrate::BaseDashboard
     school_email: Field::String,
     alternate_email: Field::String,
     sex: Field::String.with_options(searchable: false),
-    subject_preferences: Field::String.with_options(searchable: false),
+    subject_preferences: Field::JSONB,
     education_level: Field::String.with_options(searchable: false),
     parental_consent: Field::Boolean,
     match_count: Field::Number,
