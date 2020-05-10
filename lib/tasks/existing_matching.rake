@@ -1,4 +1,4 @@
-namespace :scheduler do
+namespace :existing_matching do
   desc "this task is to schedule matching to match student and tutor"
   task matching_existing_data_form1: :environment do
     # Look for all the students that were not matched and in form 1, in ascending order of ID
@@ -103,6 +103,78 @@ namespace :scheduler do
     # Look for all the students that were not matched, in ascending order of ID
     Student.where(matched: false, imported_data: "Existing student form 2").each do |student|
       case student.existing_educational_level_data
+      when "Primary School"
+        # add counter so that we restrict the iteration to break at 2-3 matches
+        i = 0
+        Tutor.where(matched: false).each do |tutor|
+          # Define student subjects array
+          @student_subject_array = [student.subject_1, student.subject_2, student.subject_3]
+          # Check if tutor indicated primary subjects
+          # Check for intersection of the subject between tutor and student; The regexp is to split the column details into an array of strings and then intersection to match the 2 arrays
+          # Check if counter is less than 2 (because dont want to overmatch the student, maximum 2 matches!)
+          if !tutor.subjects['primary_subjects'].nil? && (@student_subject_array & tutor.subjects['o_subjects'].split(/,\s*(?=[^()]*(?:\(|$))/)).present? && i < 2
+            # Initialize intersection as an array
+            @intersection = []
+            @student_subject_array.each do |subject|
+              if tutor.subjects['primary_subjects'].include? subject
+                @intersection << subject
+              end
+            end
+            # Generate matches through the service
+            GenerateMatchesService.new(student, tutor, @intersection.join(', ')).run
+            # increase counter by 1
+            i += 1
+          end
+        end
+      end
+      when "Secondary N(T)-Level"
+        # add counter so that we restrict the iteration to break at 2-3 matches
+        i = 0
+        Tutor.where(matched: false).each do |tutor|
+          # Define student subjects array
+          @student_subject_array = [student.subject_1, student.subject_2, student.subject_3]
+          # Check if tutor indicated primary subjects
+          # Check for intersection of the subject between tutor and student; The regexp is to split the column details into an array of strings and then intersection to match the 2 arrays
+          # Check if counter is less than 2 (because dont want to overmatch the student, maximum 2 matches!)
+          if !tutor.subjects['nt_subjects'].nil? && (@student_subject_array & tutor.subjects['o_subjects'].split(/,\s*(?=[^()]*(?:\(|$))/)).present? && i < 2
+            # Initialize intersection as an array
+            @intersection = []
+            @student_subject_array.each do |subject|
+              if tutor.subjects['nt_subjects'].include? subject
+                @intersection << subject
+              end
+            end
+            # Generate matches through the service
+            GenerateMatchesService.new(student, tutor, @intersection.join(', ')).run
+            # increase counter by 1
+            i += 1
+          end
+        end
+      end
+      when "Secondary N(A)-Level"
+        # add counter so that we restrict the iteration to break at 2-3 matches
+        i = 0
+        Tutor.where(matched: false).each do |tutor|
+          # Define student subjects array
+          @student_subject_array = [student.subject_1, student.subject_2, student.subject_3]
+          # Check if tutor indicated primary subjects
+          # Check for intersection of the subject between tutor and student; The regexp is to split the column details into an array of strings and then intersection to match the 2 arrays
+          # Check if counter is less than 2 (because dont want to overmatch the student, maximum 2 matches!)
+          if !tutor.subjects['na_subjects'].nil? && (@student_subject_array & tutor.subjects['o_subjects'].split(/,\s*(?=[^()]*(?:\(|$))/)).present? && i < 2
+            # Initialize intersection as an array
+            @intersection = []
+            @student_subject_array.each do |subject|
+              if tutor.subjects['na_subjects'].include? subject
+                @intersection << subject
+              end
+            end
+            # Generate matches through the service
+            GenerateMatchesService.new(student, tutor, @intersection.join(', ')).run
+            # increase counter by 1
+            i += 1
+          end
+        end
+      end
       when ("Secondary O-Level" or "GCSE O-Level" or "GCSE O-Level")
         # add counter so that we restrict the iteration to break at 2-3 matches
         i = 0
