@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
 
+
 	def new
 		@feedback_type = params[:type]
 		@feedback = Feedback.new
@@ -19,15 +20,6 @@ class FeedbacksController < ApplicationController
 		else
 			render :new
 		end
-	end
-
-	def update
-		@feedback = Feedback.find(params[:id])
-		#if @student.update_attributes(personal_consent: params[:student][:personal_consent])
-		#  redirect_to root_paths
-		#else
-		#  render :new
-		#end
 	end
 
 	private

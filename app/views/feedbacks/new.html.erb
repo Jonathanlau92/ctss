@@ -10,37 +10,37 @@
   <%= form_for @feedback do |f| %>
     <div class='form-group'>
       <%= f.label :matching_number %>
-      <%= f.text_field :matching_number, class: 'form-control' %>
+      <%= f.text_field :matching_number, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
       <%= f.label :full_name %>
-      <%= f.text_field :full_name, class: 'form-control' %>
+      <%= f.text_field :full_name, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
       <%= f.label :date_of_session %>
-      <%= f.date_field :date_of_session, class: 'form-control' %>
+      <%= f.date_field :date_of_session, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
       <%= f.label :start_time %>
-      <%= f.time_field :start_time, class: 'form-control' %>
+      <%= f.time_field :start_time, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
       <%= f.label :end_time %>
-      <%= f.time_field :end_time, class: 'form-control' %>
+      <%= f.time_field :end_time, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
       <%if @feedback_type == "student"%>
         <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
-        <%= f.text_field :topics_covered, class: 'form-control' %>
+        <%= f.text_field :topics_covered, class: 'form-control', required: true %>
       <%elsif @feedback_type == "tutor"%>
         <%= f.label :topics_covered, 'What did you cover with your student today?' %>
-        <%= f.text_field :topics_covered, class: 'form-control' %>
+        <%= f.text_field :topics_covered, class: 'form-control', required: true %>
       <%end%>  
     </div>
     
     <%= f.hidden_field :type, value: @feedback_type %>
-    <%= f.collection_select :student_id, @students, :id, :full_name, prompt:true %>
-    <%= f.collection_select :tutor_id, @tutors, :id, :full_name, prompt:true %>
+    <% f.collection_select :student_id, @students, :id, :full_name, prompt:true %>
+    <% f.collection_select :tutor_id, @tutors, :id, :full_name, prompt:true %>
     
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', root_path, class: 'btn back-button' %>
