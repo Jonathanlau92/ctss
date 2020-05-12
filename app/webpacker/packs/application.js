@@ -18,3 +18,6 @@ require("channels")
 
 // Bootstrap
 import 'bootstrap/dist/js/bootstrap';
+
+// Javascript
+require("../src/javascript/functions")
