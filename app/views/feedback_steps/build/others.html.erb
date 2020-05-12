@@ -4,13 +4,27 @@
 <%= form_for @feedback, url: wizard_path do |f|%>
   <div class='form-group'>
     <%if @feedback_type == "student"%>
+      <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
+      <%= f.text_field :topics_covered, class: 'form-control', required: true %>
+    <%elsif @feedback_type == "tutor"%>
+      <%= f.label :topics_covered, 'What did you cover with your student today?' %>
+      <%= f.text_field :topics_covered, class: 'form-control', required: true %>
+    <%end%>  
+  </div>
+  <div class='form-group'>
+    <%if @feedback_type == "student"%>
       <%= f.label :understand_concepts, 'Did you understand the questions and concepts your tutor explained to you?' %>
       <%= f.text_field :understand_concepts, class: 'form-control', required: true %>
     <%end%>
   </div>
   <div class='form-group'>
-    <%= f.label :observe_code_of_conduct, 'Did your '+ @feedback_type + ' observe the code of conduct?' %>
-    <br>
+    <%if @feedback_type == "student"%>
+      <%= f.label :observe_code_of_conduct, 'Did your tutor observe the Code of Conduct?' %>
+       <span> Tutor's COC: 1) Photography and videography of the students are strictly not allowed. 2) You have to observe online etiquette. If you and your student are using the webcam, ensure that whatever is visible to the student is neither rude, offensive, nor have the appearance of being sexual. 3) Any interaction with the student beyond regular tutoring sessions and the subject of teaching (for e.g. the student texting you a question) must be reported to the CTSS team at enquiries.ctss@gmail.com. 4) During a tutoring session, if you observe that the student's basic well-being or safety is compromised, please let the CTSS team know immediately so we can render further assistance. If the student alerts you to his/her difficult family situation, let us know as well.5) Never speak to students in a derogatory way, or in a way which discriminates or alienates them. Discrimination and racism will not be tolerated. </span>
+    <%elsif @feedback_type == "tutor"%>
+      <%= f.label :observe_code_of_conduct, 'Did your student observe the Code of Conduct?' %>
+      <span>Student's COC: 1) Photography and videography of the volunteer tutors are strictly not allowed. 2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual. 3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. Discrimination and racism will not be tolerated. </span>
+    <%end%>
     <div class="ml-5 form-check form-check-inline">
       <%= f.radio_button :observe_code_of_conduct, true, :value => true , class:'mr-1 form-check-label', required: true %> 
       <%= f.label :observe_code_of_conduct, 'Yes', value:true, class: 'form-check-input' %>
@@ -19,11 +33,9 @@
       <%= f.radio_button :observe_code_of_conduct, false, :value => false, class:'mr-1 form-check-label', required: true %>
       <%= f.label :observe_code_of_conduct, 'No', value:false, class: 'form-check-input' %>
     </div>
-
-     <span> Tutor's COC: 1) Photography and videography of the students are strictly not allowed. 2) You have to observe online etiquette. If you and your student are using the webcam, ensure that whatever is visible to the student is neither rude, offensive, nor have the appearance of being sexual. 3) Any interaction with the student beyond regular tutoring sessions and the subject of teaching (for e.g. the student texting you a question) must be reported to the CTSS team at enquiries.ctss@gmail.com. 4) During a tutoring session, if you observe that the student's basic well-being or safety is compromised, please let the CTSS team know immediately so we can render further assistance. If the student alerts you to his/her difficult family situation, let us know as well.5) Never speak to students in a derogatory way, or in a way which discriminates or alienates them. Discrimination and racism will not be tolerated. </span>
   </div>
   <div class='form-group'>
-    <%= f.label :eleborate,'If your answer to the question above was No, do elaborate the reason for your answer.' %>
+    <%= f.label :eleborate,'If your answer was No, do elaborate the reason for your answer.' %>
     <%= f.text_field :eleborate, class: 'form-control' %>
   </div>
 
@@ -44,13 +56,6 @@
 
     <div class='form-group'>
       <%if @feedback_type == "tutor"%>
-        <%= f.label :platform, 'Which platform did you use to conduct your tutoring session today?' %>
-        <%= f.text_field :platform, class: 'form-control', required: true %>
-      <%end%>
-    </div>
-
-    <div class='form-group'>
-      <%if @feedback_type == "tutor"%>
         <%= f.label :difficulties_with_tutoring, 'Did you meet any difficulties with tutoring today? Be it technical or teaching issues? If no, please enter "NIL".' %>
         <%= f.text_field :difficulties_with_tutoring, class: 'form-control', required: true %>
       <%end%>
@@ -60,7 +65,7 @@
         <%= f.label :know_about_program, "How did you know about our program?" %>
         <br>
         <% @feedback.know_about_program.each do |platform| %>
-          <%= check_box_tag "know_about_program_ids[]", platform, required: true %>
+          <%= check_box_tag "know_about_program_ids[]", platform%>
           <%= label_tag platform %>
           <br>
         <% end %>
@@ -69,9 +74,11 @@
 
     <div class='form-group'>
       <%if @feedback_type == "student"%>
-        <%= f.label :other_feedbacks, 'Do you have other feedback?' %>
-        <%= f.text_field :other_feedbacks, class: 'form-control' %>
+        <%= f.label :other_feedbacks, 'Do you have any other feedback?' %>
+      <%elsif @feedback_type == "tutor"%>
+        <%= f.label :other_feedbacks, 'Do you have any other feedback? Moving forward, what can we help you with? ' %>
       <%end%>
+      <%= f.text_field :other_feedbacks, class: 'form-control', required: true %>
     </div>
   
   <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>

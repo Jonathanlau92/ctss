@@ -17,25 +17,22 @@
       <%= f.text_field :full_name, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
-      <%= f.label :date_of_session %>
+      <%= f.label :date_of_session, "Date of Session" %>
       <%= f.date_field :date_of_session, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
-      <%= f.label :start_time %>
+      <%= f.label :start_time, "Start time of Session" %>
       <%= f.time_field :start_time, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
-      <%= f.label :end_time %>
+      <%= f.label :end_time, "End time of Session" %>
       <%= f.time_field :end_time, class: 'form-control', required: true %>
     </div>
     <div class='form-group'>
-      <%if @feedback_type == "student"%>
-        <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
-        <%= f.text_field :topics_covered, class: 'form-control', required: true %>
-      <%elsif @feedback_type == "tutor"%>
-        <%= f.label :topics_covered, 'What did you cover with your student today?' %>
-        <%= f.text_field :topics_covered, class: 'form-control', required: true %>
-      <%end%>  
+      <%if @feedback_type == "tutor"%>
+        <%= f.label :platform, 'Which platform did you use to conduct your tutoring session today?' %>
+        <%= f.text_field :platform, class: 'form-control', required: true %>
+      <%end%>
     </div>
     
     <%= f.hidden_field :type, value: @feedback_type %>
