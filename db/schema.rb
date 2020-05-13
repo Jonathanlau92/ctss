@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_131523) do
+ActiveRecord::Schema.define(version: 2020_04_30_141346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
-  create_table "matches", force: :cascade do |t|
-    t.bigint "student_id", null: false
-    t.bigint "tutor_id", null: false
-    t.string "existing_matching_id"
-    t.string "imported_data"
-    t.index ["student_id"], name: "index_matches_on_student_id"
-    t.index ["tutor_id"], name: "index_matches_on_tutor_id"
-  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.string "matching_number"
@@ -37,16 +28,26 @@ ActiveRecord::Schema.define(version: 2020_04_28_131523) do
     t.text "topics_covered"
     t.boolean "comfortable_with_tutor"
     t.text "other_feedbacks"
-    t.string "know_about_program"
+    t.json "know_about_program"
     t.string "platform"
     t.text "difficulties_with_tutoring"
-    t.bigint "student_id"
-    t.bigint "tutor_id"
+    t.bigint "student_id", null: false
+    t.bigint "tutor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_feedbacks_on_student_id"
     t.index ["tutor_id"], name: "index_feedbacks_on_tutor_id"
   end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "tutor_id", null: false
+    t.string "existing_matching_id"
+    t.string "imported_data"
+    t.index ["student_id"], name: "index_matches_on_student_id"
+    t.index ["tutor_id"], name: "index_matches_on_tutor_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.boolean "personal_consent"
     t.string "full_name"
@@ -63,8 +64,8 @@ ActiveRecord::Schema.define(version: 2020_04_28_131523) do
     t.string "subject_2"
     t.string "subject_3"
     t.string "others_subject"
-    t.string "contact_number"
     t.string "existing_educational_level_data"
+    t.string "contact_number"
     t.string "imported_data"
     t.boolean "matched"
     t.boolean "sent_intro_email"
@@ -104,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_04_28_131523) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks", "students"
+  add_foreign_key "feedbacks", "tutors"
   add_foreign_key "matches", "students"
   add_foreign_key "matches", "tutors"
 end

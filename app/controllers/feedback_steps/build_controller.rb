@@ -1,7 +1,8 @@
 class FeedbackSteps::BuildController < ApplicationController
 	include Wicked::Wizard
+
 	steps :others
-	#validate :know_about_program, presence: true, on: :update
+	#validate :something_was_checked
 
 	def show
 		@feedback_type = params[:type]

@@ -13,7 +13,7 @@ class CreateFeedbacks < ActiveRecord::Migration[6.0]
       t.text :topics_covered
       t.boolean :comfortable_with_tutor
       t.text :other_feedbacks
-      t.string :know_about_program
+      t.json :know_about_program, null: false, default: {}
       t.string :platform
       t.text :difficulties_with_tutoring
       t.references :student, null:false, foreign_key:true

@@ -1,6 +1,5 @@
 <div class='text-center'>Part 2</div> <br>
 
-<div class='form-group'>
 <%= form_for @feedback, url: wizard_path do |f|%>
   <div class='form-group'>
     <%if @feedback_type == "student"%>
@@ -9,7 +8,7 @@
     <%elsif @feedback_type == "tutor"%>
       <%= f.label :topics_covered, 'What did you cover with your student today?' %>
       <%= f.text_field :topics_covered, class: 'form-control', required: true %>
-    <%end%>  
+    <%end%>    
   </div>
   <div class='form-group'>
     <%if @feedback_type == "student"%>
@@ -64,9 +63,9 @@
       <%if @feedback_type == "student"%>
         <%= f.label :know_about_program, "How did you know about our program?" %>
         <br>
-        <% @feedback.know_about_program.each do |platform| %>
-          <%= check_box_tag "know_about_program_ids[]", platform%>
-          <%= label_tag platform %>
+        <% @feedback.know_about_program.each do |choice| %>
+          <%= check_box_tag "know_about_program_ids[]", choice %>
+          <%= label_tag choice %>
           <br>
         <% end %>
       <% end %>  
@@ -78,11 +77,10 @@
       <%elsif @feedback_type == "tutor"%>
         <%= f.label :other_feedbacks, 'Do you have any other feedback? Moving forward, what can we help you with? ' %>
       <%end%>
-      <%= f.text_field :other_feedbacks, class: 'form-control', required: true %>
+      <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4, required: true %>
     </div>
   
   <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
 <%end%>
-</div>
 
 
