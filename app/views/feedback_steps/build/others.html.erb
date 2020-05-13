@@ -63,11 +63,13 @@
       <%if @feedback_type == "student"%>
         <%= f.label :know_about_program, "How did you know about our program?" %>
         <br>
-        <% @feedback.know_about_program.each do |choice| %>
-          <%= check_box_tag "know_about_program_ids[]", choice %>
-          <%= label_tag choice %>
+        <% @feedback.know_about_program.each do |platform| %>
+          <%= check_box_tag "know_about_program_ids[]", platform %>
+          <%= label_tag platform %>
           <br>
         <% end %>
+        <%="Others: "%>
+        <%= text_field_tag "know_about_program_ids[]"%> 
       <% end %>  
     </div>
 

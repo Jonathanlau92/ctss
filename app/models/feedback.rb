@@ -6,7 +6,7 @@ class Feedback < ApplicationRecord
   validate :must_have_one_item
 
   def know_about_program
-    ['Instagram', 'Newspapers', 'Facebook', 'Word of Mouth', 'Others']
+    ['Instagram', 'Newspapers', 'Facebook', 'Word of Mouth', 'CNA(Channel NewsAsia)']
   end
 
   private
