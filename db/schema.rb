@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_141346) do
     t.text "topics_covered"
     t.boolean "comfortable_with_tutor"
     t.text "other_feedbacks"
-    t.json "know_about_program"
+    t.json "know_about_program", default: {}, null: false
     t.string "platform"
     t.text "difficulties_with_tutoring"
     t.bigint "student_id", null: false
