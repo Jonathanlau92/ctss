@@ -3,15 +3,26 @@ class Feedback < ApplicationRecord
   belongs_to :student
   belongs_to :tutor
 
-  validates :full_name, :matching_number, :date_of_session, :start_time, :end_time, presence: true, if: :step_first?
-  validates :full_name, :matching_number, :date_of_session, :start_time, :end_time, :topics_covered, :observe_code_of_conduct, :other_feedbacks, presence: true, if: :step_others?
+  validates :full_name, :matching_number, :date_of_session, :start_time, :end_time, presence: true, if: :step_first_or_others?
+  validates :platform, presence: true, if: :identity_tutor?
 
-  def step_first?
-    step.nil?
+  validates :topics_covered, :understand_concepts, :observe_code_of_conduct, :comfortable_with_tutor, :other_feedbacks, presence: true, if: :step_others_student?
+  validates :topics_covered, :observe_code_of_conduct, :difficulties_with_tutoring, :other_feedbacks, presence: true, if: :step_others_tutor?
+
+  def step_first_or_others?
+    step.nil? || step == "others"
   end
 
-  def step_others?
-    step == "others"
+  def step_others_student?
+    step == "others" && identity == "student"
+  end
+
+  def step_others_tutor?
+    step == "others" && identity == "tutor"
+  end
+
+  def identity_tutor?
+    identity == "tutor"
   end
 
   def know_about_program

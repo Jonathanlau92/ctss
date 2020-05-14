@@ -2,25 +2,25 @@
 
 <%= form_for @feedback, url: wizard_path do |f|%>
   <div class='form-group'>
-    <%if @feedback_type == "student"%>
+    <%if @feedback.identity == "student"%>
       <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
       <%= f.text_field :topics_covered, class: 'form-control'  %>
-    <%elsif @feedback_type == "tutor"%>
+    <%elsif @feedback.identity == "tutor"%>
       <%= f.label :topics_covered, 'What did you cover with your student today?' %>
       <%= f.text_field :topics_covered, class: 'form-control' %>
     <%end%>    
   </div>
   <div class='form-group'>
-    <%if @feedback_type == "student"%>
+    <%if @feedback.identity == "student"%>
       <%= f.label :understand_concepts, 'Did you understand the questions and concepts your tutor explained to you?' %>
       <%= f.text_field :understand_concepts, class: 'form-control' %>
     <%end%>
   </div>
   <div class='form-group'>
-    <%if @feedback_type == "student"%>
+    <%if @feedback.identity == "student"%>
       <%= f.label :observe_code_of_conduct, 'Did your tutor observe the Code of Conduct?' %>
        <span> Tutor's COC: 1) Photography and videography of the students are strictly not allowed. 2) You have to observe online etiquette. If you and your student are using the webcam, ensure that whatever is visible to the student is neither rude, offensive, nor have the appearance of being sexual. 3) Any interaction with the student beyond regular tutoring sessions and the subject of teaching (for e.g. the student texting you a question) must be reported to the CTSS team at enquiries.ctss@gmail.com. 4) During a tutoring session, if you observe that the student's basic well-being or safety is compromised, please let the CTSS team know immediately so we can render further assistance. If the student alerts you to his/her difficult family situation, let us know as well.5) Never speak to students in a derogatory way, or in a way which discriminates or alienates them. Discrimination and racism will not be tolerated. </span>
-    <%elsif @feedback_type == "tutor"%>
+    <%elsif @feedback.identity == "tutor"%>
       <%= f.label :observe_code_of_conduct, 'Did your student observe the Code of Conduct?' %>
       <span>Student's COC: 1) Photography and videography of the volunteer tutors are strictly not allowed. 2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual. 3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. Discrimination and racism will not be tolerated. </span>
     <%end%>
@@ -39,7 +39,7 @@
   </div>
 
    <div class='form-group'>
-      <%if @feedback_type == "student"%>
+      <%if @feedback.identity == "student"%>
         <%= f.label :comfortable_with_tutor, 'Are you comfortable with your tutor?' %>
         <br>
         <div class="ml-5 form-check form-check-inline">
@@ -54,13 +54,13 @@
     </div>
 
     <div class='form-group'>
-      <%if @feedback_type == "tutor"%>
+      <%if @feedback.identity == "tutor"%>
         <%= f.label :difficulties_with_tutoring, 'Did you meet any difficulties with tutoring today? Be it technical or teaching issues? If no, please enter "NIL".' %>
         <%= f.text_field :difficulties_with_tutoring, class: 'form-control' %>
       <%end%>
     </div>
     <div class='form-group'>
-      <%if @feedback_type == "student"%>
+      <%if @feedback.identity == "student"%>
         <%= f.label :know_about_program, "How did you know about our program?" %>
         <br>
         <% @feedback.know_about_program.each do |platform| %>
@@ -74,9 +74,9 @@
     </div>
 
     <div class='form-group'>
-      <%if @feedback_type == "student"%>
+      <%if @feedback.identity == "student"%>
         <%= f.label :other_feedbacks, 'Do you have any other feedback?' %>
-      <%elsif @feedback_type == "tutor"%>
+      <%elsif @feedback.identity == "tutor"%>
         <%= f.label :other_feedbacks, 'Do you have any other feedback? Moving forward, what can we help you with? ' %>
       <%end%>
       <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4 %>
