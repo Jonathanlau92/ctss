@@ -4,16 +4,16 @@
   <div class='form-group'>
     <%if @feedback_type == "student"%>
       <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
-      <%= f.text_field :topics_covered, class: 'form-control', required: true %>
+      <%= f.text_field :topics_covered, class: 'form-control'  %>
     <%elsif @feedback_type == "tutor"%>
       <%= f.label :topics_covered, 'What did you cover with your student today?' %>
-      <%= f.text_field :topics_covered, class: 'form-control', required: true %>
+      <%= f.text_field :topics_covered, class: 'form-control' %>
     <%end%>    
   </div>
   <div class='form-group'>
     <%if @feedback_type == "student"%>
       <%= f.label :understand_concepts, 'Did you understand the questions and concepts your tutor explained to you?' %>
-      <%= f.text_field :understand_concepts, class: 'form-control', required: true %>
+      <%= f.text_field :understand_concepts, class: 'form-control' %>
     <%end%>
   </div>
   <div class='form-group'>
@@ -25,11 +25,11 @@
       <span>Student's COC: 1) Photography and videography of the volunteer tutors are strictly not allowed. 2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual. 3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. Discrimination and racism will not be tolerated. </span>
     <%end%>
     <div class="ml-5 form-check form-check-inline">
-      <%= f.radio_button :observe_code_of_conduct, true, :value => true , class:'mr-1 form-check-label', required: true %> 
+      <%= f.radio_button :observe_code_of_conduct, true, :value => true , class:'mr-1 form-check-label' %> 
       <%= f.label :observe_code_of_conduct, 'Yes', value:true, class: 'form-check-input' %>
     </div>
     <div class="ml-5 form-check form-check-inline">
-      <%= f.radio_button :observe_code_of_conduct, false, :value => false, class:'mr-1 form-check-label', required: true %>
+      <%= f.radio_button :observe_code_of_conduct, false, :value => false, class:'mr-1 form-check-label' %>
       <%= f.label :observe_code_of_conduct, 'No', value:false, class: 'form-check-input' %>
     </div>
   </div>
@@ -43,11 +43,11 @@
         <%= f.label :comfortable_with_tutor, 'Are you comfortable with your tutor?' %>
         <br>
         <div class="ml-5 form-check form-check-inline">
-          <%= f.radio_button :comfortable_with_tutor, true, :value => true , class:'mr-1 form-check-label', required: true %> 
+          <%= f.radio_button :comfortable_with_tutor, true, :value => true , class:'mr-1 form-check-label' %> 
           <%= f.label :comfortable_with_tutor, 'Yes', value:true, class: 'form-check-input' %>
         </div>
         <div class="ml-5 form-check form-check-inline">
-          <%= f.radio_button :comfortable_with_tutor, false, :value => false, class:'mr-1 form-check-label', required: true %>
+          <%= f.radio_button :comfortable_with_tutor, false, :value => false, class:'mr-1 form-check-label' %>
           <%= f.label :comfortable_with_tutor, 'No', value:false, class: 'form-check-input' %>
         </div>
       <%end%>
@@ -56,7 +56,7 @@
     <div class='form-group'>
       <%if @feedback_type == "tutor"%>
         <%= f.label :difficulties_with_tutoring, 'Did you meet any difficulties with tutoring today? Be it technical or teaching issues? If no, please enter "NIL".' %>
-        <%= f.text_field :difficulties_with_tutoring, class: 'form-control', required: true %>
+        <%= f.text_field :difficulties_with_tutoring, class: 'form-control' %>
       <%end%>
     </div>
     <div class='form-group'>
@@ -79,7 +79,7 @@
       <%elsif @feedback_type == "tutor"%>
         <%= f.label :other_feedbacks, 'Do you have any other feedback? Moving forward, what can we help you with? ' %>
       <%end%>
-      <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4, required: true %>
+      <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4 %>
     </div>
   
   <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
