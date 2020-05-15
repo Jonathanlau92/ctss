@@ -8,6 +8,14 @@
   
   <div class='form-group'>
   <%= form_for @feedback do |f| %>
+    <% if @feedback.errors.any? %>
+      <h3>Errors</h3>
+      <%= @feedback_type %>
+      <% @feedback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+    <br>
     <div class='form-group'>
       <%= f.label :matching_number %>
       <%= f.text_field :matching_number, class: 'form-control' %>
@@ -29,13 +37,14 @@
       <%= f.time_field :end_time, class: 'form-control' %>
     </div>
     <div class='form-group'>
-      <%if @feedback_type == "tutor"%>
+      <%if @feedback_type == "tutor" || @feedback.identity == "tutor" %>
         <%= f.label :platform, 'Which platform did you use to conduct your tutoring session today?' %>
         <%= f.text_field :platform, class: 'form-control' %>
       <%end%>
     </div>
     
     <%= f.hidden_field :identity, value: @feedback_type %>
+    <%= f.hidden_field :type, value: @feedback_type %>
     <% #f.collection_select :student_id, @students, :id, :full_name, prompt:true %>
     <% #f.collection_select :tutor_id, @tutors, :id, :full_name, prompt:true %>
     

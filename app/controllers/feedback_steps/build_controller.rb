@@ -1,8 +1,7 @@
 class FeedbackSteps::BuildController < ApplicationController
 	include Wicked::Wizard
-
 	steps :others
-	#validate :something_was_checked
+
 
 	def show
 		#@feedback_type = params[:type]
@@ -16,11 +15,7 @@ class FeedbackSteps::BuildController < ApplicationController
     @feedback.know_about_program = {key: params[:know_about_program_ids]}
     flash[:alert] = @feedback.identity
 		@feedback.update_attributes(understand_concepts: params[:feedback][:understand_concepts], topics_covered: params[:feedback][:topics_covered], observe_code_of_conduct: params[:feedback][:observe_code_of_conduct], eleborate: params[:feedback][:eleborate], comfortable_with_tutor: params[:feedback][:comfortable_with_tutor], difficulties_with_tutoring: params[:feedback][:difficulties_with_tutoring], other_feedbacks: params[:feedback][:other_feedbacks], step: params[:feedback][:step])
-		if @feedback.save
-			render_wizard @feedback
-		else
-			redirect_to wizard_path(:others)
-		end
+		render_wizard @feedback
 	end
 
 	private

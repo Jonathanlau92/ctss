@@ -1,6 +1,13 @@
 <div class='text-center'>Part 2</div> <br>
 
 <%= form_for @feedback, url: wizard_path do |f|%>
+  <% if @feedback.errors.any? %>
+    <h3>Errors</h3>
+    <% @feedback.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+  <br>
   <div class='form-group'>
     <%if @feedback.identity == "student"%>
       <%= f.label :topics_covered, 'What did you do with your tutor today?' %>
