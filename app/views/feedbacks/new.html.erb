@@ -10,7 +10,6 @@
   <%= form_for @feedback do |f| %>
     <% if @feedback.errors.any? %>
       <h3>Errors</h3>
-      <%= @feedback_type %>
       <% @feedback.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

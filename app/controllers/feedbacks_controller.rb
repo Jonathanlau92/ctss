@@ -3,7 +3,6 @@ class FeedbacksController < ApplicationController
 	
 	def load_type
 		@feedback_type = params[:feedback][:identity]
-		flash[:alert] = @feedback_type
 	end
 
 	def new
@@ -16,8 +15,12 @@ class FeedbacksController < ApplicationController
 
 	def create
 		@feedback = Feedback.new(feedback_params)
-		@feedback.student_id = Match.find_by("existing_matching_id":@feedback.matching_number).student_id
-		@feedback.tutor_id = Match.find_by("existing_matching_id":@feedback.matching_number).tutor_id
+		begin
+			@feedback.student_id = Match.find_by("existing_matching_id":@feedback.matching_number).student
+			@feedback.tutor_id = Match.find_by("existing_matching_id":@feedback.matching_number).tutor_id
+		rescue NoMethodError => e
+			flash[:alert] = "Matching number does not exist"
+		end	
 		#flash[:alert] = Match.find_by(params[:feedback][:existing_matching_id])
 		if @feedback.save
 			session[:feedback_id] = @feedback.id
