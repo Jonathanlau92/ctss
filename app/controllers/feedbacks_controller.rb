@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :load_type, :only => [:create]
+  before_action :load_type, only: :create
   
   def load_type
     @feedback_type = params[:feedback][:identity]
@@ -16,14 +16,15 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     begin
-      @feedback.student_id = Match.find_by("existing_matching_id":@feedback.matching_number).student_id
-      @feedback.tutor_id = Match.find_by("existing_matching_id":@feedback.matching_number).tutor_id
+      @feedback.student_id = Match.find_by(existing_matching_id: @feedback.matching_number).student_id
+      @feedback.tutor_id = Match.find_by(existing_matching_id: @feedback.matching_number).tutor_id
+    # Check if matching number exists
     rescue NoMethodError => e
       flash[:alert] = "Matching number \""+ params[:feedback][:matching_number] + "\"does not exist! Please enter a valid Matching Number"
     end 
     if @feedback.save
       session[:feedback_id] = @feedback.id
-      redirect_to feedback_step_build_index_path(@feedback.id, :matches => params[:feedback][:existing_matching_id])
+      redirect_to feedback_step_build_index_path(@feedback.id, matches: params[:feedback][:existing_matching_id])
     else
       render :new
     end

@@ -9,8 +9,8 @@
 admin = User.create(email: 'admin@ctss.com', password: 'password')
 
 match_attributes = [
-  { student_id: 1, tutor_id: 1, existing_matching_id: "A1a", imported_data: "Nil"},
-  { student_id: 2, tutor_id: 2, existing_matching_id: "NA1a", imported_data: "Nil"},
+  { student_id: 1, tutor_id: 1, existing_matching_id: "A1a", imported_data: nil},
+  { student_id: 2, tutor_id: 2, existing_matching_id: "NA1a", imported_data: nil},
 ]
 
 match_attributes.each do |attributes|
