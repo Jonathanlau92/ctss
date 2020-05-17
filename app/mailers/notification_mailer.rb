@@ -10,12 +10,23 @@ class NotificationMailer < ApplicationMailer
   end
 
   def extension_email_for_student(student)
-  	@student = student
-  	mail(to: @student.school_email, subject: 'Extension of CTSS Programme')
+    @student = student
+    # If student alternate email does not exist, send to school email
+    if @student.alternate_email.present? and @student.alternate_email != 'nil'
+      mail(to: @student.alternate_email, subject: 'Extension of CTSS Programme')
+    # Dont send email if both emails are nil
+    elsif @student.school_email.present?
+      mail(to: @student.school_email, subject: 'Extension of CTSS Programme')
+    end
   end
 
   def extension_email_for_tutor(tutor)
-  	@tutor = tutor
-  	mail(to: @tutor.school_email, subject: 'Extension of CTSS Programme')
+    @tutor = tutor
+    if @tutor.alternate_email.present? and @tutor.alternate_email != 'nil'
+      mail(to: @tutor.alternate_email, subject: 'Extension of CTSS Programme')
+    # Dont send email if both emails are nil
+    elsif @tutor.school_email.present?
+      mail(to: @tutor.school_email, subject: 'Extension of CTSS Programme')
+    end
   end
 end
