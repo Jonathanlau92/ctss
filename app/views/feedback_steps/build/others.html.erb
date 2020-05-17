@@ -31,12 +31,12 @@
       <span>Student's COC: 1) Photography and videography of the volunteer tutors are strictly not allowed. 2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual. 3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. Discrimination and racism will not be tolerated. </span>
     <%end%>
     <div class="ml-5 form-check form-check-inline">
-      <%= f.radio_button :observe_code_of_conduct, true, :value => true , class:'mr-1 form-check-label', required: true %> 
-      <%= f.label :observe_code_of_conduct, 'Yes', value:true, class: 'form-check-input' %>
+      <%= f.radio_button :observe_code_of_conduct, true, value: true , class: 'mr-1 form-check-label', required: true %> 
+      <%= f.label :observe_code_of_conduct, 'Yes', value: true, class: 'form-check-input' %>
     </div>
     <div class="ml-5 form-check form-check-inline">
-      <%= f.radio_button :observe_code_of_conduct, false, :value => false, class:'mr-1 form-check-label', required: true %>
-      <%= f.label :observe_code_of_conduct, 'No', value:false, class: 'form-check-input' %>
+      <%= f.radio_button :observe_code_of_conduct, false, value: false, class: 'mr-1 form-check-label', required: true %>
+      <%= f.label :observe_code_of_conduct, 'No', value: false, class: 'form-check-input' %>
     </div>
   </div>
   <div class='form-group'>
@@ -49,12 +49,12 @@
         <%= f.label :comfortable_with_tutor, 'Are you comfortable with your tutor?' %>
         <br>
         <div class="ml-5 form-check form-check-inline">
-          <%= f.radio_button :comfortable_with_tutor, true, :value => true , class:'mr-1 form-check-label', required: true %> 
-          <%= f.label :comfortable_with_tutor, 'Yes', value:true, class: 'form-check-input' %>
+          <%= f.radio_button :comfortable_with_tutor, true, value: true , class:'mr-1 form-check-label', required: true %> 
+          <%= f.label :comfortable_with_tutor, 'Yes', value: true, class: 'form-check-input' %>
         </div>
         <div class="ml-5 form-check form-check-inline">
-          <%= f.radio_button :comfortable_with_tutor, false, :value => false, class:'mr-1 form-check-label', required: true %>
-          <%= f.label :comfortable_with_tutor, 'No', value:false, class: 'form-check-input' %>
+          <%= f.radio_button :comfortable_with_tutor, false, value: false, class:'mr-1 form-check-label', required: true %>
+          <%= f.label :comfortable_with_tutor, 'No', value: false, class: 'form-check-input' %>
         </div>
       <%end%>
     </div>
@@ -75,7 +75,7 @@
           <br>
         <% end %>
         <%="Others: "%>
-        <%= text_field_tag "know_about_program_ids[]"%> 
+        <%= text_field_tag "know_about_program_ids[]", "", class: 'form-control' %> 
       <% end %>  
     </div>
 
