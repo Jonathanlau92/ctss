@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_115632) do
+ActiveRecord::Schema.define(version: 2020_05_17_080308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_115632) do
     t.time "end_time"
     t.string "understand_concepts"
     t.boolean "observe_code_of_conduct"
-    t.string "eleborate"
+    t.string "elaborate"
     t.text "topics_covered"
     t.boolean "comfortable_with_tutor"
     t.text "other_feedbacks"

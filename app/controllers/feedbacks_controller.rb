@@ -8,9 +8,6 @@ class FeedbacksController < ApplicationController
 	def new
 		@feedback_type = params[:type]
 		@feedback = Feedback.new
-		@students = Student.all
-		@tutors = Tutor.all
-		@matches = Match.all
 	end
 
 	def create
@@ -19,7 +16,7 @@ class FeedbacksController < ApplicationController
 			@feedback.student_id = Match.find_by("existing_matching_id":@feedback.matching_number).student_id
 			@feedback.tutor_id = Match.find_by("existing_matching_id":@feedback.matching_number).tutor_id
 		rescue NoMethodError => e
-			flash[:alert] = "Matching number \""+ params[:feedback][:matching_number] + "\"does not exist! Please enter a valid Matching Number"
+			flash[:alert] = "Matching number \""+ params[:feedback][:matching_number] + "\" does not exist! Please enter a valid Matching Number"
 		end	
 		if @feedback.save
 			session[:feedback_id] = @feedback.id
@@ -32,7 +29,7 @@ class FeedbacksController < ApplicationController
 	private
 	def feedback_params
 		params.require(:feedback).permit(:matching_number, :full_name, :date_of_session, :start_time, :end_time, :topics_covered, 
-			:understand_concepts, :observe_code_of_conduct, :eleborate, :comfortable_with_tutor, :other_feedback, :know_about_program, 
+			:understand_concepts, :observe_code_of_conduct, :elaborate, :comfortable_with_tutor, :other_feedback, :know_about_program, 
 			:platform, :difficulties_with_tutoring, :tutor_id, :student_id, :identity, :step)
 	end
 end
