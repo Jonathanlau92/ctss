@@ -8,10 +8,20 @@ namespace :csv_import do
     csv.each do |row|
       s = Student.new
       s.full_name = row['Full Name']
-      # form 1 doesn't have alternate email
-      s.school_email = row['Email']
+      # form 1 doesn't have school email. Alternate emails are assume more personal email than school emails
+      s.alternate_email = row['Email']
       s.sex = row['Sex'] == 'Male' ? 0 : 1
       s.existing_educational_level_data = row['Which level are you taking?']
+      case row['Which level are you taking?']
+      when "PSLE (Primary School)"
+        s.subject_1 = row['Most important subject (Pri)']
+      when "GCSE O-Level"
+        s.subject_1 = row['Most Important (O-level)']
+      when "GCSE N(T)-Level"
+        s.subject_1 = row['Most important subject N(T)']
+      when "GCSE N(A)-Level"
+        s.subject_1 = row['Most Important N(A)']
+      end
       s.parental_consent = row['I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative. '].present? ? true : false
       s.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       # Other subject students need help with (cross-checked with google spreadsheet )
@@ -33,12 +43,14 @@ namespace :csv_import do
         biology: row[' [Biology]'],
         principle_of_accounts: row[' [Principles of Accounting (H2 only)]']
       }
-      s.created_at = row['F']
+      s.sent_intro_email = row['Sent introductory email?'] == "Y" ? true : false
+      s.created_at = row['Timestamp']
       s.contact_number = row['Contact Number']
       s.imported_data = "Existing student form 1"
       s.save
       puts "#{s.full_name} saved"
     end
+    puts "There are now #{Student.where(imported_data: "Existing student form 1").count} rows in the transactions table"
   end
 
   task import_students_data_2: :environment do
@@ -53,6 +65,7 @@ namespace :csv_import do
       s.existing_educational_level_data = row['Which level are you taking?']
       s.parental_consent = row['I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative. '].present? ? true : false
       s.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
+      s.sent_intro_email = row['Sent intro email? '] == "Y" ? true : false
       s.created_at = row['Timestamp']
       # This is for top 3 subjects. Assumption is that then the most important subject for that level is present, the 2nd most and 3rd most will be too
       if row['Most important subject (Pri)'].present?
@@ -87,7 +100,7 @@ namespace :csv_import do
       s.save
       puts "#{s.full_name} saved"
     end
-    puts "There are now #{Student.count} rows in the transactions table"
+    puts "There are now #{Student.where(imported_data: "Existing student form 2").count} rows in the transactions table"
   end
 
   task import_tutors_data_1: :environment do
@@ -96,7 +109,7 @@ namespace :csv_import do
     csv.each do |row|
       t = Tutor.new
       t.full_name = row['Full Name']
-      t.school_email = row['Email']
+      t.alternate_email = row['Email']
       t.hours_to_teach = row['How many hours can you commit per week?']
       t.sex = row['Sex'] == 'Male' ? 0 : 1
       t.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
@@ -134,12 +147,14 @@ namespace :csv_import do
         management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
         principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]']
       }
+      t.sent_intro_email = row['Sent intro email?'] == "Y" ? true : false
       t.contact_number = row['Contact Number']
       t.imported_data = "Existing tutor form 1"
+      t.code_of_conduct = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       t.save
       puts "#{t.full_name} saved"
     end
-    puts "There are now #{Tutor.count} rows in the transactions table"
+    puts "There are now #{Tutor.where(imported_data: "Existing tutor form 1").count} rows in the transactions table"
   end
 
   task import_tutors_data_2: :environment do
@@ -201,12 +216,14 @@ namespace :csv_import do
         management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
         principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]'],
       }
+      t.sent_intro_email = row['Sent intro email?'] == "Y" ? true : false
       t.contact_number = row['Contact Number']
       t.imported_data = "Existing tutor form 2"
+      t.code_of_conduct = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       t.save
       puts "#{t.full_name} saved"
     end
-    puts "There are now #{Tutor.count} rows in the transactions table"
+    puts "There are now #{Tutor.where(imported_data: "Existing tutor form 2").count} rows in the transactions table"
   end
 
   task import_matching_a_level: :environment do
