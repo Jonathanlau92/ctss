@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@ctss.com'
+  default from: 'enquiries.ctss@gmail.com'
   layout 'mailer'
 end
