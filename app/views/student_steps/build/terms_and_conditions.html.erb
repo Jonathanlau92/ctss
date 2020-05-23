@@ -12,6 +12,8 @@
 <div class='mt-3 form-check'>
   <input class='form-check-input consent' type='checkbox' id='student-conductconsent'>
   <label class='form-check-label' for='student-conductconsent'>
+    I have read and consent to the 
+    <a id="studentCOCLink" href="#" data-toggle="modal" data-target="studentCOCModal">online code of conduct</a>.
   </label>
 </div>
 <div class='mt-3 form-check'>
@@ -37,8 +39,7 @@
 <% end %>
 </div>
 
-
-<div class="modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="studentCOCModal" tabindex="-1" role="dialog" aria-labelledby="onlineConductModalTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -49,28 +50,27 @@
       </div>
       <div class="modal-body">
         <p>In the CTSS programme, it is of utmost importance to us that our volunteers are safe. 
-          It is essential that no volunteers should be harmed during his/her interactions with the 
-          students and the team from CTSS. This code of conduct is carried out in line with our 
-          feedback form for every session, to ensure transparency and accountability of tutors and 
-          students to the CTSS team. Given that the mode of tutoring is online and will be remote, 
-          this is crucial to follow. 
+        It is essential that no volunteers should be harmed during his/her interactions with the 
+        students and the team from CTSS. This code of conduct is carried out in line with our 
+        feedback form for every session, to ensure transparency and accountability of tutors and 
+        students to the CTSS team. Given that the mode of tutoring is online and will be remote, 
+        this is crucial to follow.</p>
           
-          As a student, you have to follow these rules, and the usual laws of the Republic of Singapore. 
-          If you fail to do so, you will be given a warning from the CTSS team or be asked to withdraw 
-          from the programme immediately. Thus, please read the following points carefully and follow them!
+        <p>As a student, you have to follow these rules, and the usual laws of the Republic of Singapore. 
+        If you fail to do so, you will be given a warning from the CTSS team or be asked to withdraw 
+        from the programme immediately. Thus, please read the following points carefully and follow them!</p>
 
-          1) Photography and videography of the volunteer tutors are strictly not allowed. 
+        <p>1) Photography and videography of the volunteer tutors are strictly not allowed.</p>
+    
+        <p>2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that 
+        whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual.</p>
 
-          2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that 
-          whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual. 
-
-          3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. 
-          Discrimination and racism will not be tolerated.
-        </p>
+        <p>3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. 
+        Discrimination and racism will not be tolerated.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="acceptStudentCOC" data-dismiss="modal">Accept</button>
+        <button type="button" class="btn btn-secondary" id="closeStudentCOC" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

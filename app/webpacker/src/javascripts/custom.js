@@ -16,4 +16,12 @@ window.onload = () => {
   studentConductCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let studentGeneralCheckbox = document.getElementById("student-generalconsent")
   studentGeneralCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
+
+  $("#studentCOCModal").on("click","#acceptStudentCOC", function(){
+    $('#student-conductconsent').prop('checked', true);
+  });
+  
+    $('#studentCOCLink[href$="#"]').on( "click", function() {
+      $('#studentCOCModal').modal('show');
+   });
 }
