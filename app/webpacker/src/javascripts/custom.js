@@ -10,10 +10,10 @@ window.onload = () => {
     }
   }
 
-  let parentalconsentCheckbox = document.getElementById("parentalconsent");
-  parentalconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
-  let conductconsentCheckbox = document.getElementById("conductconsent");
-  conductconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
-  let generalconsentCheckbox = document.getElementById("generalconsent")
-  generalconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
+  let studentParentalCheckbox = document.getElementById("student-parentalconsent");
+  studentParentalCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
+  let studentConductCheckbox = document.getElementById("student-conductconsent");
+  studentConductCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
+  let studentGeneralCheckbox = document.getElementById("student-generalconsent")
+  studentGeneralCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
 }
