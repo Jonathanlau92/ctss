@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
 let setConsentCheckbox = () => {
-=======
-window.onload = () => {
-  let setConsentCheckbox = () => {
->>>>>>> Stashed changes
     let consentList = document.getElementsByClassName("consent");
     let numberOfConsentChecked = [...consentList].filter(checkbox => checkbox.checked);
     if(consentList.length === numberOfConsentChecked.length){
