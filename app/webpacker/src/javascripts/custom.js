@@ -1,4 +1,3 @@
-window.onload = () => {
 let setConsentCheckbox = () => {
     let consentList = document.getElementsByClassName("consent");
     let numberOfConsentChecked = [...consentList].filter(checkbox => checkbox.checked);
@@ -11,11 +10,10 @@ let setConsentCheckbox = () => {
   }
 
   let parentalconsentCheckbox = document.getElementById("parentalconsent");
-  parentalconsentCheckbox!==null?parentalconsentCheckbox.addEventListener("change", setConsentCheckbox):null;
+  parentalconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let conductconsentCheckbox = document.getElementById("conductconsent");
-  conductconsentCheckbox!==null?conductconsentCheckbox.addEventListener("change", setConsentCheckbox):null;
+  conductconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let generalconsentCheckbox = document.getElementById("generalconsent")
-  generalconsentCheckbox!==null?generalconsentCheckbox.addEventListener("change", setConsentCheckbox):null;
+  generalconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
 
   console.log("Helllo")
-}
