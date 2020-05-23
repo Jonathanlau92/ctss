@@ -10,8 +10,10 @@ let setConsentCheckbox = () => {
   }
 
   let parentalconsentCheckbox = document.getElementById("parentalconsent");
-  parentalconsentCheckbox.addEventListener("change", setConsentCheckbox);
+  parentalconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let conductconsentCheckbox = document.getElementById("conductconsent");
-  conductconsentCheckbox.addEventListener("change", setConsentCheckbox);
+  conductconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let generalconsentCheckbox = document.getElementById("generalconsent")
-  generalconsentCheckbox.addEventListener("change", setConsentCheckbox);
+  generalconsentCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
+
+  console.log("Helllo")
