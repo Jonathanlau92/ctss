@@ -1,6 +1,6 @@
 //Colour Variables
 $main-background: #1B597C;
-$text: #fff;
+$text: #000;
 $secondary-button-background: #FCC857;
 $secondary-button-border: #333;
 $secondary-button-text: #000;
@@ -10,7 +10,9 @@ $primary-button-text: #000;
 
 
 body{
-  background: $main-background;
+  background-image: url('/assets/colorful_patches.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
   color: $text;
   font-family: 'Montserrat', sans-serif;
 }
