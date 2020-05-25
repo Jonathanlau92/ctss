@@ -27,6 +27,11 @@
       </div>
     </div>
     <div class='form-group'>
+      <%= f.label :contact_number %>
+      <span>Your contact number will only be accessible by the CTSS Team and no one else. It will only be used it the extreme case when the tutee is unable to contact you via email for tutoring. This number will be a way for us to contact you immediately, and will not be sent to anyone.</span>
+      <%= f.number_field :contact_number, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
       <%= f.label :hours_to_teach, 'How many hours can you commit per week?' %>
       <span>For each student, it is recommended that you conduct 1-2 hours of online tutoring weekly, preferably on the weekends.</span>
       <%= f.number_field :hours_to_teach, class: 'form-control' %>
