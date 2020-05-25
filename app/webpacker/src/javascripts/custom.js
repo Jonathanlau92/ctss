@@ -24,4 +24,12 @@ window.onload = () => {
     $('#studentCOCLink[href$="#"]').on( "click", function() {
       $('#studentCOCModal').modal('show');
    });
+   
+   $("#tutorCOCModal").on("click","#acceptTutorCOC", function(){
+    $('#tutor_code_of_conduct').prop('checked', true);
+  });
+  
+    $('#tutorCOCLink[href$="#"]').on( "click", function() {
+      $('#tutorCOCModal').modal('show');
+   });
 }
