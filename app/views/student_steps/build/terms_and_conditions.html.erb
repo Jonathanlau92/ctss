@@ -24,7 +24,7 @@
 </div>
 <%= form_for @student do |f|%>
   <div class='form-check'>
-    <%= f.check_box :personal_consent, {class: 'form-check-input'}, true, false %>
+    <%= f.check_box :personal_consent, {class: 'form-check-input d-none'}, true, false %>
     <%= f.label 'I agree', class: 'form-check-label' %>
   </div>
   <div class='d-flex justify-content-center'>
