@@ -17,13 +17,8 @@
     <%= f.label :personal_consent, 'By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. If you would like specific details on how your data might be used, please contact us at enquiries.ctss@gmail.com.', class: 'form-check-label' %>
   </div>
   <div class='d-flex justify-content-center'>
-  <%
-      path=request.path
-      tutor_step_id=path.split('/')[2]
-      url=''
-    %>
-  <%= link_to 'Back', url, class: 'btn back-button' %>
-  <%= f.submit 'Submit', class: 'btn submit-button'%>
+    <%= link_to 'Back', wizard_path(:declaration), class: 'btn back-button' %>
+    <%= f.submit 'Submit', class: 'btn submit-button'%>
   </div>
 <% end %>
 </div>
