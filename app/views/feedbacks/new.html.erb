@@ -8,12 +8,6 @@
   
   <div class='form-group'>
   <%= form_for @feedback do |f| %>
-    <% if @feedback.errors.any? %>
-      <!--<h3>Errors</h3>-->
-      <% @feedback.errors.full_messages.each do |message| %>
-        <!--<li><%= message %></li>-->
-      <% end %>
-    <% end %>
     <br>
     <div class='form-group'>
       <%= f.label :matching_number %>
