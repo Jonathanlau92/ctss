@@ -5,8 +5,11 @@ class FeedbacksController < ApplicationController
     @feedback_type = params[:feedback][:identity]
   end
 
-  def index 
-  	
+  def index  	
+  end
+
+  def welcome
+    @feedback_type = params[:type]
   end
 
   def new
