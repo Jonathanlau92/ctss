@@ -20,7 +20,7 @@ class TutorsController < ApplicationController
   def update
     if @tutor.update(tutor_params)
       session[:tutor_id] = @tutor.id
-      redirect_to tutor_step_build_index_path(@tutor.id)
+      redirect_to new_student_path
     else
       render :edit
     end
