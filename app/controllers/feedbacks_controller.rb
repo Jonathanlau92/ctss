@@ -1,10 +1,4 @@
 class FeedbacksController < ApplicationController
-  before_action :load_type, only: :create
-  
-  def load_type
-    @feedback_type = params[:feedback][:identity]
-  end
-
   def index  	
   end
 

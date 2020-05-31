@@ -3,16 +3,15 @@ class FeedbackSteps::BuildController < ApplicationController
   steps :others, :end
 
   def show
-    #@feedback_type = params[:type]
     @feedback = Feedback.find(session[:feedback_id])
     render_wizard
   end
 
   def update
     @feedback = Feedback.find(session[:feedback_id])
-    params[:feedback][:step] = step.to_s
     @feedback.know_about_program = {key: params[:know_about_program_ids]}
-    @feedback.update_attributes(understand_concepts: params[:feedback][:understand_concepts], topics_covered: params[:feedback][:topics_covered], observe_code_of_conduct: params[:feedback][:observe_code_of_conduct], elaborate: params[:feedback][:elaborate], comfortable_with_tutor: params[:feedback][:comfortable_with_tutor], difficulties_with_tutoring: params[:feedback][:difficulties_with_tutoring], other_feedbacks: params[:feedback][:other_feedbacks], step: params[:feedback][:step])
+    # Set the step to validate according to student and tutor in feedback.rb
+    @feedback.update_attributes(understand_concepts: params[:feedback][:understand_concepts], topics_covered: params[:feedback][:topics_covered], observe_code_of_conduct: params[:feedback][:observe_code_of_conduct], elaborate: params[:feedback][:elaborate], comfortable_with_tutor: params[:feedback][:comfortable_with_tutor], difficulties_with_tutoring: params[:feedback][:difficulties_with_tutoring], other_feedbacks: params[:feedback][:other_feedbacks], step: step.to_s)
     render_wizard @feedback
   end
 

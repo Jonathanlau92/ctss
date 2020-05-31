@@ -38,8 +38,6 @@
     </div>
     
     <%= f.hidden_field :identity, value: @feedback_type %>
-    <% #f.collection_select :student_id, @students, :id, :full_name, prompt:true %>
-    <% #f.collection_select :tutor_id, @tutors, :id, :full_name, prompt:true %>
     
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', root_path, class: 'btn back-button' %>

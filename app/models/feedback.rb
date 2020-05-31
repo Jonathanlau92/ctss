@@ -1,5 +1,4 @@
 class Feedback < ApplicationRecord
-  include ActiveModel::Validations
   belongs_to :student
   belongs_to :tutor
 
@@ -28,7 +27,7 @@ class Feedback < ApplicationRecord
   end
 
   def know_about_program
-    ['Instagram', 'Newspapers', 'Facebook', 'Word of Mouth', 'CNA(Channel NewsAsia)']
+    ['Instagram', 'Newspapers', 'Facebook', 'Word of Mouth', 'CNA (Channel News Asia)']
   end
 
   private
