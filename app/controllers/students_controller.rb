@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
-      redirect_to root_path
+      redirect_to student_ending_path
     else
       render :new
     end
