@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :users
     resources :tutors
     resources :students
+    resources :matches
+    resources :feedbacks
 
     root to: "users#index"
   end
