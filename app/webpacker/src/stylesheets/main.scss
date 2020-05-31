@@ -8,13 +8,22 @@ $primary-button-background: #BDD9BF;
 $primary-button-border: #333;
 $primary-button-text: #000;
 
+.background-image{
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: rotate(180deg);
+}
 
 body{
-  background-image: url('/assets/colorful_patches.jpeg');
-  background-repeat: no-repeat;
-  background-size: contain;
   color: $text;
   font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .next-button, .submit-button{
