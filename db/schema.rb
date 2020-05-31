@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_144601) do
+ActiveRecord::Schema.define(version: 2020_05_17_080308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "matching_number"
+    t.string "full_name"
+    t.text "action"
+    t.date "date_of_session"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "understand_concepts"
+    t.boolean "observe_code_of_conduct"
+    t.string "elaborate"
+    t.text "topics_covered"
+    t.boolean "comfortable_with_tutor"
+    t.text "other_feedbacks"
+    t.json "know_about_program", default: {}, null: false
+    t.string "platform"
+    t.text "difficulties_with_tutoring"
+    t.bigint "student_id", null: false
+    t.bigint "tutor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "step"
+    t.string "identity"
+    t.index ["student_id"], name: "index_feedbacks_on_student_id"
+    t.index ["tutor_id"], name: "index_feedbacks_on_tutor_id"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.bigint "student_id", null: false
@@ -40,8 +66,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_144601) do
     t.string "subject_2"
     t.string "subject_3"
     t.string "others_subject"
-    t.string "contact_number"
     t.string "existing_educational_level_data"
+    t.string "contact_number"
     t.string "imported_data"
     t.boolean "matched"
     t.boolean "sent_intro_email"
@@ -83,6 +109,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_144601) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks", "students"
+  add_foreign_key "feedbacks", "tutors"
   add_foreign_key "matches", "students"
   add_foreign_key "matches", "tutors"
 end

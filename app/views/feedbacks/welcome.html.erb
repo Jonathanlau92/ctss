@@ -1,0 +1,41 @@
+<div id='welcome-page'>
+  <%= link_to 'Back', feedbacks_path, class: 'btn back-button', method: :get %>
+	<br/>
+  <%if @feedback_type == "student"%>
+  	<div class='mt-4'>
+        <h2 class='font-weight-bold mb-4'>Hello Student!</h2>
+    </div>
+		<h5>This feedback form is meant for us to:</h5>
+		<ol>
+		  <li>track your learning progress</li>
+		  <li>see if we can help you further</li>
+		  <li>see how your tutor is performing</li>
+		  <li>ensure that your tutor does not break the online code of conduct</li>
+		</ol>
+
+  <%elsif @feedback_type == "tutor"%>
+  	<div class='mt-4'>
+        <h2 class='font-weight-bold mb-4'>Hello tutors!</h2>
+    </div>
+	  <h5>This feedback form is meant for us to:</h5>
+	  <ol>
+		  <li> track the student's learning progress and your teaching progress</li>
+		  <li> see if we can help you further</li>
+		  <li> lets us know if you encounter any difficulties</li>
+		  <li> ensure that your student does not break the online code of conduct</li>
+		</ol>
+	<% end %>
+
+	<p class='font-weight-normal'>Please take this form seriously and fill in after EVERY session. Answers don't have to be long!</p>
+
+	<%if @feedback_type == "student"%>
+		<p class='font-weight-normal'>This feedback form will allow you to tell us if you are comfortable with your student. If you are not, please let us know! Contact us at enquiries.ctss@gmail.com or Instagram @ctss.sg</p>
+	<%elsif @feedback_type == "tutor"%>
+		<p class='font-weight-normal'>This feedback form will allow you to tell us if you are comfortable with your student. If you are not, please let us know! Contact us at enquiries.ctss@gmail.com or Instagram @ctss.sg</p>
+	<%end%>
+		
+
+	<div class="row justify-content-center align-items-center">
+    <%= link_to 'Continue', new_feedback_path(:type => @feedback_type), class: 'btn primary-button' %>
+	</div>
+</div>
