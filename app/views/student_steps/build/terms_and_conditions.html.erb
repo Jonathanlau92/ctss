@@ -28,12 +28,7 @@
     <%= f.label 'I agree', class: 'form-check-label' %>
   </div>
   <div class='d-flex justify-content-center'>
-    <%
-      path=request.path
-      student_step_id=path.split('/')[2]
-      url='/student_steps/#{student_step_id}/build'
-    %>
-    <%= link_to 'Back', url, class: 'btn back-button' %>
+    <%= link_to 'Back', wizard_path(:subjects), class: 'btn back-button' %>
     <%= f.submit 'Submit', class: 'btn submit-button'%>
   </div>
 <% end %>
