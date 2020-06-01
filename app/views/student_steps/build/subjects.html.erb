@@ -93,7 +93,7 @@
     <%= f.text_field :special_request, class: 'form-control' %>
   </div>
   <div class='d-flex justify-content-center'>
-    <%= link_to 'Back', new_student_path, class: 'btn back-button' %>
+    <%= link_to 'Back', edit_student_path(@student.id), class: 'btn back-button' %>
     <%= f.submit "Next", class: 'btn next-button'%>
   </div>
 <%end%>
