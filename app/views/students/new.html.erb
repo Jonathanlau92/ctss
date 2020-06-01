@@ -4,12 +4,12 @@
   <%= form_for @student do |f| %>
     <div class='form-group'>
       <%= f.label :full_name %>
-      <%= f.text_field :full_name, class: 'form-control' %>
+      <%= f.text_field :full_name, required: true, class: 'form-control' %>
     </div>
     <div class='form-group'>
       <%= f.label :school_email %>
       <span>For Verification</span>
-      <%= f.email_field :school_email, class: 'form-control' %>
+      <%= f.email_field :school_email, required: true, class: 'form-control' %>
     </div>
     <div class='form-group'>
       <%= f.label :alternate_email %>
@@ -30,12 +30,12 @@
     <div class='form-group'>
       <%= f.label :contact_number %>
       <span>Your contact number will only be accessible by the CTSS Team and no one else. It will only be used it the extreme case when the tutor is unable to contact you via email for tutoring. This number will be a way for us to contact you immediately, and will not be sent to anyone.</span>
-      <%= f.number_field :contact_number, class: 'form-control' %>
+      <%= f.number_field :contact_number, required: true, class: 'form-control' %>
     </div>
     <%  @education={'PSLE'=>'Primary School', 'NT_level'=>'Secondary N(T)-Level', 'NA_level'=>'Secondary N(A)-Level', 'O_level'=>'Secondary O-Level', 'A_level'=>'Junior College A-Level'} %>
     <div class='form-group'>
       <%= f.label :education_level %>
-      <%= f.select :education_level, options_for_select(@education.map {|key, value| [value, key]}), {include_blank: true}, class: 'form-control' %>
+      <%= f.select :education_level, options_for_select(@education.map {|key, value| [value, key]}), {include_blank: true}, required: true, class: 'form-control' %>
     </div>
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', student_extension_notice_path, class: 'btn back-button' %>

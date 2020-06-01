@@ -4,11 +4,11 @@
   <%= form_for @tutor do |f| %>
     <div class='form-group'>
       <%= f.label :full_name %>
-      <%= f.text_field :full_name, class: 'form-control' %>
+      <%= f.text_field :full_name, required: true, class: 'form-control' %>
     </div>
     <div class='form-group'>
       <%= f.label :school_email %>
-      <%= f.text_field :school_email, class: 'form-control' %>
+      <%= f.text_field :school_email, required: true,class: 'form-control' %>
     </div>
     <div class='form-group'>
       <%= f.label :alternate_email %>
@@ -29,12 +29,12 @@
     <div class='form-group'>
       <%= f.label :contact_number %>
       <span>Your contact number will only be accessible by the CTSS Team and no one else. It will only be used it the extreme case when the tutee is unable to contact you via email for tutoring. This number will be a way for us to contact you immediately, and will not be sent to anyone.</span>
-      <%= f.number_field :contact_number, class: 'form-control' %>
+      <%= f.number_field :contact_number, required: true, class: 'form-control' %>
     </div>
     <div class='form-group'>
       <%= f.label :hours_to_teach, 'How many hours can you commit per week?' %>
       <span>For each student, it is recommended that you conduct 1-2 hours of online tutoring weekly, preferably on the weekends.</span>
-      <%= f.number_field :hours_to_teach, class: 'form-control' %>
+      <%= f.number_field :hours_to_teach, required: true, class: 'form-control' %>
     </div>
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', tutor_extension_notice_path, class: 'btn back-button' %>
