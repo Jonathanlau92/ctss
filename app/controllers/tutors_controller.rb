@@ -8,6 +8,7 @@ class TutorsController < ApplicationController
     @tutor = Tutor.new(tutor_params)
     if @tutor.save
       session[:tutor_id] = @tutor.id
+      # Route to tutor wizard path
       redirect_to tutor_step_build_index_path(@tutor.id)
     else
       render :new
@@ -20,7 +21,8 @@ class TutorsController < ApplicationController
   def update
     if @tutor.update(tutor_params)
       session[:tutor_id] = @tutor.id
-      redirect_to new_student_path
+      # Route to tutor wizard path
+      redirect_to tutor_step_build_index_path(@tutor.id)
     else
       render :edit
     end

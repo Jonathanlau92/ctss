@@ -14,67 +14,67 @@
   <% if @student.PSLE? %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
-      <%= f.select :subject_1,  @student.psle, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_1,  @student.psle, {include_blank: 'Select subject...', }, { required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.psle, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.psle, {include_blank: 'Select subject...'}, { required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.psle, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.psle, {include_blank: 'Select subject...'}, { required: true, class: 'form-control'} %>
     </div>
   <% elsif @student.NT_level? %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
-      <%= f.select :subject_1,  @student.nt_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_1,  @student.nt_level, {include_blank: 'Select subject...'}, { required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.nt_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.nt_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.nt_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.nt_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
   <% elsif @student.NA_level? %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
-      <%= f.select :subject_1,  @student.na_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_1,  @student.na_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.na_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.na_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.na_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.na_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
   <% elsif @student.O_level? %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
-      <%= f.select :subject_1,  @student.o_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_1,  @student.o_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.o_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.o_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.o_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.o_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
   <% else %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
-      <%= f.select :subject_1,  @student.a_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_1,  @student.a_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.a_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.a_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.a_level, {include_blank: 'Select subject...'}, {class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.a_level, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
     </div>
   <% end %>
   <div class="form-group">
@@ -93,7 +93,7 @@
     <%= f.text_field :special_request, class: 'form-control' %>
   </div>
   <div class='d-flex justify-content-center'>
-    <%= link_to 'Back', new_student_path, class: 'btn back-button' %>
+    <%= link_to 'Back', edit_student_path(@student.id), class: 'btn back-button' %>
     <%= f.submit "Next", class: 'btn next-button'%>
   </div>
 <%end%>
