@@ -1,28 +1,50 @@
+//Colour Variables
+$main-background: #1B597C;
+$text: #000;
+$secondary-button-background: #FCC857;
+$secondary-button-border: #333;
+$secondary-button-text: #000;
+$primary-button-background: #BDD9BF;
+$primary-button-border: #333;
+$primary-button-text: #000;
+
+.background-image{
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: rotate(180deg);
+}
+
 body{
-  background: #1B597C;
-  color: #fff;
+  color: $text;
   font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
 }
 
 .next-button, .submit-button{
-  background: #FFC857;
-  border: 1px solid #333333;
+  background: $secondary-button-background;
+  border: 1px solid $secondary-button-border;
   box-sizing: border-box;
   border-radius: 6px;
   font-weight: 500;
   font-size: 20px;
-  color: #000;
+  color: $secondary-button-text;
   margin: 22px;
 }
 
 .back-button{
-  background: #1B597C;
+  background: $main-background;
   border: 1px solid #FFFFFF;
   box-sizing: border-box;
   border-radius: 6px;
   font-weight: 500;
   font-size: 20px;
-  color: #fff;
+  color: $text;
   margin: 22px;
 }
 
@@ -31,12 +53,12 @@ body{
 }
 
 .primary-button{
-  background-color: #BDD9BF;
-  border: 1px solid #333333;
+  background-color: $primary-button-background;
+  border: 1px solid $primary-button-border;
   box-sizing: border-box;
   border-radius: 6px;
   margin: 22px;
-  color: #000;
+  color: $primary-button-text;
   font-size: 20px;
   height: 44px;
   width: 120px;
@@ -52,6 +74,11 @@ h2 span::before {
   white-space: pre;
 }
 
+h3 span::before {
+  content: "\A\A";
+  white-space: pre;
+}
+
 label{
   margin: 0;
 }
@@ -60,15 +87,16 @@ input[type=radio]{
   transform:scale(1.5);
 }
 
-div.form-group > span{
-  font-size: 0.8em;
-  display: block;
+div.form-group{
+  > span{
+    font-size: 0.8em;
+    display: block;
+  }
 }
 
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
-
   display: flex;
   align-items: center;
 }
@@ -79,6 +107,9 @@ div.form-group > span{
   }
   h2{
       font-size: 1.3rem;
+  }
+  h3{
+    font-size: 1rem;
   }
 }
 

@@ -28,6 +28,10 @@ Rails.application.routes.draw do
 
   get 'welcome-students', to: 'students#student_welcome', as: :student_welcome
   get 'welcome-tutors', to: 'tutors#tutor_welcome', as: :tutor_welcome
+  get 'student-thank_you', to: 'pages#student_ending_page', as: :student_ending
+  get 'tutor-thank_you', to: 'pages#tutor_ending_page', as: :tutor_ending
+  get 'student-notice-extension', to: 'pages#student_extension_notice', as: :student_extension_notice
+  get 'tutor-notice-extension', to: 'pages#tutor_extension_notice', as: :tutor_extension_notice
   get 'welcome-feedback', to: 'feedbacks#welcome' , as: :feedback_welcome
   root to: 'pages#home'
 end

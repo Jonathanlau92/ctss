@@ -9,7 +9,15 @@ class StudentSteps::BuildController < ApplicationController
 
   def update
     @student = Student.find(session[:student_id])
-    @student.update_attributes(subject_1: params[:student][:subject_1], subject_2: params[:student][:subject_2], subject_3: params[:student][:subject_3], others_subject: params[:student][:others_subject], topics_to_go_through: params[:student][:topics_to_go_through], special_request: params[:student][:special_request])
+    if params[:student][:subject_1].present?
+      @student.update_attributes(subject_1: params[:student][:subject_1], subject_2: params[:student][:subject_2], subject_3: params[:student][:subject_3], others_subject: params[:student][:others_subject], topics_to_go_through: params[:student][:topics_to_go_through], special_request: params[:student][:special_request])
+    else
+      @student.update_attributes(personal_consent: params[:student][:personal_consent])
+    end
     render_wizard @student
+  end
+
+  def finish_wizard_path
+    student_ending_path
   end
 end
