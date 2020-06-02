@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class StudentDashboard < Administrate::BaseDashboard
+class FeedbackDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,24 +8,28 @@ class StudentDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    student: Field::BelongsTo,
+    tutor: Field::BelongsTo,
     id: Field::Number,
-    personal_consent: Field::Boolean,
+    matching_number: Field::String,
     full_name: Field::String,
-    school_email: Field::String,
-    alternate_email: Field::String,
-    sex: Field::String.with_options(searchable: false),
-    subject_preferences: Field::JSONB,
-    education_level: Field::String.with_options(searchable: false),
-    parental_consent: Field::Boolean,
-    match_count: Field::Number,
+    action: Field::Text,
+    date_of_session: Field::Date,
+    start_time: Field::Time,
+    end_time: Field::Time,
+    understand_concepts: Field::String,
+    observe_code_of_conduct: Field::Boolean,
+    elaborate: Field::String,
+    topics_covered: Field::Text,
+    comfortable_with_tutor: Field::Boolean,
+    other_feedbacks: Field::Text,
+    know_about_program: Field::JSONB,
+    platform: Field::String,
+    difficulties_with_tutoring: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    subject_1: Field::String,
-    subject_2: Field::String,
-    subject_3: Field::String,
-    others_subject: Field::String,
-    contact_number: Field::String,
-    existing_educational_level_data: Field::String
+    step: Field::String,
+    identity: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,53 +39,63 @@ class StudentDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  full_name
-  alternate_email
-  sex
-  contact_number
-  existing_educational_level_data
+  student
+  tutor
+  matching_number
+  identity
+  date_of_session
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
+  student
+  tutor
   id
-  personal_consent
+  matching_number
   full_name
-  school_email
-  alternate_email
-  sex
-  subject_preferences
-  education_level
-  parental_consent
-  match_count
+  action
+  date_of_session
+  start_time
+  end_time
+  understand_concepts
+  observe_code_of_conduct
+  elaborate
+  topics_covered
+  comfortable_with_tutor
+  other_feedbacks
+  know_about_program
+  platform
+  difficulties_with_tutoring
   created_at
   updated_at
-  subject_1
-  subject_2
-  subject_3
-  others_subject
-  contact_number
+  step
+  identity
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  personal_consent
+  student
+  tutor
+  matching_number
   full_name
-  school_email
-  alternate_email
-  sex
-  subject_preferences
-  education_level
-  parental_consent
-  match_count
-  subject_1
-  subject_2
-  subject_3
-  others_subject
-  contact_number
+  action
+  date_of_session
+  start_time
+  end_time
+  understand_concepts
+  observe_code_of_conduct
+  elaborate
+  topics_covered
+  comfortable_with_tutor
+  other_feedbacks
+  know_about_program
+  platform
+  difficulties_with_tutoring
+  step
+  identity
   ].freeze
 
   # COLLECTION_FILTERS
@@ -96,10 +110,10 @@ class StudentDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how students are displayed
+  # Overwrite this method to customize how feedbacks are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(student)
-  #   "Student ##{student.id}"
+  # def display_resource(feedback)
+  #   "Feedback ##{feedback.id}"
   # end
 end
