@@ -14,6 +14,14 @@ $primary-button-background: #fbf2ad;
   margin: 22px;
 }
 
+.progress{
+  border: 1px solid black;
+}
+
+.progress-bar{
+  background-color: #a4d4fb !important;
+}
+
 .background-image{
   pointer-events: none;
   position: absolute;
