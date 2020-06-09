@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
       <%= f.label :reason_for_volunteering, 'Why do you want to sign up as a volunteer under the CTSS initiative? ' %>
-      <%= f.text_area :reason_for_volunteering, class: 'form-control', cols: 8, rows: 8 %>
+      <%= f.text_area :reason_for_volunteering, required: true, class: 'form-control', cols: 8, rows: 8 %>
     </div>
     <div class='d-flex justify-content-center'>
       <%= link_to 'Back', edit_tutor_path(@tutor.id), class: 'btn back-button' %>
