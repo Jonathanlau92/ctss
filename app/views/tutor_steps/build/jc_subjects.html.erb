@@ -7,8 +7,8 @@
     <h2 class="mt-3 mb-3">Please check all the subjects that you are able to teach, so that we can be more flexible in arranging tutor-tutee matches.</h2>
     <%= form_for @tutor, url: wizard_path do |f|%>
       <% @tutor.jc_level.each do |subject| %>
-        <%= check_box_tag "jc_subject_ids[]", subject %>
-        <%= label_tag subject %>
+        <%= check_box_tag "jc_subject_ids[#{subject}]", subject %>
+        <%= label_tag "jc_subject_ids[#{subject}]", subject %>
         <br>
       <% end %>
       <div class='d-flex justify-content-center'>
