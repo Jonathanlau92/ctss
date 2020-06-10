@@ -5,7 +5,7 @@
 <div class="container">
   <%= form_for @tutor, url: wizard_path do |f| %>
   <div class="form-check">
-    <%= f.check_box :code_of_conduct, {class: 'form-check-input'}, true, false %>
+    <%= f.check_box :code_of_conduct, {required: true}, {class: 'form-check-input'} %>
     <%= f.label :code_of_conduct, 'I have read and consent to the ', class: "form-check-label" do %>
     <span>
       I have read and consent to the <%= link_to 'online code of conduct.', '#', data: {toggle: 'modal', target: '#tutorCOCModal'} %>
@@ -13,8 +13,8 @@
   <% end %>
   </div>
   <div class="form-check">
-    <%= f.check_box :personal_consent, {class: 'form-check-input'}, true, false %>
-    <%= f.label :personal_consent, 'By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. If you would like specific details on how your data might be used, please contact us at enquiries.ctss@gmail.com.', class: 'form-check-label' %>
+    <%= f.check_box :personal_consent, {required: true},  {class: 'form-check-input'} %>
+    <%= f.label :personal_consent, 'By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. If you would like specific details on how your data might be used, please contact us at enquiries.ctss@gmail.com.', class: 'form-check-label d-inline' %>
   </div>
   <div class='d-flex justify-content-center'>
     <%= link_to 'Back', wizard_path(:declaration), class: 'btn back-button' %>
