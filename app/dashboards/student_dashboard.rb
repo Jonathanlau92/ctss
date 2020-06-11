@@ -14,7 +14,7 @@ class StudentDashboard < Administrate::BaseDashboard
     school_email: Field::String,
     alternate_email: Field::String,
     sex: Field::String.with_options(searchable: false),
-    subject_preferences: Field::String.with_options(searchable: false),
+    subject_preferences: Field::JSONB,
     education_level: Field::String.with_options(searchable: false),
     parental_consent: Field::Boolean,
     match_count: Field::Number,
@@ -36,7 +36,7 @@ class StudentDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   full_name
-  school_email
+  alternate_email
   sex
   contact_number
   existing_educational_level_data

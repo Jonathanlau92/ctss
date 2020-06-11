@@ -1,17 +1,23 @@
-<h1 class="mt-3">Help us to get to know you better</h1>
-<%= form_for @tutor, url: wizard_path do |f| %>
-  <div class="form-group">
-    <%= f.label :qualification, 'What is the highest educational qualification / certification you have received so far? (E.g. Bachelor Degree/A-Level/Poly Diploma/O-Level)' %>
-    <%= f.text_field :qualification, class: 'form-control' %>
+  <%= image_tag 'tutor-progress2.png', class:'mt-4 m-b-3 mx-auto d-block' %>
+  <div class='form-group'>
+    <%= form_for @tutor, url: wizard_path do |f| %> 
+    <div class="form-group">
+      <%= f.label :qualification, 'What is the highest educational qualification / certification you have received so far?' %>
+      <span>(E.g. Bachelor Degree/A-Level/Poly Diploma/O-Level)</span>
+      <%= f.text_field :qualification, required: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :past_experiences, 'What past experiences in tutoring do you have?' %>
+      <span>If you are new to tutoring, it is perfectly fine as well. This question will not affect the selection of tutors for our students.</span>
+      <%= f.text_field :past_experiences, required: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :reason_for_volunteering, 'Why do you want to sign up as a volunteer under the CTSS initiative? ' %>
+      <%= f.text_area :reason_for_volunteering, class: 'form-control', cols: 8, rows: 8 %>
+    </div>
+    <div class='d-flex justify-content-center'>
+      <%= link_to 'Back', edit_tutor_path(@tutor.id), class: 'btn back-button' %>
+      <%= f.submit 'Next', class: 'btn next-button' %>
+    </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.label :past_experiences, 'What past experiences in tutoring do you have?' %>
-    <small class="form-text text-muted">If you are new to tutoring, it is perfectly fine as well. This question will not affect the selection of tutors for our students.</small>
-    <%= f.text_field :past_experiences, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :reason_for_volunteering, 'Why do you want to sign up as a volunteer under the CTSS initiative? ' %>
-    <%= f.text_area :reason_for_volunteering, class: 'form-control', cols: 8, rows: 8 %>
-  </div>
-  <%= f.submit "Next", class: 'btn btn-sm btn-primary' %>
-<% end %>
