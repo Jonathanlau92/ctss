@@ -11,7 +11,7 @@ class StudentDashboard < Administrate::BaseDashboard
     id: Field::Number,
     personal_consent: Field::Boolean,
     full_name: Field::String,
-    school_email: Field::String,
+    email: Field::String,
     alternate_email: Field::String,
     sex: Field::String.with_options(searchable: false),
     subject_preferences: Field::JSONB,
@@ -48,7 +48,7 @@ class StudentDashboard < Administrate::BaseDashboard
   id
   personal_consent
   full_name
-  school_email
+  email
   alternate_email
   sex
   subject_preferences
@@ -70,7 +70,7 @@ class StudentDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   personal_consent
   full_name
-  school_email
+  email
   alternate_email
   sex
   subject_preferences
