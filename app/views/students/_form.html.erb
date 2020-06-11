@@ -1,3 +1,9 @@
+<% if @student.errors.any? %>
+    <h3>Errors</h3>
+    <% @student.errors.full_messages.each do |message| %>
+      <li><%= message %></li> 
+    <% end %>
+<% end %>
 <div class='form-group'>
   <%= f.label :full_name %>
   <%= f.text_field :full_name, required: true, class: 'form-control' %>

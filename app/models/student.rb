@@ -4,8 +4,20 @@ class Student < ApplicationRecord
   has_many :matches
   has_many :tutors, through: :matches
 
+  validates :full_name, :school_email, :sex, :education_level, presence: true, if: :active_or_subjects?
+
+  validates :subject_1, :subject_2, :subject_3, presence: true, if: :active?
+
   enum sex: {male: 0, female: 1}
   enum education_level: {PSLE: 0, NT_level: 1, NA_level: 2, O_level: 3, A_level: 4}
+
+  def active?
+    status == 'active'
+  end
+
+  def active_or_subjects?
+    status.include?('subjects') || active?
+  end
 
   def psle
     ['English', 'Chinese', 'Malay', 'Tamil', 'Math', 'Science', 'Hindi', 'Higher Chinese', 'Higher Malay', 'Higher Tamil', 'Foundation Malay','Foundation Chinese','Foundation Hindi','Foundation Tamil','Foundation English','Foundation Math','Foundation Science']
@@ -26,4 +38,6 @@ class Student < ApplicationRecord
   def a_level
     ['General Paper (h1)', 'Knowledge and Inquiry (h2)', 'Chinese language(h1 only)', 'China studies in english (h1)', 'China studies in english (h2)', 'China studies in chinese (h2 only)', 'Geography (h1)', 'Geography (h2)','History (h1)', 'History (h2)','Economics (h1)', 'Economics (h2)','Art (h1)', 'Art (h2)', 'Music (h1)', 'Music (h2)','French (h1)', 'French (h2)','German (h1)', 'German (h2)','Japanese (h1)', 'Japanese (h2)','Math (h1)', 'Math (h2)','Physics (h1)', 'Physics (h2)','Chemistry (h1)', 'Chemistry (h2)', 'Biology (h1)', 'Biology (h2)', 'Literature in English (h1)', 'English language and linguistics (h2 only)', 'Chinese language and literature (h2 only)', 'Malay language and literature (h2 only)', 'Tamil language and literature (h2 only)', 'Translation(Chinese) (h2 only)', 'Malay Language (h1 only)', 'Hindi (h1 only)', 'Spanish (h1 only)', 'Further Mathematics (h2)', 'Computing (h2 only)', 'Management of Business (h2 only)', 'Principle of accounts (h2 only)' ]
   end
+
+
 end
