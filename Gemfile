@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # Admin page
 gem "administrate"
+# Add administrate JSON views erb
+gem 'administrate-field-jsonb'
 
 # Multi Pages form
 gem 'wicked'

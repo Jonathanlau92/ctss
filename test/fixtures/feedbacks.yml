@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timestamp: 2020-04-30 20:47:05
+  matching_number: MyString
+  name: MyString
+  action: MyText
+  date_of_session: 2020-04-30
+  start_time: 2020-04-30 20:47:05
+  end_time: 2020-04-30 20:47:05
+  understand_concepts: MyString
+  observe_code_of_conduct: false
+  eleborate: MyString
+  topics_covered: MyText
+  comfortable_with_tutor: false
+  other_feedbacks: MyText
+  know_about_programme: MyString
+  platform: MyString
+  difficulties_with_tutoring: MyText
+  student: one
+  tutor: one
+
+two:
+  timestamp: 2020-04-30 20:47:05
+  matching_number: MyString
+  name: MyString
+  action: MyText
+  date_of_session: 2020-04-30
+  start_time: 2020-04-30 20:47:05
+  end_time: 2020-04-30 20:47:05
+  understand_concepts: MyString
+  observe_code_of_conduct: false
+  eleborate: MyString
+  topics_covered: MyText
+  comfortable_with_tutor: false
+  other_feedbacks: MyText
+  know_about_programme: MyString
+  platform: MyString
+  difficulties_with_tutoring: MyText
+  student: two
+  tutor: two

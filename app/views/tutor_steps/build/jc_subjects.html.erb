@@ -1,11 +1,19 @@
-<h1 class="mt-3"> Subject preferences (JC level) </h1>
-<p>Please check all the subjects that you are able to teach, so that we can be more flexible in arranging tutor-tutee matches.</p>
-<%= form_for @tutor, url: wizard_path do |f|%>
-  <% @tutor.jc_level.each do |subject| %>
-    <%= check_box_tag "jc_subject_ids[]", subject %>
-    <%= label_tag subject %>
-    <br>
-  <% end %>
-  <%= f.submit "Next", class: 'btn btn-sm btn-primary'%>
-<%end%>
-
+  <%= image_tag 'tutor-progress5.png', class:'mt-4 mx-auto d-block' %> 
+  <h1 class="mt-3 text-center">
+  <span>Subject preferences</span>
+  <span>(JC level)</span>
+  </h1>
+  <div class="ml-3 mr-3">
+    <h2 class="mt-3 mb-3">Please check all the subjects that you are able to teach, so that we can be more flexible in arranging tutor-tutee matches.</h2>
+    <%= form_for @tutor, url: wizard_path do |f|%>
+      <% @tutor.jc_level.each do |subject| %>
+        <%= check_box_tag "jc_subject_ids[]", subject %>
+        <%= label_tag subject %>
+        <br>
+      <% end %>
+      <div class='d-flex justify-content-center'>
+        <%= link_to 'Back', wizard_path(:seconday_subjects), class: 'btn back-button' %>
+        <%= f.submit 'Next', class: 'btn next-button' %>
+      </div>
+    <%end%>
+  </div>

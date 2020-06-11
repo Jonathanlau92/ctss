@@ -1,6 +1,10 @@
 class Tutor < ApplicationRecord
+  has_many :feedbacks
+  has_many :students
+  
   has_many :matches
   has_many :students, through: :matches
+  
   def primary_level
     ['English', 'Chinese', 'Malay', 'Tamil', 'Math', 'Science', 'Hindi', 'Higher Chinese', 'Higher Malay', 'Higher Tamil', 'Foundation Malay','Foundation Chinese','Foundation Hindi','Foundation Tamil','Foundation English','Foundation Math','Foundation Science']
   end

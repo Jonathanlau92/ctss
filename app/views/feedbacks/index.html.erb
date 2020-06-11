@@ -1,0 +1,17 @@
+  <div><h1 class="text-center text-uppercase">
+    <span>welcome to </span>
+    <span>covid-19</span>
+    <span>tutoring support</span>
+    <span>feedback form</span>
+  </h1></div>
+  <div><h2 class="text-center text-capitalize">
+    <span>Fill in the</span>
+    <span>feedback form as a</span>
+  </h2></div>
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <%= link_to 'Student', feedback_welcome_path(:type => "student"), class: 'btn primary-button' %>
+      <%= link_to 'Tutor', feedback_welcome_path(:type => "tutor"), class: 'btn primary-button' %>
+    </div>
+  </div>
+
