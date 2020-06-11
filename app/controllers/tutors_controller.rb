@@ -35,6 +35,6 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:personal_consent, :full_name, :email, :alternate_email, :sex, :hours_to_teach, :match_count, :subjects, :hours_to_teach, :qualification, :past_experiences, :reason_for_volunteering, :level_to_teach, :code_of_conduct, :contact_number, :declare_1, :declare_2, :declare_3, :declare_4)
+    params.require(:tutor).permit(:personal_consent, :full_name, :email, :alternate_email, :sex, :hours_to_teach, :match_count, :subjects, :hours_to_teach, :qualification, :past_experiences, :reason_for_volunteering, :level_to_teach, :code_of_conduct, :contact_number, :declare_1, :declare_2, :declare_3, :declare_4, :give_out_contact)
   end
 end
