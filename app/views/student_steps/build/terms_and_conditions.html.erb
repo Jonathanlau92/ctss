@@ -1,4 +1,10 @@
 <%= image_tag 'student-progress3.png', class:'mt-4 mx-auto d-block' %> 
+<% if @student.errors.any? %>
+    <h3>Errors</h3>
+    <% @student.errors.full_messages.each do |message| %>
+      <li><%= message %></li> 
+    <% end %>
+<% end %>
 <h1 class='mb-3 text-center'>
   <span>Terms and Conditions</span>
 </h1>
