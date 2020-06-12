@@ -24,6 +24,8 @@ class TutorSteps::BuildController < ApplicationController
         @tutor.update_attributes(qualification: params[:tutor][:qualification], past_experiences: params[:tutor][:past_experiences], reason_for_volunteering: params[:tutor][:reason_for_volunteering])
       elsif params[:tutor][:personal_consent].present?
         @tutor.update_attributes(personal_consent: params[:tutor][:personal_consent], code_of_conduct: params[:tutor][:code_of_conduct])
+        # Send introductory email for tutor after the last page terms and condition
+        NotificationMailer.tutor_introductory_email(@tutor).deliver_later
       elsif params[:tutor][:declare_1].present? and params[:tutor][:declare_2].present? and params[:tutor][:declare_3].present? and params[:tutor][:declare_4].present?
         @tutor.update_attributes(declare_1: params[:tutor][:declare_1], declare_2: params[:tutor][:declare_2], declare_3: params[:tutor][:declare_3], declare_4: params[:tutor][:declare_4])
       end

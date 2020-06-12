@@ -4,6 +4,7 @@
     <%= form_for @tutor, url: wizard_path do |f|%>
       <div class='form-group'>
         <%= label_tag 'Have you ever been charged in a Court of Law in Singapore or in any other country?' %>
+        <br/>
         <div class='ml-5 form-check form-check-inline'>
           <%= f.radio_button :declare_1, true, class:'mr-3 mb-2 form-check-label' %> 
           <%= f.label :declare_1, 'Yes', value: true, class: 'form-check-input' %>
