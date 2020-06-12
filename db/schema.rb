@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_155859) do
+ActiveRecord::Schema.define(version: 2020_06_12_122932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_155859) do
     t.string "contact_number"
     t.string "existing_educational_level_data"
     t.string "imported_data"
-    t.boolean "matched"
+    t.boolean "matched", default: false
     t.boolean "sent_intro_email"
     t.text "topics_to_go_through"
     t.string "special_request"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_155859) do
     t.boolean "code_of_conduct"
     t.string "contact_number"
     t.string "imported_data"
-    t.boolean "matched"
+    t.boolean "matched", default: false
     t.boolean "sent_intro_email"
     t.boolean "declare_1"
     t.boolean "declare_2"
