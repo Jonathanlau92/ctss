@@ -59,7 +59,7 @@ namespace :csv_import do
     csv.each do |row|
       s = Student.new
       s.full_name = row['Full Name']
-      s.school_email = row['School Email']
+      s.email = row['School Email']
       s.alternate_email = row['Alternative Email']
       s.sex = row['Sex'] == 'Male' ? 0 : 1
       s.existing_educational_level_data = row['Which level are you taking?']
@@ -163,7 +163,7 @@ namespace :csv_import do
     csv.each do |row|
       t = Tutor.new
       t.full_name = row['Full Name']
-      t.school_email = row['School Email']
+      t.email = row['School Email']
       t.alternate_email = row['Alternative Email']
       t.hours_to_teach = row['How many hours can you commit per week?']
       t.sex = row['Sex'] == 'Male' ? 0 : 1
@@ -235,9 +235,9 @@ namespace :csv_import do
       volunteer_name_contains_email = row["Name of Volunteer "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
       volunteer_email = row["Volunteer's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
       student_email = row["Student's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
-      tutor_unexpected_id = Tutor.find_by(school_email: volunteer_name_contains_email)&.id
-      tutor_id = Tutor.find_by(school_email: volunteer_email)&.id
-      student_id = Student.find_by(school_email: student_email)&.id
+      tutor_unexpected_id = Tutor.find_by(email: volunteer_name_contains_email)&.id
+      tutor_id = Tutor.find_by(email: volunteer_email)&.id
+      student_id = Student.find_by(email: student_email)&.id
 
       # If present, then create a match
       if tutor_id.present? and student_id.present?

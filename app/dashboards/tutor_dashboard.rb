@@ -11,7 +11,7 @@ class TutorDashboard < Administrate::BaseDashboard
     id: Field::Number,
     personal_consent: Field::Boolean,
     full_name: Field::String,
-    school_email: Field::String,
+    email: Field::String,
     alternate_email: Field::String,
     sex: Field::Number,
     subjects: Field::String.with_options(searchable: false),
@@ -35,7 +35,7 @@ class TutorDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   full_name
-  school_email
+  email
   sex
   hours_to_teach
   qualification
@@ -47,7 +47,7 @@ class TutorDashboard < Administrate::BaseDashboard
   id
   personal_consent
   full_name
-  school_email
+  email
   alternate_email
   sex
   subjects
@@ -69,7 +69,7 @@ class TutorDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   personal_consent
   full_name
-  school_email
+  email
   alternate_email
   sex
   subjects

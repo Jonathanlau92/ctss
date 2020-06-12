@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_050234) do
+ActiveRecord::Schema.define(version: 2020_06_11_155859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_050234) do
   create_table "students", force: :cascade do |t|
     t.boolean "personal_consent"
     t.string "full_name"
-    t.string "school_email"
+    t.string "email"
     t.string "alternate_email"
     t.integer "sex"
     t.json "subject_preferences", default: {}, null: false
@@ -66,19 +66,21 @@ ActiveRecord::Schema.define(version: 2020_05_25_050234) do
     t.string "subject_2"
     t.string "subject_3"
     t.string "others_subject"
-    t.string "existing_educational_level_data"
     t.string "contact_number"
+    t.string "existing_educational_level_data"
     t.string "imported_data"
     t.boolean "matched"
     t.boolean "sent_intro_email"
     t.text "topics_to_go_through"
     t.string "special_request"
+    t.string "status"
+    t.boolean "give_out_contact"
   end
 
   create_table "tutors", force: :cascade do |t|
     t.boolean "personal_consent"
     t.string "full_name"
-    t.string "school_email"
+    t.string "email"
     t.string "alternate_email"
     t.integer "sex"
     t.json "subjects", default: {}, null: false
@@ -99,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_05_25_050234) do
     t.boolean "declare_2"
     t.boolean "declare_3"
     t.boolean "declare_4"
+    t.string "status"
+    t.boolean "give_out_contact"
   end
 
   create_table "users", force: :cascade do |t|
