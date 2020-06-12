@@ -25,6 +25,15 @@ namespace :csv_import do
       s.parental_consent = row['I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative. '].present? ? true : false
       s.personal_consent = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       # Other subject students need help with (cross-checked with google spreadsheet )
+      if row['Most important subject (Pri)'].present?
+        s.subject_1 = row['Most important subject (Pri)']
+      elsif row['Most important subject N(T)'].present?
+        s.subject_1 = row['Most important subject N(T)']
+      elsif row['Most Important N(A)'].present?
+        s.subject_1 = row['Most Important N(A)']
+      elsif row['Most Important (O-level)'].present?
+        s.subject_1 = row['Most Important (O-level)']
+      end
       s.others_subject = row['Subjects you really require help in other than those indicated above. (We will try our best to take into consideration these subjects) - O Level'] if row['Subjects you really require help in other than those indicated above. (We will try our best to take into consideration these subjects) - O Level'].present?
       # Specific A level subject to be stored in JSON subject
       s.subject_preferences = {
@@ -47,6 +56,10 @@ namespace :csv_import do
       s.created_at = row['Timestamp']
       s.contact_number = row['Contact Number']
       s.imported_data = "Existing student form 1"
+      # Check if introductory email is sent out
+      s.sent_intro_email = row["Sent introductory email?"].present? ? true : false
+      # Check if student is matched
+      s.matched = row['Matched?'].present? ? true : false
       s.save
       puts "#{s.full_name} saved"
     end
@@ -59,7 +72,7 @@ namespace :csv_import do
     csv.each do |row|
       s = Student.new
       s.full_name = row['Full Name']
-      s.school_email = row['School Email']
+      s.email = row['School Email']
       s.alternate_email = row['Alternative Email']
       s.sex = row['Sex'] == 'Male' ? 0 : 1
       s.existing_educational_level_data = row['Which level are you taking?']
@@ -97,6 +110,10 @@ namespace :csv_import do
       s.created_at = row['Timestamp']
       s.contact_number = row['Contact Number']
       s.imported_data = "Existing student form 2"
+      # Check if introductory email is sent out
+      s.sent_intro_email = row["Sent intro email? "].present? ? true : false
+      # Check if student is matched
+      s.matched = row['Matched? '].present? ? true : false
       s.save
       puts "#{s.full_name} saved"
     end
@@ -119,37 +136,43 @@ namespace :csv_import do
         nt_subjects: row['Subjects (NT'],
         na_subjects: row['Subjects (NA)'],
         o_subjects: row['Subjects (O LEVEL)'],
-        h1_chinese_lang: row['Languages [Chinese Language (H1 only)]'],
-        general_studies_in_chinese: row['Languages [General Studies in Chinese (H1 only)]'],
-        h1_malay: row['Languages [Malay Language (H1 only)]'],
-        h1_tamil: row['Languages [Tamil Language (H1 only)]'],
-        h1_hindi: row['Languages [Hindi (H1 only)]'],
-        french: row['Languages [French ]'],
-        german: row['Languages [German]'],
-        general_paper: row['Humanities [General Paper (H1 only)]'],
-        knowledge_and_inquiry: row['Humanities [Knowledge and Inquiry (H2 only)]'],
-        china_studies_in_chinese: row['Humanities [China Studies in Chinese (H2 only)'],
-        geo: row['Humanities [Geography]'],
-        history: row['Humanities [History]'],
-        economics: row['Humanities [Economics]'],
-        art: row['Humanities [Art]'],
-        music: row['Humanities [Music]'],
-        linguistics: row['Humanities [English Language and Linguistics (H2 only)]'],
-        chinese_lit: row['Humanities [Chinese Language and Literature (H2 only)]'],
-        malay_and_lit: row['Humanities [Malay Language and Literature (H2 only)]'],
-        tamil_and_lit: row['Humanities [Tamil Language and Literature (H2 only)]'],
-        translation_chinese: row['Humanities [Translation (Chinese) (H2 only)]'],
-        mathematics: row['Sciences, Mathematics, Business and Computing [Mathematics]'],
-        further_mathematics: row['Sciences, Mathematics, Business and Computing [Further Mathematics (H2 only)]'],
-        physics: row['Sciences, Mathematics, Business and Computing [Physics]'],
-        chemistry: row['Sciences, Mathematics, Business and Computing [Chemistry]'],
-        biology: row['Sciences, Mathematics, Business and Computing [Biology]'],
-        management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
-        principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]']
+        a_subjects: {
+          h1_chinese_lang: row['Languages [Chinese Language (H1 only)]'],
+          general_studies_in_chinese: row['Languages [General Studies in Chinese (H1 only)]'],
+          malay_h1: row['Languages [Malay Language (H1 only)]'],
+          tamil_h1: row['Languages [Tamil Language (H1 only)]'],
+          h1_hindi: row['Languages [Hindi (H1 only)]'],
+          french: row['Languages [French ]'],
+          german: row['Languages [German]'],
+          general_paper_h1: row['Humanities [General Paper (H1 only)]'],
+          knowledge_and_inquiry: row['Humanities [Knowledge and Inquiry (H2 only)]'],
+          china_studies_in_chinese: row['Humanities [China Studies in Chinese (H2 only)'],
+          geo: row['Humanities [Geography]'],
+          history: row['Humanities [History]'],
+          economics: row['Humanities [Economics]'],
+          art: row['Humanities [Art]'],
+          music: row['Humanities [Music]'],
+          linguistics: row['Humanities [English Language and Linguistics (H2 only)]'],
+          chinese_lang_and_lit: row['Humanities [Chinese Language and Literature (H2 only)]'],
+          malay_and_lit: row['Humanities [Malay Language and Literature (H2 only)]'],
+          tamil_and_lit: row['Humanities [Tamil Language and Literature (H2 only)]'],
+          translation_chinese: row['Humanities [Translation (Chinese) (H2 only)]'],
+          mathematics: row['Sciences, Mathematics, Business and Computing [Mathematics]'],
+          further_mathematics: row['Sciences, Mathematics, Business and Computing [Further Mathematics (H2 only)]'],
+          physics: row['Sciences, Mathematics, Business and Computing [Physics]'],
+          chemistry: row['Sciences, Mathematics, Business and Computing [Chemistry]'],
+          biology: row['Sciences, Mathematics, Business and Computing [Biology]'],
+          management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
+          principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]']
+        }
       }
       t.sent_intro_email = row['Sent intro email?'] == "Y" ? true : false
       t.contact_number = row['Contact Number']
       t.imported_data = "Existing tutor form 1"
+      # Check if introductory email is sent out
+      t.sent_intro_email = row["Sent intro email?"].present? ? true : false
+      # Check if student is matched
+      t.matched = row['Matched?'].present? ? true : false
       t.code_of_conduct = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       t.save
       puts "#{t.full_name} saved"
@@ -163,7 +186,7 @@ namespace :csv_import do
     csv.each do |row|
       t = Tutor.new
       t.full_name = row['Full Name']
-      t.school_email = row['School Email']
+      t.email = row['School Email']
       t.alternate_email = row['Alternative Email']
       t.hours_to_teach = row['How many hours can you commit per week?']
       t.sex = row['Sex'] == 'Male' ? 0 : 1
@@ -181,44 +204,50 @@ namespace :csv_import do
         nt_subjects: row['Subjects N(T) Level'],
         na_subjects: row['Subjects N(A) '],
         o_subjects: row['Subjects - O Level '],
-        chinese_h1: row['Languages [Chinese Language (H1 only)]'],
-        general_studies_in_chinese: row['Languages [General Studies in Chinese (H1 only)]'],
-        malay_h1: row['Languages [Malay Language (H1 only)]'],
-        tamil_h1: row['Languages [Tamil Language (H1 only)]'],
-        bengali_h1: row['Languages [Bengali (H1 only)]'],
-        gujarati_h1: row['Languages [Gujarati (H1 only)]'],
-        hindi_h1: row['Languages [Hindi (H1 only)]'],
-        french: row['Languages [French ]'],
-        german: row['Languages [German]'],
-        japanese: row['Languages [Japanese]'],
-        spanish: row['Languages [Spanish (H2 only)]'],
-        general_paper: row['Humanities [General Paper (H1 only)]'],
-        knowledge_and_inquiry: row['Humanities [Knowledge and Inquiry (H2 only)]'],
-        china_studies_in_eng: row['Humanities [China Studies in English ]'],
-        china_studies_in_chinese: row['Humanities [China Studies in Chinese (H2 only)]'],
-        geo: row['Humanities [Geography]'],
-        history: row['Humanities [History]'],
-        economics: row['Humanities [Economics]'],
-        art: row['Humanities [Art]'],
-        music: row['Humanities [Music]'],
-        literature_in_eng: row['Humanities [Literature in English]'],
-        linguistics: row['Humanities [English Language and Linguistics (H2 only)]'],
-        chinese_lang_and_lit: row['Humanities [Chinese Language and Literature (H2 only)]'],
-        malay_and_lit: row['Humanities [Malay Language and Literature (H2 only)]'],
-        tamil_and_lit: row['Humanities [Tamil Language and Literature (H2 only)]'],
-        translation_chinese: row['Humanities [Translation (Chinese) (H2 only)]'],
-        mathematics: row['Sciences, Mathematics, Business and Computing [Mathematics]'],
-        further_mathematics: row['Sciences, Mathematics, Business and Computing [Further Mathematics (H2 only)]'],
-        physics: row['Sciences, Mathematics, Business and Computing [Physics]'],
-        chemistry: row['Sciences, Mathematics, Business and Computing [Chemistry]'],
-        biology: row['Sciences, Mathematics, Business and Computing [Biology]'],
-        computing: row['Sciences, Mathematics, Business and Computing [Computing (H2 only)]'],
-        management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
-        principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]'],
+        a_subjects: {
+          chinese_h1: row['Languages [Chinese Language (H1 only)]'],
+          general_studies_in_chinese: row['Languages [General Studies in Chinese (H1 only)]'],
+          malay_h1: row['Languages [Malay Language (H1 only)]'],
+          tamil_h1: row['Languages [Tamil Language (H1 only)]'],
+          bengali_h1: row['Languages [Bengali (H1 only)]'],
+          gujarati_h1: row['Languages [Gujarati (H1 only)]'],
+          hindi_h1: row['Languages [Hindi (H1 only)]'],
+          french: row['Languages [French ]'],
+          german: row['Languages [German]'],
+          japanese: row['Languages [Japanese]'],
+          spanish: row['Languages [Spanish (H2 only)]'],
+          general_paper_h1: row['Humanities [General Paper (H1 only)]'],
+          knowledge_and_inquiry: row['Humanities [Knowledge and Inquiry (H2 only)]'],
+          china_studies_in_eng: row['Humanities [China Studies in English ]'],
+          china_studies_in_chinese: row['Humanities [China Studies in Chinese (H2 only)]'],
+          geo: row['Humanities [Geography]'],
+          history: row['Humanities [History]'],
+          economics: row['Humanities [Economics]'],
+          art: row['Humanities [Art]'],
+          music: row['Humanities [Music]'],
+          literature_in_eng: row['Humanities [Literature in English]'],
+          linguistics: row['Humanities [English Language and Linguistics (H2 only)]'],
+          chinese_lang_and_lit: row['Humanities [Chinese Language and Literature (H2 only)]'],
+          malay_and_lit: row['Humanities [Malay Language and Literature (H2 only)]'],
+          tamil_and_lit: row['Humanities [Tamil Language and Literature (H2 only)]'],
+          translation_chinese: row['Humanities [Translation (Chinese) (H2 only)]'],
+          mathematics: row['Sciences, Mathematics, Business and Computing [Mathematics]'],
+          further_mathematics: row['Sciences, Mathematics, Business and Computing [Further Mathematics (H2 only)]'],
+          physics: row['Sciences, Mathematics, Business and Computing [Physics]'],
+          chemistry: row['Sciences, Mathematics, Business and Computing [Chemistry]'],
+          biology: row['Sciences, Mathematics, Business and Computing [Biology]'],
+          computing: row['Sciences, Mathematics, Business and Computing [Computing (H2 only)]'],
+          management_of_business: row['Sciences, Mathematics, Business and Computing [Management of Business (H2 only)]'],
+          principle_of_accounts: row['Sciences, Mathematics, Business and Computing [Principles of Accounting (H2 only)]'],
+        }
       }
       t.sent_intro_email = row['Sent intro email?'] == "Y" ? true : false
       t.contact_number = row['Contact Number']
       t.imported_data = "Existing tutor form 2"
+      # Check if introductory email is sent out
+      t.sent_intro_email = row["Sent intro email?"].present? ? true : false
+      # Check if student is matched
+      t.matched = row['Matched?'].present? ? true : false
       t.code_of_conduct = row['Do you understand and consent to the above code of conduct?'].present? ? true : false
       t.save
       puts "#{t.full_name} saved"
@@ -235,9 +264,9 @@ namespace :csv_import do
       volunteer_name_contains_email = row["Name of Volunteer "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
       volunteer_email = row["Volunteer's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
       student_email = row["Student's Email "]&.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)&.last
-      tutor_unexpected_id = Tutor.find_by(school_email: volunteer_name_contains_email)&.id
-      tutor_id = Tutor.find_by(school_email: volunteer_email)&.id
-      student_id = Student.find_by(school_email: student_email)&.id
+      tutor_unexpected_id = Tutor.find_by(email: volunteer_name_contains_email)&.id
+      tutor_id = Tutor.find_by(email: volunteer_email)&.id
+      student_id = Student.find_by(email: student_email)&.id
 
       # If present, then create a match
       if tutor_id.present? and student_id.present?
