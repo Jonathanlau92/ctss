@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_122932) do
+ActiveRecord::Schema.define(version: 2020_06_12_130624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_122932) do
     t.json "subject_preferences", default: {}, null: false
     t.integer "education_level"
     t.boolean "parental_consent"
-    t.integer "match_count"
+    t.integer "match_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "subject_1"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_122932) do
     t.integer "sex"
     t.json "subjects", default: {}, null: false
     t.integer "hours_to_teach"
-    t.integer "match_count"
+    t.integer "match_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "qualification"
