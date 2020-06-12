@@ -1,4 +1,6 @@
-<%= image_tag 'feedback-progress2.png', class:'mt-4 mx-auto d-block' %> 
+<div class="progress mt-3">
+  <div class="progress-bar" role="progressbar" style="width:50%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div> 
 
 <%= form_for @feedback, url: wizard_path do |f|%>
   <br>
