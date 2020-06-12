@@ -30,4 +30,10 @@ class NotificationMailer < ApplicationMailer
       mail(to: @tutor.email, subject: 'Extension of CTSS Programme')
     end
   end
+
+  def matching_details_email(user, matching)
+    @user = user
+    @matching = matching
+    mail(to: @user.email, subject: '[IMPORTANT - ACTION REQUIRED] CTSS: Matched Tutor and Student!')
+  end
 end
