@@ -83,6 +83,10 @@ div.form-group{
   align-items: center;
 }
 
+.error{
+  visibility: hidden;
+}
+
 @media (max-width: 575.98px) {
   h1{
       font-size: 1.7rem;
