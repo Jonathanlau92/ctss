@@ -81,8 +81,11 @@
       <%end%>
       <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4, required: true %>
     </div>
-  
-  <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
+    <div class='d-flex justify-content-center'>
+      <% link_to 'Back', new_feedback_path(:type => @feedback.identity) , class: 'btn back-button' %>
+      <%= f.submit "Submit", class: 'btn btn-sm next-button' %>
+    </div>
+
 <%end%>
 
 

@@ -19,10 +19,18 @@ class FeedbacksController < ApplicationController
   
   def create
     @feedback = Feedback.new(feedback_params)
+
+    #Ensure fullname attribute only consists of alphabet
+    begin
+      @feedback.save!
+    rescue ActiveRecord::RecordInvalid => invalid
+      flash[:alert] = "Please enter a valid Full name!"
+    end
+
+    # Check if matching number exists
     begin
       @feedback.student_id = Match.find_by(existing_matching_id: @feedback.matching_number).student_id
       @feedback.tutor_id = Match.find_by(existing_matching_id: @feedback.matching_number).tutor_id
-    # Check if matching number exists
     rescue NoMethodError => e
       flash[:alert] = "Matching number \""+ params[:feedback][:matching_number] + "\"does not exist! Please enter a valid Matching Number"
     end 
