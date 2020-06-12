@@ -7,7 +7,7 @@ class GenerateMatchesService
 
   def run
     create_match
-    # update_student_and_tutor_matched_status
+    update_student_and_tutor_matched_status
   end
 
   private
@@ -20,9 +20,13 @@ class GenerateMatchesService
   end
 
   def update_student_and_tutor_matched_status
-    @student.matched = true
-    @student.save
-    @tutor.matched = true
-    @tutor.save
+    if @student.match_count > 3
+      @student.matched = true
+      @student.save
+    end
+    if @tutor.match_count > 3
+      @tutor.matched = true
+      @tutor.save
+    end
   end
 end
