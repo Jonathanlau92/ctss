@@ -7,6 +7,7 @@ class Feedback < ApplicationRecord
   
   #ensures only alphabets are stored in certain attributes
   validates_format_of :full_name, :with => /\A[a-z ]+\z/i
+  validates :end_time, presence: true, date: { after: :start_time}
 
   validates :topics_covered, :understand_concepts, :other_feedbacks, presence: true, if: :step_others_student?
   validates :topics_covered, :difficulties_with_tutoring, :other_feedbacks, presence: true, if: :step_others_tutor?

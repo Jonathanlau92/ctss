@@ -34,6 +34,9 @@
     <div class='form-group'>
       <%= f.label :end_time, "End time of Session" %>
       <%= f.time_field :end_time, class: 'form-control', required: true %>
+      <% if @feedback.errors[:end_time].any? %>
+          <p style="color:red;">End time of session cannot be earlier than Start time of session</p>
+        <% end %>
     </div>
     <div class='form-group'>
       <%if @feedback_type == "tutor" || @feedback.identity == "tutor" %>

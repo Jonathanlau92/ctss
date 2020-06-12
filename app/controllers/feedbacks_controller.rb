@@ -19,7 +19,6 @@ class FeedbacksController < ApplicationController
   
   def create
     @feedback = Feedback.new(feedback_params)
-
     # Check if matching number exists
     begin
       @feedback.student_id = Match.find_by(existing_matching_id: @feedback.matching_number).student_id
