@@ -1,5 +1,4 @@
- 
-<%= image_tag 'feedback-progress1.png', class:'mt-4 mx-auto d-block' %> 
+ <%= image_tag 'feedback-progress1.png', class:'mt-4 mx-auto d-block' %> 
   
   <%if @feedback_type == "student"%>
     <h1 class='mt-3 text-center'>Feedback form for Students</h1>
@@ -40,7 +39,7 @@
     <%= f.hidden_field :identity, value: @feedback_type %>
     
     <div class='d-flex justify-content-center'>
-      <%= link_to 'Back', root_path, class: 'btn back-button' %>
+      <%= link_to 'Back', feedback_welcome_path(:type => @feedback_type) , class: 'btn back-button' %>
       <%= f.submit 'Next', class: 'btn next-button' %>
     </div>
   </div>
