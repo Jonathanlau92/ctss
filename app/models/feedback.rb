@@ -4,6 +4,10 @@ class Feedback < ApplicationRecord
 
   validates :full_name, :matching_number, :date_of_session, :start_time, :end_time, presence: true, if: :step_first_or_others?
   validates :platform, presence: true, if: :identity_tutor?
+  
+  #ensures only alphabets are stored in certain attributes
+  validates_format_of :full_name, :with => /\A[a-z ]+\z/i
+  validates :end_time, presence: true, date: { after: :start_time}
 
   validates :topics_covered, :understand_concepts, :other_feedbacks, presence: true, if: :step_others_student?
   validates :topics_covered, :difficulties_with_tutoring, :other_feedbacks, presence: true, if: :step_others_tutor?

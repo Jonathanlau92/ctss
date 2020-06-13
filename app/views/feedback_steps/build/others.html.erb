@@ -83,10 +83,11 @@
       <%end%>
       <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4, required: true %>
     </div>
-  
-  <div class="row justify-content-center align-items-center">
-    <%= f.submit "Submit", class: 'btn primary-button' %>
-  </div>
+
+    <div class='d-flex justify-content-center'>
+      <% link_to 'Back', new_feedback_path(:type => @feedback.identity) , class: 'btn back-button' %>
+      <%= f.submit "Submit", class: 'btn primary-button' %>
+    </div>
 <%end%>
 
 
