@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   get 'student-notice-extension', to: 'pages#student_extension_notice', as: :student_extension_notice
   get 'tutor-notice-extension', to: 'pages#tutor_extension_notice', as: :tutor_extension_notice
   get 'welcome-feedback', to: 'feedbacks#welcome' , as: :feedback_welcome
+  get 'match-search', to: 'pages#match_search', as: :match_search
   root to: 'pages#home'
 end

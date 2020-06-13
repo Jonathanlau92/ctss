@@ -25,4 +25,13 @@ class Match < ApplicationRecord
   		NotificationMailer.matching_details_email(self.tutor, self).deliver_later
   	end
   end
+
+  def self.search(email)
+    # Check if email is related to student or tutor, then find all the matches.
+    if Student.find_by(email: email).present?
+      @m = Match.where(student_id: Student.find_by(email: email).id)
+    elsif Tutor.find_by(email: email).present?
+      @m = Match.where(tutor_id: Tutor.find_by(email: email).id)
+    end
+  end
 end
