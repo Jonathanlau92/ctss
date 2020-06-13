@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_122959) do
+ActiveRecord::Schema.define(version: 2020_06_12_130624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_122959) do
     t.bigint "tutor_id", null: false
     t.string "existing_matching_id"
     t.string "imported_data"
+    t.string "subject_matched"
     t.index ["student_id"], name: "index_matches_on_student_id"
     t.index ["tutor_id"], name: "index_matches_on_tutor_id"
   end
@@ -53,13 +54,13 @@ ActiveRecord::Schema.define(version: 2020_06_09_122959) do
   create_table "students", force: :cascade do |t|
     t.boolean "personal_consent"
     t.string "full_name"
-    t.string "school_email"
+    t.string "email"
     t.string "alternate_email"
     t.integer "sex"
     t.json "subject_preferences", default: {}, null: false
     t.integer "education_level"
     t.boolean "parental_consent"
-    t.integer "match_count"
+    t.integer "match_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "subject_1"
@@ -69,22 +70,23 @@ ActiveRecord::Schema.define(version: 2020_06_09_122959) do
     t.string "contact_number"
     t.string "existing_educational_level_data"
     t.string "imported_data"
-    t.boolean "matched"
+    t.boolean "matched", default: false
     t.boolean "sent_intro_email"
     t.text "topics_to_go_through"
     t.string "special_request"
     t.string "status"
+    t.boolean "give_out_contact"
   end
 
   create_table "tutors", force: :cascade do |t|
     t.boolean "personal_consent"
     t.string "full_name"
-    t.string "school_email"
+    t.string "email"
     t.string "alternate_email"
     t.integer "sex"
     t.json "subjects", default: {}, null: false
     t.integer "hours_to_teach"
-    t.integer "match_count"
+    t.integer "match_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "qualification"
@@ -94,13 +96,14 @@ ActiveRecord::Schema.define(version: 2020_06_09_122959) do
     t.boolean "code_of_conduct"
     t.string "contact_number"
     t.string "imported_data"
-    t.boolean "matched"
+    t.boolean "matched", default: false
     t.boolean "sent_intro_email"
     t.boolean "declare_1"
     t.boolean "declare_2"
     t.boolean "declare_3"
     t.boolean "declare_4"
     t.string "status"
+    t.boolean "give_out_contact"
   end
 
   create_table "users", force: :cascade do |t|

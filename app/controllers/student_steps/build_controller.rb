@@ -15,6 +15,8 @@ class StudentSteps::BuildController < ApplicationController
       @student.update_attributes(subject_1: params[:student][:subject_1], subject_2: params[:student][:subject_2], subject_3: params[:student][:subject_3], others_subject: params[:student][:others_subject], topics_to_go_through: params[:student][:topics_to_go_through], special_request: params[:student][:special_request])
     else
       @student.update_attributes(personal_consent: params[:student][:personal_consent])
+      # Send student introductory email on the terms and conditions page
+      NotificationMailer.student_introductory_email(@student).deliver_later
     end
     render_wizard @student
   end
