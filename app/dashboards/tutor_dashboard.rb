@@ -38,6 +38,7 @@ class TutorDashboard < Administrate::BaseDashboard
   email
   sex
   hours_to_teach
+  contact_number
   qualification
   ].freeze
 

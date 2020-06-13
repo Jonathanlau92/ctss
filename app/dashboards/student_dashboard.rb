@@ -36,6 +36,7 @@ class StudentDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   full_name
+  email
   alternate_email
   sex
   contact_number
