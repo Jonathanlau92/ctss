@@ -21,8 +21,8 @@ class Match < ApplicationRecord
   def set_matching_id_and_send_email
   	self.existing_matching_id = self.matching_id
   	if self.save
-  		NotificationMailer.matching_details_email(self.student, self).deliver_later
-  		NotificationMailer.matching_details_email(self.tutor, self).deliver_later
+  		NotificationMailer.matching_details_email(self.student, self).deliver_now
+  		NotificationMailer.matching_details_email(self.tutor, self).deliver_now
   	end
   end
 
