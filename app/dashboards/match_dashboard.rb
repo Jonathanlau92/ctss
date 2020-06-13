@@ -22,9 +22,8 @@ class MatchDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   student
-  tutor
-  id
   existing_matching_id
+  tutor
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
