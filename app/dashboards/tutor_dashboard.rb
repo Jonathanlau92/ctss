@@ -13,7 +13,7 @@ class TutorDashboard < Administrate::BaseDashboard
     full_name: Field::String,
     email: Field::String,
     alternate_email: Field::String,
-    sex: Field::Number,
+    sex: Field::String.with_options(searchable: false),
     subjects: Field::String.with_options(searchable: false),
     hours_to_teach: Field::Number,
     match_count: Field::Number,
@@ -25,6 +25,7 @@ class TutorDashboard < Administrate::BaseDashboard
     level_to_teach: Field::String,
     code_of_conduct: Field::Boolean,
     contact_number: Field::String,
+    feedbacks: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,6 +41,7 @@ class TutorDashboard < Administrate::BaseDashboard
   hours_to_teach
   contact_number
   qualification
+  feedbacks
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -99,7 +101,7 @@ class TutorDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how tutors are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(tutor)
-  #   "Tutor ##{tutor.id}"
-  # end
+  def display_resource(tutor)
+    tutor.full_name
+  end
 end
