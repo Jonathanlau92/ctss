@@ -14,11 +14,11 @@
 <div class='form-group'>
   <%= f.label :sex %>
   <div class='ml-5 form-check form-check-inline'>
-    <%= f.radio_button :sex, 'male', class:'mr-3 mb-2 form-check-label' %> 
+    <%= f.radio_button :sex, 'male', class:'mr-3 mb-2 form-check-label', required: true %> 
     <%= f.label :sex_male, 'Male', class: 'form-check-input' %>
   </div>
   <div class='ml-5 form-check form-check-inline'>
-    <%= f.radio_button :sex, 'female', class:'mr-3 mb-2 form-check-label' %>
+    <%= f.radio_button :sex, 'female', class:'mr-3 mb-2 form-check-label', required: true %>
     <%= f.label :sex_female, 'Female', class: 'form-check-input' %>
   </div>
 </div>
