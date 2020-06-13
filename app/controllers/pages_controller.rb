@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def tutor_extension_notice
     
   end
+
+  def match_search
+    @matches = Match.search(params[:search])
+  end
 end

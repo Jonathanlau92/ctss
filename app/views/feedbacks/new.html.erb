@@ -1,22 +1,29 @@
- 
-<%= image_tag 'feedback-progress1.png', class:'mt-4 mx-auto d-block' %> 
+  <div class="progress mt-3">
+  <div class="progress-bar" role="progressbar" style="width:0%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
   
   <%if @feedback_type == "student"%>
     <h1 class='mt-3 text-center'>Feedback form for Students</h1>
   <%elsif @feedback_type == "tutor"%>
     <h1 class='mt-3 text-center'>Feedback form for Tutors</h1>
   <% end %>  
-  
+
   <div class='form-group'>
   <%= form_for @feedback do |f| %>
     <br>
     <div class='form-group'>
       <%= f.label :matching_number %>
       <%= f.text_field :matching_number, class: 'form-control', required: true%>
+      <% if @feedback.errors[:student].any? || @feedback.errors[:tutor].any?%>
+          <p style="color:red;">Matching number is not valid</p>
+        <% end %>
     </div>
     <div class='form-group'>
       <%= f.label :full_name %>
       <%= f.text_field :full_name, class: 'form-control', required: true%>
+        <% if @feedback.errors[:full_name].any? %>
+          <p style="color:red;">Full name cannot consist of any numbers or special characters</p>
+        <% end %>
     </div>
     <div class='form-group'>
       <%= f.label :date_of_session, "Date of Session" %>
@@ -29,6 +36,9 @@
     <div class='form-group'>
       <%= f.label :end_time, "End time of Session" %>
       <%= f.time_field :end_time, class: 'form-control', required: true %>
+      <% if @feedback.errors[:end_time].any? %>
+          <p style="color:red;">End time of session cannot be earlier than Start time of session</p>
+        <% end %>
     </div>
     <div class='form-group'>
       <%if @feedback_type == "tutor" || @feedback.identity == "tutor" %>
@@ -40,7 +50,7 @@
     <%= f.hidden_field :identity, value: @feedback_type %>
     
     <div class='d-flex justify-content-center'>
-      <%= link_to 'Back', root_path, class: 'btn back-button' %>
+      <%= link_to 'Back', feedback_welcome_path(:type => @feedback_type) , class: 'btn back-button' %>
       <%= f.submit 'Next', class: 'btn next-button' %>
     </div>
   </div>

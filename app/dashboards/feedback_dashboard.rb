@@ -43,7 +43,9 @@ class FeedbackDashboard < Administrate::BaseDashboard
   tutor
   matching_number
   identity
-  date_of_session
+  observe_code_of_conduct
+  comfortable_with_tutor
+  other_feedbacks
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

@@ -4,18 +4,25 @@ window.onload = () => {
     let numberOfConsentChecked = [...consentList].filter(checkbox => checkbox.checked);
     if(consentList.length === numberOfConsentChecked.length){
       document.getElementById("student_personal_consent").checked = true;
+      document.getElementsByClassName('error')[0].style.visibility = "hidden";
+      document.getElementById('student-form-submit').disabled = false;
+      return true;
     }
     else{
       document.getElementById("student_personal_consent").checked = false;
+      document.getElementsByClassName('error')[0].style.visibility = "visible";
+      return false;
     }
   }
-
+  
   let studentParentalCheckbox = document.getElementById("student-parentalconsent");
   studentParentalCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let studentConductCheckbox = document.getElementById("student-conductconsent");
   studentConductCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
   let studentGeneralCheckbox = document.getElementById("student-generalconsent")
   studentGeneralCheckbox!==null?addEventListener("change", setConsentCheckbox):null;
+  let studentSubmitButton = document.getElementById('student-form-submit');
+  studentSubmitButton!==null?studentSubmitButton.disabled = true:null;
 
   $("#studentCOCModal").on("click","#acceptStudentCOC", function(){
     $('#student-conductconsent').prop('checked', true);

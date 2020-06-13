@@ -19,12 +19,12 @@ class FeedbacksController < ApplicationController
   
   def create
     @feedback = Feedback.new(feedback_params)
+    # Check if matching number exists
     begin
       @feedback.student_id = Match.find_by(existing_matching_id: @feedback.matching_number).student_id
       @feedback.tutor_id = Match.find_by(existing_matching_id: @feedback.matching_number).tutor_id
-    # Check if matching number exists
     rescue NoMethodError => e
-      flash[:alert] = "Matching number \""+ params[:feedback][:matching_number] + "\"does not exist! Please enter a valid Matching Number"
+    #  flash[:alert] = "Matching number \""+ params[:feedback][:matching_number] + "\"does not exist! Please enter a valid Matching Number"
     end 
     if @feedback.save
       session[:feedback_id] = @feedback.id

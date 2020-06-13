@@ -11,7 +11,7 @@ class StudentDashboard < Administrate::BaseDashboard
     id: Field::Number,
     personal_consent: Field::Boolean,
     full_name: Field::String,
-    school_email: Field::String,
+    email: Field::String,
     alternate_email: Field::String,
     sex: Field::String.with_options(searchable: false),
     subject_preferences: Field::JSONB,
@@ -25,7 +25,8 @@ class StudentDashboard < Administrate::BaseDashboard
     subject_3: Field::String,
     others_subject: Field::String,
     contact_number: Field::String,
-    existing_educational_level_data: Field::String
+    existing_educational_level_data: Field::String,
+    feedbacks: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -36,10 +37,11 @@ class StudentDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   full_name
-  alternate_email
+  email
   sex
   contact_number
-  existing_educational_level_data
+  education_level
+  feedbacks
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -48,7 +50,7 @@ class StudentDashboard < Administrate::BaseDashboard
   id
   personal_consent
   full_name
-  school_email
+  email
   alternate_email
   sex
   subject_preferences
@@ -70,7 +72,7 @@ class StudentDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   personal_consent
   full_name
-  school_email
+  email
   alternate_email
   sex
   subject_preferences
@@ -99,7 +101,7 @@ class StudentDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how students are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(student)
-  #   "Student ##{student.id}"
-  # end
+  def display_resource(student)
+    student.full_name
+  end
 end

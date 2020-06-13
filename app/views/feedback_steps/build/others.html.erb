@@ -1,4 +1,6 @@
-<%= image_tag 'feedback-progress2.png', class:'mt-4 mx-auto d-block' %> 
+<div class="progress mt-3">
+  <div class="progress-bar" role="progressbar" style="width:50%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div> 
 
 <%= form_for @feedback, url: wizard_path do |f|%>
   <br>
@@ -81,8 +83,11 @@
       <%end%>
       <%= f.text_area :other_feedbacks, class: 'form-control', cols: 8, rows: 4, required: true %>
     </div>
-  
-  <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
+
+    <div class='d-flex justify-content-center'>
+      <% link_to 'Back', new_feedback_path(:type => @feedback.identity) , class: 'btn back-button' %>
+      <%= f.submit "Submit", class: 'btn primary-button' %>
+    </div>
 <%end%>
 
 
