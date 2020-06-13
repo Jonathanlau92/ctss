@@ -25,6 +25,7 @@ class TutorDashboard < Administrate::BaseDashboard
     level_to_teach: Field::String,
     code_of_conduct: Field::Boolean,
     contact_number: Field::String,
+    feedbacks: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,6 +41,7 @@ class TutorDashboard < Administrate::BaseDashboard
   hours_to_teach
   contact_number
   qualification
+  feedbacks
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

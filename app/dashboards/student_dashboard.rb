@@ -25,7 +25,8 @@ class StudentDashboard < Administrate::BaseDashboard
     subject_3: Field::String,
     others_subject: Field::String,
     contact_number: Field::String,
-    existing_educational_level_data: Field::String
+    existing_educational_level_data: Field::String,
+    feedbacks: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -37,10 +38,10 @@ class StudentDashboard < Administrate::BaseDashboard
   id
   full_name
   email
-  alternate_email
   sex
   contact_number
-  existing_educational_level_data
+  education_level
+  feedbacks
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
