@@ -9,8 +9,8 @@ class StudentSteps::BuildController < ApplicationController
 
   def update
     @student = Student.find(session[:student_id])
-    params[:student][:status] = step.to_s
-    params[:student][:status] = 'active' if step == steps.last
+    # params[:student][:status] = step.to_s
+    # params[:student][:status] = 'active' if step == steps.last
     if params[:student][:subject_1].present?
       @student.update_attributes(subject_1: params[:student][:subject_1], subject_2: params[:student][:subject_2], subject_3: params[:student][:subject_3], others_subject: params[:student][:others_subject], topics_to_go_through: params[:student][:topics_to_go_through], special_request: params[:student][:special_request])
     else
