@@ -16,6 +16,11 @@
   <li>
     Subjects to be taught: <%= @matching.subject_matched %>
   </li>
+  <% if @matching.tutor.give_out_contact === true %>
+    <li>
+      Contact Number: <%= @matching.tutor.contact_number %>
+    </li>
+  <% end %>
 </ul>
 <br/>
 <span> Student </span>
@@ -27,8 +32,13 @@
     <%= @matching.student&.email %>
   </li>
   <li>
-    Academic level of student <%= @matching.student.education_level %>
+    Academic level of student: <%= @matching.student.education_level %>
   </li>
+  <% if @matching.student.give_out_contact === true %>
+    <li>
+      Contact Number: <%= @matching.student.contact_number %>
+    </li>
+  <% end %>
 </ul>
 
 <p>Here’s what to do from now:</p>
