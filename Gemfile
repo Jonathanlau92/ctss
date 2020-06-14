@@ -17,6 +17,8 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+# A simple date validator for Rails. Read more: https://github.com/codegram/date_validator
+gem 'date_validator', '~> 0.9.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -29,6 +31,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # Admin page
 gem "administrate"
+# Add administrate JSON views erb
+gem 'administrate-field-jsonb'
 
 # Multi Pages form
 gem 'wicked'

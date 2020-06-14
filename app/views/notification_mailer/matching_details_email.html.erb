@@ -1,0 +1,62 @@
+<p>Hello everyone!</p>
+<p>All of you are receiving this email together because you have matched with each other for the CTSS tutoring initiative.</p>
+
+<p>Your Matching Number is: <%= @matching.existing_matching_id %>. Please remember your matching number.</p>
+
+<p>The volunteer tutor and student are both included in this email. Here are the contact details:</p>
+
+<span> Volunteer Tutor </span>
+<ul>
+  <li>
+    <%= @matching.tutor.full_name %>
+  </li>
+  <li>
+    <%= @matching.tutor&.email %>
+  </li>
+  <li>
+    Subjects to be taught: <%= @matching.subject_matched %>
+  </li>
+</ul>
+<br/>
+<span> Student </span>
+<ul>
+  <li>
+    <%= @matching.student.full_name %>
+  </li>
+  <li>
+    <%= @matching.student&.email %>
+  </li>
+  <li>
+    Academic level of student <%= @matching.student.education_level %>
+  </li>
+</ul>
+
+<p>Here’s what to do from now:</p>
+<ul>
+  <li>
+    After receiving this Matching email, tutors should contact students within <u>3 days</u> to arrange for the first session. To clarify, the first session does not need to be within this 3 day period, only the arrangement of the session is expected to be done in this period. 
+  </li>
+  <li>
+    <u>Volunteer tutors will initiate contact with the student</u> to arrange a suitable timing for the tutoring sessions. Please arrange the day, time and frequency.
+  </li>
+  <li>
+    Students, please check with your tutors on the subjects they can help you with. There will not be a perfect match of subjects everytime. If you need help with an additional subject in which your tutor is unable to support with, email us at enquiries.ctss@gmail.com
+  </li>
+  <li>
+    Agree on which learning platform to use, we recommend Bramble! 
+  </li>
+  <li>
+    Fill in the feedback form after every single session, a short and sweet update will do. The link to the feedback form is <%= link_to 'here', feedbacks_url %>. The matching number required to be filled in has been indicated at the top of this email :-)
+  </li>
+  <li>
+    It is recommended that parents, if your schedule permits, come to the screen during the first lesson to see the certifications and qualifications of the tutor for themselves, for safety reasons.
+  </li>
+  <li>
+    To the volunteers: We operate in a system of trust, but to soothe parents’ anxieties, please bring along any certificates and other documents for our parents and students to verify.  
+  </li>
+  <li>
+    <strong>To students: If your tutor does not reach out to you within 3 days, do email CTSS to allow us to make alternative arrangements. We have no other way of knowing if the tutor does not reach out to you unless it is brought up to us. </strong>
+  </li>
+</ul>
+
+<p>Happy tutoring and learning! If you face any problems, let the CTSS team know. We will be happy to help!</p>

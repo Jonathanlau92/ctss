@@ -1,12 +1,11 @@
-body{
-  background: #1B597C;
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-}
+//Colour Variables
+$app-background: #1B597C;
+$app-text: #000;
+$primary-button-background: #fbf2ad;
 
-.next-button, .submit-button{
-  background: #FFC857;
-  border: 1px solid #333333;
+@mixin ctss-button {
+  background: $primary-button-background;
+  border: 1px solid #000;
   box-sizing: border-box;
   border-radius: 6px;
   font-weight: 500;
@@ -15,15 +14,26 @@ body{
   margin: 22px;
 }
 
-.back-button{
-  background: #1B597C;
-  border: 1px solid #FFFFFF;
-  box-sizing: border-box;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 20px;
-  color: #fff;
-  margin: 22px;
+.background-image{
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: rotate(180deg);
+}
+
+body{
+  color: $app-text;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+}
+
+.back-button, .next-button, .submit-button{
+  @include ctss-button;
 }
 
 #welcome-page .back-button, #welcome-page .next-button{
@@ -31,13 +41,7 @@ body{
 }
 
 .primary-button{
-  background-color: #BDD9BF;
-  border: 1px solid #333333;
-  box-sizing: border-box;
-  border-radius: 6px;
-  margin: 22px;
-  color: #000;
-  font-size: 20px;
+  @include ctss-button;
   height: 44px;
   width: 120px;
 }
@@ -52,6 +56,11 @@ h2 span::before {
   white-space: pre;
 }
 
+h3 span::before {
+  content: "\A\A";
+  white-space: pre;
+}
+
 label{
   margin: 0;
 }
@@ -60,17 +69,22 @@ input[type=radio]{
   transform:scale(1.5);
 }
 
-div.form-group > span{
-  font-size: 0.8em;
-  display: block;
+div.form-group{
+  > span{
+    font-size: 0.8em;
+    display: block;
+  }
 }
 
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
-
   display: flex;
   align-items: center;
+}
+
+.error{
+  visibility: hidden;
 }
 
 @media (max-width: 575.98px) {
@@ -79,6 +93,9 @@ div.form-group > span{
   }
   h2{
       font-size: 1.3rem;
+  }
+  h3{
+    font-size: 1rem;
   }
 }
 

@@ -1,0 +1,48 @@
+<div class='form-group'>
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name, required: true, class: 'form-control' %>
+</div>
+<div class='form-group'>
+  <%= f.label :email %>
+  <%= f.text_field :email, required: true,class: 'form-control' %>
+</div>
+<div class='form-group'>
+  <%= f.label :alternate_email %>
+  <span>A personal email is preferred here, just in case our emails sent to official school emails are blocked.</span>
+  <%= f.text_field :alternate_email, class: 'form-control' %>
+</div>
+<div class='form-group'>
+  <%= f.label :sex %>
+  <div class='ml-5 form-check form-check-inline'>
+    <%= f.radio_button :sex, 'male', class:'mr-3 mb-2 form-check-label', required: true %> 
+    <%= f.label :sex_male, 'Male', class: 'form-check-input' %>
+  </div>
+  <div class='ml-5 form-check form-check-inline'>
+    <%= f.radio_button :sex, 'female', class:'mr-3 mb-2 form-check-label', required: true %>
+    <%= f.label :sex_female, 'Female', class: 'form-check-input' %>
+  </div>
+</div>
+<div class='form-group'>
+  <%= f.label :contact_number %>
+  <span>Your contact number will only be accessible by the CTSS Team and no one else. It will only be used it the extreme case when the tutee is unable to contact you via email for tutoring. This number will be a way for us to contact you immediately, and will not be sent to anyone.</span>
+  <%= f.number_field :contact_number, required: true, class: 'form-control' %>
+</div>
+<div class='form-group'>
+  <%= f.label :give_out_contact, 'Are you comfortable with giving out your mobile contact to your student for easier communication? ' %>
+  <div class='ml-5 form-check form-check-inline'>
+    <%= f.radio_button :give_out_contact, true, class:'mr-3 mb-2 form-check-label' %> 
+    <%= f.label :give_out_contact, 'Yes', class: 'form-check-input' %>
+  </div>
+  <div class='ml-5 form-check form-check-inline'>
+    <%= f.radio_button :give_out_contact, false, class:'mr-3 mb-2 form-check-label' %>
+    <%= f.label :give_out_contact, 'No', class: 'form-check-input' %>
+  </div>
+</div>
+<div class='form-group'>
+  <%= f.label :hours_to_teach, 'How many hours can you commit per week?' %>
+  <span>For each student, it is recommended that you conduct 1-2 hours of online tutoring weekly, preferably on the weekends.</span>
+  <%= f.number_field :hours_to_teach, required: true, class: 'form-control' %>
+</div>
+<div class='d-flex justify-content-center'>
+  <%= f.submit 'Next', class: 'btn next-button' %>
+</div>

@@ -1,0 +1,33 @@
+<div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <%= link_to "Back", root_path, class: 'btn btn-sm btn-dark mt-4' %>
+    </div>
+  </div>
+</div>
+<div>
+  <div>
+    <h1 class="text-center text-uppercase">
+      <span>Find your</span>
+      <span>matching number!</span>
+    </h1>
+    <div class="text-center">
+      <%= form_tag match_search_path, method: :get do %>
+        <%= label_tag(:search, 'Enter your email here: ') %>
+        <%= email_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", name: nil) %>
+      <% end %>
+      <br/>
+      <% if @matches.present? %>
+        <ul>
+          <% @matches.each do |match| %>
+            <li><%= match.existing_matching_id %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p> Please enter your email in the box. </p> 
+        <p>If matching is not found, please contact admin at enquiries.ctss@gmail.com</p>
+      <% end %>
+    </div>
+  </div>
+</div>

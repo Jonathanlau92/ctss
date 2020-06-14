@@ -1,14 +1,76 @@
-<h1 class="mt-3">Terms and Conditions</h1>
-<ol>
-  <li>I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students (CTSS) initiative. It is compulsory to tell your parents and keep them informed about the initiative.</li>
-  <li>I have read and consent to the online code of conduct </li>
-  <li>By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. If you would like specific details on how your data might be used, please contact us at enquiries.ctss@gmail.com.</li>
-</ol>
-<%= form_for @student do |f|%>
-  <div class="form-check">
-    <%= f.check_box :personal_consent, {class: 'form-check-input'}, true, false %>
-    <%= f.label 'I agree', class: 'form-check-label' %>
+<div class="progress mt-3">
+  <div class="progress-bar" role="progressbar" style="width:60%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<h1 class='mb-3 text-center'>
+  <span>Terms and Conditions</span>
+</h1>
+<div class='container'>
+<div class='mt-3 form-check'>
+  <input class='form-check-input consent' type='checkbox' id='student-parentalconsent'>
+  <label class='form-check-label' for='student-parentalconsent'>
+    I have told my parents that I have filled in the registration form to be a student under the Covid-19 Tutoring Support for Students initiative. It is compulsory to tell your parents and keep them informed about the initiative.
+  </label>
+</div>
+<div class='mt-3 form-check'>
+  <input class='form-check-input consent' type='checkbox' id='student-conductconsent'>
+  <label class='form-check-label' for='student-conductconsent'>
+    I have read and consent to the 
+    <a id="studentCOCLink" href="#" data-toggle="modal" data-target="studentCOCModal">online code of conduct</a>.
+  </label>
+</div>
+<div class='mt-3 form-check'>
+  <input class='form-check-input consent' type='checkbox' id='student-generalconsent'>
+  <label class='form-check-label' for='student-generalconsent'>
+    By submitting this form, you are consenting for your data to be processed for the organisation of this tutoring initiative. For more information, contact us at enquiries.ctss@gmail.com.
+  </label>
+</div>
+<div class='error text-danger font-weight-bold'>Please agree to all the terms and conditions.</div>
+<%= form_for @student, url: wizard_path do |f|%>
+  <div class='form-check'>
+    <%= f.check_box :personal_consent, {class: 'form-check-input d-none'}, true, false %>
+    <%= f.label 'I agree', {class: 'form-check-label d-none'} %>
   </div>
-  <%= f.submit 'Submit', class: 'btn btn-warning mt-2'%>
+  <div class='d-flex justify-content-center'>
+    <%= link_to 'Back', wizard_path(:subjects), class: 'btn back-button' %>
+    <%= f.submit 'Submit',  {class: 'btn submit-button', id: 'student-form-submit'} %>
+ 
+  </div>
 <% end %>
+</div>
+
+<div class="modal fade" id="studentCOCModal" tabindex="-1" role="dialog" aria-labelledby="onlineConductModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Student Code of Conduct Online</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>In the CTSS programme, it is of utmost importance to us that our volunteers are safe. 
+        It is essential that no volunteers should be harmed during his/her interactions with the 
+        students and the team from CTSS. This code of conduct is carried out in line with our 
+        feedback form for every session, to ensure transparency and accountability of tutors and 
+        students to the CTSS team. Given that the mode of tutoring is online and will be remote, 
+        this is crucial to follow.</p>
+          
+        <p>As a student, you have to follow these rules, and the usual laws of the Republic of Singapore. 
+        If you fail to do so, you will be given a warning from the CTSS team or be asked to withdraw 
+        from the programme immediately. Thus, please read the following points carefully and follow them!</p>
+
+        <p>1) Photography and videography of the volunteer tutors are strictly not allowed.</p>
     
+        <p>2) You have to observe online etiquette. If you and your tutor are using the webcam, ensure that 
+        whatever is visible to the volunteer is neither rude, offensive, nor have the appearance of being sexual.</p>
+
+        <p>3) Never speak to volunteers in an offensive way, or in a way which discriminates or hurts them. 
+        Discrimination and racism will not be tolerated.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" id="acceptStudentCOC" data-dismiss="modal">Accept</button>
+        <button type="button" class="btn btn-secondary" id="closeStudentCOC" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
