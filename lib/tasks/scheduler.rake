@@ -20,11 +20,11 @@ namespace :scheduler do
                 next
               else
                 # Subject could be nil. Dont want to send it if that's the case
-                @intersection << subject if tutor.subjects['primary_subjects'].include? subject and subject.present?
+                @intersection << subject if tutor.subjects['primary_subjects'].include? subject and subject.present? and student.matches.count < 4
               end
             end
             # Check if match already exists, if it does, continue the loop with the next student
-            if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any?
+            if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any? or @intersection.first.nil?
               next
             else
               # Increase student count by 1 as we are only matching once
@@ -50,11 +50,11 @@ namespace :scheduler do
               if Match.where(student_id: student.id, subject_matched: subject).any?
                 next
               else
-                @intersection << subject if tutor.subjects['secondary_subjects'].include? subject and subject.present?
+                @intersection << subject if tutor.subjects['secondary_subjects'].include? subject and subject.present? and student.matches.count < 4
               end
             end
             # Check if match already exists, if it does, continue the loop with the next student
-            if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any?
+            if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any? or @intersection.first.nil?
               next
             else
               # Increase student count by 1 as we are only matching once
@@ -80,11 +80,11 @@ namespace :scheduler do
               if Match.where(student_id: student.id, subject_matched: subject).any?
                 next
               else
-                @intersection << subject if tutor.subjects['jc_subjects'].include? subject and subject.present?
+                @intersection << subject if tutor.subjects['jc_subjects'].include? subject and subject.present? and student.matches.count < 4
               end
             end
             # Check if match already exists, if it does, continue the loop with the next student
-            if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any?
+            if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any? or @intersection.first.nil?
               next
             else
               # Increase student count by 1 as we are only matching once
