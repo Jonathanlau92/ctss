@@ -13,6 +13,7 @@ class MatchDashboard < Administrate::BaseDashboard
     id: Field::Number,
     existing_matching_id: Field::String,
     imported_data: Field::String,
+    subject_matched: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,6 +25,7 @@ class MatchDashboard < Administrate::BaseDashboard
   student
   existing_matching_id
   tutor
+  subject_matched
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
