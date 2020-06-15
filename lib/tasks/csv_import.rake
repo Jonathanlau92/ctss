@@ -8,7 +8,7 @@ namespace :csv_import do
       t = Tutor.new
       t.full_name = row['Full Name as in NRIC']
       t.email = row['Email']
-      t.alternate_email = row['Alternate Email']
+      t.alternate_email = row['Alternative Email']
       t.contact_number = row['Contact Number']
       t.sex = row['Sex'] == 'Male' ? 0 : 1
       t.hours_to_teach = row['How many hours can you commit per week?']
