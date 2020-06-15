@@ -19,13 +19,16 @@
       <% end %>
       <br/>
       <% if @matches.present? %>
-        <ul>
-          <% @matches.each do |match| %>
-            <li><%= match.existing_matching_id %></li>
-          <% end %>
-        </ul>
+        <% @matches.each do |match| %>
+          <p> Student: <%= match.student.full_name %> </p>
+          <p> Tutor: <%= match.tutor.full_name %> </p>
+          <p> Matching Number: <%= match.existing_matching_id %></p>
+          <p> Subject: <%= match.subject_matched %></p>
+          <hr>
+        <% end %>
       <% else %>
-        <p> Please enter your email in the box. </p> 
+        <p> Please enter your email (not alternate email!) in the box.</p>
+        <p>Email is case sensitive, so try lowercase if the system can't find the match </p> 
         <p>If matching is not found, please contact admin at enquiries.ctss@gmail.com</p>
       <% end %>
     </div>
