@@ -42,10 +42,10 @@ class TutorDashboard < Administrate::BaseDashboard
   email
   sex
   hours_to_teach
-  contact_number
   qualification
   feedbacks
   commit_to_extension
+  matched
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
