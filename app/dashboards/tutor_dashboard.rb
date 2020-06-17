@@ -25,7 +25,10 @@ class TutorDashboard < Administrate::BaseDashboard
     level_to_teach: Field::String,
     code_of_conduct: Field::Boolean,
     contact_number: Field::String,
-    feedbacks: Field::HasMany
+    feedbacks: Field::HasMany,
+    commit_to_extension: Field::Boolean,
+    sent_intro_email: Field::Boolean,
+    matched: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -42,6 +45,7 @@ class TutorDashboard < Administrate::BaseDashboard
   contact_number
   qualification
   feedbacks
+  commit_to_extension
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -53,17 +57,19 @@ class TutorDashboard < Administrate::BaseDashboard
   email
   alternate_email
   sex
+  contact_number
   subjects
   hours_to_teach
   match_count
-  created_at
-  updated_at
   qualification
   past_experiences
   reason_for_volunteering
   level_to_teach
   code_of_conduct
-  contact_number
+  sent_intro_email
+  matched
+  created_at
+  updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
