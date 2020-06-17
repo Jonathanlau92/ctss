@@ -26,7 +26,9 @@ class StudentDashboard < Administrate::BaseDashboard
     others_subject: Field::String,
     contact_number: Field::String,
     existing_educational_level_data: Field::String,
-    feedbacks: Field::HasMany
+    feedbacks: Field::HasMany,
+    matched: Field::Boolean,
+    sent_intro_email: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -53,17 +55,19 @@ class StudentDashboard < Administrate::BaseDashboard
   email
   alternate_email
   sex
-  subject_preferences
   education_level
+  contact_number
+  subject_preferences
   parental_consent
   match_count
-  created_at
-  updated_at
   subject_1
   subject_2
   subject_3
   others_subject
-  contact_number
+  matched
+  sent_intro_email
+  created_at
+  updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
