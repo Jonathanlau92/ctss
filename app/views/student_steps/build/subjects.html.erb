@@ -33,11 +33,11 @@
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.nt_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.nt_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.nt_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.nt_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
   <% elsif @student.NA_level? %>
     <div class="form-group">
@@ -46,11 +46,11 @@
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.na_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.na_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.na_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.na_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
   <% elsif @student.O_level? %>
     <div class="form-group">
@@ -59,11 +59,11 @@
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.o_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.o_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.o_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.o_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
   <% else %>
     <div class="form-group">
@@ -72,11 +72,11 @@
     </div>
     <div class="form-group">
       <%= f.label :subject_2, '2nd subject: '%>
-      <%= f.select :subject_2,  @student.a_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_2,  @student.a_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
     <div class="form-group">
       <%= f.label :subject_3, '3rd subject: '%>
-      <%= f.select :subject_3,  @student.a_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
+      <%= f.select :subject_3,  @student.a_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
   <% end %>
   <div class="form-group">
