@@ -41,9 +41,9 @@ class StudentDashboard < Administrate::BaseDashboard
   full_name
   email
   sex
-  contact_number
   education_level
   feedbacks
+  matched
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
