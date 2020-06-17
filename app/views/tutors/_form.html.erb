@@ -43,6 +43,18 @@
   <span>You will only be matched to one student irregardless of the number of hours you indicate. If you’d like to take up more students, do drop us an email at enquiries.ctss@gmail.com</span>
   <%= f.number_field :hours_to_teach, required: true, class: 'form-control' %>
 </div>
+<div class='form-group'>
+  <%= f.label :commit_to_extension, 'Can you commit until the end of November? ' %>
+  <span>We require all tutors to commit until the end of November (end of the school year). We recommend 1h/week for each subject.</span>
+  <div class='ml-5 form-check form-check-inline'>
+    <%= f.radio_button :commit_to_extension, true, class:'mr-3 mb-2 form-check-label' %> 
+    <%= f.label :commit_to_extension, 'Yes', class: 'form-check-input' %>
+  </div>
+  <div class='ml-5 form-check form-check-inline'>
+    <%= f.radio_button :commit_to_extension, false, class:'mr-3 mb-2 form-check-label' %>
+    <%= f.label :commit_to_extension, 'No', class: 'form-check-input' %>
+  </div>
+</div>
 <div class='d-flex justify-content-center'>
   <%= f.submit 'Next', class: 'btn next-button' %>
 </div>
