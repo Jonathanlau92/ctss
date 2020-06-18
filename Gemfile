@@ -42,6 +42,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Error monitoring
 gem 'rollbar'
+# Production monitoring traffic
+gem 'newrelic_rpm'
 
 # Add secrets and keys
 gem 'dotenv-rails', groups: [:development, :test]
