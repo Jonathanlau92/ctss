@@ -50,6 +50,11 @@
   <%= f.label :education_level %>
   <%= f.select :education_level, options_for_select(@education.map {|key, value| [value, key]}), {include_blank: true}, required: true, class: 'form-control' %>
 </div>
+<div class='form-group'>
+  <span>Please input your specific educational</span>
+  <%= f.label :specific_level, 'I am: ' %>
+  <%= f.select :specific_level, options_for_select(Student.specific_levels.keys.map { |l| [l.humanize, l] }), {include_blank: true}, required: true, class: 'form-control' %>
+</div>
 <div class='d-flex justify-content-center'>
   <%= f.submit 'Next', class: 'btn next-button' %>
 </div>

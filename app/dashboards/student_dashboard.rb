@@ -28,7 +28,8 @@ class StudentDashboard < Administrate::BaseDashboard
     existing_educational_level_data: Field::String,
     feedbacks: Field::HasMany,
     matched: Field::Boolean,
-    sent_intro_email: Field::Boolean
+    sent_intro_email: Field::Boolean,
+    specific_level: Field::String.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -42,6 +43,7 @@ class StudentDashboard < Administrate::BaseDashboard
   email
   sex
   education_level
+  specific_level
   feedbacks
   matched
   ].freeze
