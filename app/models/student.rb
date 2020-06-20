@@ -10,6 +10,7 @@ class Student < ApplicationRecord
 
   enum sex: {male: 0, female: 1}
   enum education_level: {PSLE: 0, NT_level: 1, NA_level: 2, O_level: 3, A_level: 4}
+  enum specific_level: { p1: 0, p2: 1, p3: 2, p4: 3, p5: 4, p6: 5, sec_1: 6, sec_2: 7, sec_3: 8, sec_4: 9, sec_5: 10, j1: 11, j2: 12}
 
   # def active?
   #   status == 'active'
