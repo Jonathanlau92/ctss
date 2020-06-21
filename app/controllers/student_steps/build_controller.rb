@@ -22,6 +22,8 @@ class StudentSteps::BuildController < ApplicationController
       session[:student][:terms_and_conditions] = params[:student]
       @student = Student.new(full_name: session[:student]["student"]["full_name"], email: session[:student]["student"]["email"], alternate_email: session[:student]["student"]["alternate_email"], give_out_contact: session[:student]["student"]["give_out_contact"], contact_number: session[:student]["student"]["contact_number"], sex: Student.sexes[session[:student]["student"]["sex"]], education_level: Student.education_levels[session[:student]["student"]["education_level"]], specific_level: Student.specific_levels[session[:student]["student"]["specific_level"]], subject_1: session[:student]["subject"]["subject_1"], subject_2: session[:student]["subject"]["subject_2"], subject_3: session[:student]["subject"]["subject_3"], others_subject: session[:student]["subject"]["other_subject"], topics_to_go_through: session[:student]["subject"]["topics_to_go_through"], special_request: session[:student]["subject"]["special_request"], personal_consent:session[:student][:terms_and_conditions]["personal_consent"] )
       if @student.save
+        # Clear session after student is saved successfully
+        session.clear
         # Send student introductory email on the terms and conditions page
         NotificationMailer.student_introductory_email(@student).deliver_later
         @student.sent_intro_email = true
