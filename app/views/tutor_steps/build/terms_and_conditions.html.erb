@@ -5,7 +5,7 @@
   <span>Terms and Conditions</span>
 </h1>
 <div class="container">
-  <%= form_for @tutor, url: wizard_path do |f| %>
+  <%= form_for @tutor, url: wizard_path, method: :put do |f| %>
   <div class="form-check">
     <%= f.check_box :code_of_conduct, {required: true}, {class: 'form-check-input'} %>
     <%= f.label :code_of_conduct, 'I have read and consent to the ', class: "form-check-label" do %>

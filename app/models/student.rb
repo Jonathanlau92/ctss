@@ -10,6 +10,9 @@ class Student < ApplicationRecord
 
   enum sex: {male: 0, female: 1}
   enum education_level: {PSLE: 0, NT_level: 1, NA_level: 2, O_level: 3, A_level: 4}
+  enum specific_level: { p1: 0, p2: 1, p3: 2, p4: 3, p5: 4, p6: 5, sec_1: 6, sec_2: 7, sec_3: 8, sec_4: 9, sec_5: 10, j1: 11, j2: 12}
+
+  # after_update :delete_record_if_incomplete
 
   # def active?
   #   status == 'active'
@@ -38,6 +41,4 @@ class Student < ApplicationRecord
   def a_level
     ['General Paper (h1)', 'Knowledge and Inquiry (h2)', 'Chinese language(h1 only)', 'China studies in english (h1)', 'China studies in english (h2)', 'China studies in chinese (h2 only)', 'Geography (h1)', 'Geography (h2)','History (h1)', 'History (h2)','Economics (h1)', 'Economics (h2)','Art (h1)', 'Art (h2)', 'Music (h1)', 'Music (h2)','French (h1)', 'French (h2)','German (h1)', 'German (h2)','Japanese (h1)', 'Japanese (h2)','Math (h1)', 'Math (h2)','Physics (h1)', 'Physics (h2)','Chemistry (h1)', 'Chemistry (h2)', 'Biology (h1)', 'Biology (h2)', 'Literature in English (h1)', 'English lang and linguistics (h2 only)', 'Chinese language and lit (h2 only)', 'Malay language and lit (h2 only)', 'Tamil language and lit (h2 only)', 'Translation(Chinese) (h2 only)', 'Malay Language (h1 only)', 'Hindi (h1 only)', 'Spanish (h1 only)', 'Further Mathematics (h2)', 'Computing (h2 only)', 'Management of Business (h2 only)', 'Principle of accounts (h2 only)' ]
   end
-
-
 end

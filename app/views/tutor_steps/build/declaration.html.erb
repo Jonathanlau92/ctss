@@ -3,7 +3,7 @@
 </div>
   <h1 class='mt-3 text-center'>Have you ever been?</h1>
   <div class='form-group'>
-    <%= form_for @tutor, url: wizard_path do |f|%>
+    <%= form_for @tutor, url: wizard_path, method: :put do |f|%>
       <div class='form-group'>
         <%= label_tag 'Have you ever been charged in a Court of Law in Singapore or in any other country?' %>
         <div class="text-center">

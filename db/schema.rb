@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_120801) do
+ActiveRecord::Schema.define(version: 2020_06_20_151219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_120801) do
     t.string "special_request"
     t.string "status"
     t.boolean "give_out_contact"
+    t.integer "specific_level"
   end
 
   create_table "tutors", force: :cascade do |t|

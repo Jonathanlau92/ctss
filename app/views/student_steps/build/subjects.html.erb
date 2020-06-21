@@ -12,7 +12,7 @@
   <span>Please rank the subjects you need help with in order of importance!</span>
 </h3>
 
-<%= form_for @student, url: wizard_path do |f|%>
+<%= form_for @student, url: wizard_path, method: :put do |f|%>
   <% if @student.PSLE? %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
@@ -95,7 +95,6 @@
     <%= f.text_field :special_request, class: 'form-control' %>
   </div>
   <div class='d-flex justify-content-center'>
-    <%= link_to 'Back', edit_student_path(@student.id), class: 'btn back-button' %>
     <%= f.submit "Next", class: 'btn next-button'%>
   </div>
 <%end%>
