@@ -25,7 +25,7 @@
   </label>
 </div>
 <div class='error text-danger font-weight-bold'>Please agree to all the terms and conditions.</div>
-<%= form_for @student, url: wizard_path do |f|%>
+<%= form_for @student, url: wizard_path, method: :put do |f|%>
   <div class='form-check'>
     <%= f.check_box :personal_consent, {class: 'form-check-input d-none'}, true, false %>
     <%= f.label 'I agree', {class: 'form-check-label d-none'} %>
