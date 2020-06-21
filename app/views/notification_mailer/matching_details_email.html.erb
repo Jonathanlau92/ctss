@@ -32,7 +32,7 @@
     <%= @matching.student&.email %>
   </li>
   <li>
-    Student is in <%= @matching.student.education_level %>, <%= @matching.student.specific_level %>.
+    Student is in <%= @matching.student.education_level %>, specific level <%= @matching.student.specific_level.titleize %>.
   </li>
   <% if @matching.student.give_out_contact === true %>
     <li>
