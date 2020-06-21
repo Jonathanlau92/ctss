@@ -8,8 +8,8 @@
 </div>
 <div class='form-group'>
   <%= f.label :alternate_email %>
-  <span>A personal email is preferred here, just in case our emails sent to official school emails are blocked.</span>
-  <%= f.text_field :alternate_email, class: 'form-control' %>
+  <span>Alternate email is required in case we can't reach you at your main email</span>
+  <%= f.text_field :alternate_email, required: true, class: 'form-control' %>
 </div>
 <div class='form-group'>
   <%= f.label :sex %>
