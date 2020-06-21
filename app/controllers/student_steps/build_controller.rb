@@ -15,7 +15,6 @@ class StudentSteps::BuildController < ApplicationController
   def update
     case step
     when :subjects
-      @student = Student.new
       session[:student][:subject] = params[:student]
       redirect_to next_wizard_path
     else
