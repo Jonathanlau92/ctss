@@ -14,7 +14,7 @@ class TutorDashboard < Administrate::BaseDashboard
     email: Field::String,
     alternate_email: Field::String,
     sex: Field::String.with_options(searchable: false),
-    subjects: Field::String.with_options(searchable: false),
+    subjects: Field::String.with_options(searchable: true),
     hours_to_teach: Field::Number,
     match_count: Field::Number,
     created_at: Field::DateTime,
