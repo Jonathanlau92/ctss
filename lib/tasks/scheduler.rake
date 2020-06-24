@@ -27,14 +27,19 @@ namespace :scheduler do
             if Match.where(student_id: student.id, tutor_id: tutor.id, subject_matched: @intersection.first).any? or @intersection.first.nil?
               next
             else
-              # Increase student count by 1 as we are only matching once
-              student.match_count += 1
-              tutor.match_count += 1
-              student.save
-              tutor.save
               new_match = GenerateMatchesService.new(student, tutor, @intersection.first).run
               # Stop student loop if new match is found for tutor as 1 tutor is assign to 1 student
-              break if new_match.success?
+              if new_match.success?
+                # Increase student count by 1 as we are only matching once
+                student.match_count += 1
+                tutor.match_count += 1
+                student.save
+                tutor.save
+                break
+              else
+                puts "#{new_match.message}"
+                next
+              end
             end
           end
         when "NT_level"
@@ -64,7 +69,17 @@ namespace :scheduler do
               tutor.save
               new_match = GenerateMatchesService.new(student, tutor, @intersection.first).run
               # Stop student loop if new match is found for tutor as 1 tutor is assign to 1 student
-              break if new_match.success?
+              if new_match.success?
+                # Increase student count by 1 as we are only matching once
+                student.match_count += 1
+                tutor.match_count += 1
+                student.save
+                tutor.save
+                break
+              else
+                puts "#{new_match.message}"
+                next
+              end
             end
           end
         when "NA_level"
@@ -94,7 +109,17 @@ namespace :scheduler do
               tutor.save
               new_match = GenerateMatchesService.new(student, tutor, @intersection.first).run
               # Stop student loop if new match is found for tutor as 1 tutor is assign to 1 student
-              break if new_match.success?
+              if new_match.success?
+                # Increase student count by 1 as we are only matching once
+                student.match_count += 1
+                tutor.match_count += 1
+                student.save
+                tutor.save
+                break
+              else
+                puts "#{new_match.message}"
+                next
+              end
             end
           end
         when "O_level"
@@ -124,7 +149,17 @@ namespace :scheduler do
               tutor.save
               new_match = GenerateMatchesService.new(student, tutor, @intersection.first).run
               # Stop student loop if new match is found for tutor as 1 tutor is assign to 1 student
-              break if new_match.success?
+              if new_match.success?
+                # Increase student count by 1 as we are only matching once
+                student.match_count += 1
+                tutor.match_count += 1
+                student.save
+                tutor.save
+                break
+              else
+                puts "#{new_match.message}"
+                next
+              end
             end
           end
         when "A_level"
@@ -155,7 +190,17 @@ namespace :scheduler do
               tutor.save
               new_match = GenerateMatchesService.new(student, tutor, @intersection.first).run
               # Stop student loop if new match is found for tutor as 1 tutor is assign to 1 student
-              break if new_match.success?
+              if new_match.success?
+                # Increase student count by 1 as we are only matching once
+                student.match_count += 1
+                tutor.match_count += 1
+                student.save
+                tutor.save
+                break
+              else
+                puts "#{new_match.message}"
+                next
+              end
             end
           end
         end
