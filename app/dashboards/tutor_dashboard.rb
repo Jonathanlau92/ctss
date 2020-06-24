@@ -90,6 +90,7 @@ class TutorDashboard < Administrate::BaseDashboard
   level_to_teach
   code_of_conduct
   contact_number
+  matched
   ].freeze
 
   # COLLECTION_FILTERS
