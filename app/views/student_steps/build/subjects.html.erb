@@ -4,7 +4,7 @@
 <h1 class="text-center">
   <span>You are in:</span>
   <%  @education={"PSLE"=>"Primary School", "NT_level"=>"Secondary N(T)-Level", "NA_level"=>"Secondary N(A)-Level", "O_level"=>"Secondary O-Level", "A_level"=>"Junior College A-Level"} %>
-  <span><%= @education[@student.education_level] %></span>
+  <span><%= @education[session[:student]['student']['education_level']] %></span>
 </h1>
 
 <h3 class="mb-3 text-center">
@@ -13,7 +13,7 @@
 </h3>
 
 <%= form_for @student, url: wizard_path, method: :put do |f|%>
-  <% if @student.PSLE? %>
+  <% if session[:student]['student']['education_level'] == 'PSLE' %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
       <%= f.select :subject_1,  @student.psle.sort, {include_blank: 'Select subject...', }, { required: true, class: 'form-control'} %>
@@ -26,7 +26,7 @@
       <%= f.label :subject_3, '3rd subject: '%>
       <%= f.select :subject_3,  @student.psle.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
-  <% elsif @student.NT_level? %>
+  <% elsif session[:student]['student']['education_level'] == 'NT_level' %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
       <%= f.select :subject_1,  @student.nt_level.sort, {include_blank: 'Select subject...'}, { required: true, class: 'form-control'} %>
@@ -39,7 +39,7 @@
       <%= f.label :subject_3, '3rd subject: '%>
       <%= f.select :subject_3,  @student.nt_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
-  <% elsif @student.NA_level? %>
+  <% elsif session[:student]['student']['education_level'] == 'NA_level' %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
       <%= f.select :subject_1,  @student.na_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
@@ -52,7 +52,7 @@
       <%= f.label :subject_3, '3rd subject: '%>
       <%= f.select :subject_3,  @student.na_level.sort, {include_blank: 'Select subject...'}, { class: 'form-control'} %>
     </div>
-  <% elsif @student.O_level? %>
+  <% elsif session[:student]['student']['education_level'] == 'O_level' %>
     <div class="form-group">
       <%= f.label :subject_1, '1st subject: '%>
       <%= f.select :subject_1,  @student.o_level.sort, {include_blank: 'Select subject...'}, {required: true, class: 'form-control'} %>
