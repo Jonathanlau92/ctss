@@ -37,6 +37,7 @@ class MatchDashboard < Administrate::BaseDashboard
   id
   existing_matching_id
   imported_data
+  subject_matched
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -47,6 +48,7 @@ class MatchDashboard < Administrate::BaseDashboard
   tutor
   existing_matching_id
   imported_data
+  subject_matched
   ].freeze
 
   # COLLECTION_FILTERS
