@@ -91,6 +91,8 @@ class TutorDashboard < Administrate::BaseDashboard
   code_of_conduct
   contact_number
   matched
+  sent_intro_email
+  commit_to_extension
   ].freeze
 
   # COLLECTION_FILTERS
@@ -109,6 +111,6 @@ class TutorDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(tutor)
-    tutor.full_name
+    "#{tutor.full_name} - #{tutor.id}"
   end
 end

@@ -90,6 +90,8 @@ class StudentDashboard < Administrate::BaseDashboard
   subject_3
   others_subject
   contact_number
+  matched
+  sent_intro_email
   ].freeze
 
   # COLLECTION_FILTERS
@@ -108,6 +110,6 @@ class StudentDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(student)
-    student.full_name
+    "#{student.full_name} - #{student.id}"
   end
 end
