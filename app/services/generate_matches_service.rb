@@ -27,9 +27,13 @@ class GenerateMatchesService
   def update_student_and_tutor_matched_status
     if @student.match_count > 3
       @student.matched = true
-      @student.save
+    else
+      @student.match_count += 1
     end
-    if @tutor.match_count === 1
+    @student.save
+    # If tutor match count is 1 or less, increase match count and set status to true
+    if @tutor.match_count < 2
+      @tutor.match_count += 1
       @tutor.matched = true
       @tutor.save
     end
