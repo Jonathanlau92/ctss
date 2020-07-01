@@ -29,7 +29,9 @@ class StudentDashboard < Administrate::BaseDashboard
     feedbacks: Field::HasMany,
     matched: Field::Boolean,
     sent_intro_email: Field::Boolean,
-    specific_level: Field::String.with_options(searchable: false)
+    specific_level: Field::String.with_options(searchable: false),
+    give_out_contact: Field::Boolean,
+    special_request: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -68,6 +70,8 @@ class StudentDashboard < Administrate::BaseDashboard
   others_subject
   matched
   sent_intro_email
+  give_out_contact
+  special_request
   created_at
   updated_at
   ].freeze
@@ -92,6 +96,8 @@ class StudentDashboard < Administrate::BaseDashboard
   contact_number
   matched
   sent_intro_email
+  give_out_contact
+  special_request
   ].freeze
 
   # COLLECTION_FILTERS
