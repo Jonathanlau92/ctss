@@ -28,7 +28,12 @@ class TutorDashboard < Administrate::BaseDashboard
     feedbacks: Field::HasMany,
     commit_to_extension: Field::Boolean,
     sent_intro_email: Field::Boolean,
-    matched: Field::Boolean
+    matched: Field::Boolean,
+    declare_1: Field::Boolean,
+    declare_2: Field::Boolean,
+    declare_3: Field::Boolean,
+    declare_4: Field::Boolean,
+    give_out_contact: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -68,6 +73,8 @@ class TutorDashboard < Administrate::BaseDashboard
   code_of_conduct
   sent_intro_email
   matched
+  give_out_contact
+  commit_to_extension
   created_at
   updated_at
   ].freeze
@@ -93,6 +100,11 @@ class TutorDashboard < Administrate::BaseDashboard
   matched
   sent_intro_email
   commit_to_extension
+  declare_1
+  declare_2
+  declare_3
+  declare_4
+  give_out_contact
   ].freeze
 
   # COLLECTION_FILTERS
