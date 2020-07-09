@@ -46,7 +46,14 @@ class StudentDashboard < Administrate::BaseDashboard
   sex
   education_level
   specific_level
+  contact_number
+  subject_1
+  subject_2
+  subject_3
+  others_subject
+  special_request
   feedbacks
+  match_count
   matched
   ].freeze
 
