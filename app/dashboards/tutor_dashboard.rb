@@ -14,7 +14,7 @@ class TutorDashboard < Administrate::BaseDashboard
     email: Field::String,
     alternate_email: Field::String,
     sex: Field::String.with_options(searchable: false),
-    subjects: Field::String.with_options(searchable: true),
+    subjects: Field::JSONB.with_options(searchable: true),
     hours_to_teach: Field::Number,
     match_count: Field::Number,
     created_at: Field::DateTime,
@@ -46,10 +46,18 @@ class TutorDashboard < Administrate::BaseDashboard
   full_name
   email
   sex
+  contact_number
   hours_to_teach
+  subjects
   qualification
   feedbacks
+  sent_intro_email
   commit_to_extension
+  match_count
+  declare_1
+  declare_2
+  declare_3
+  declare_4
   matched
   ].freeze
 

@@ -43,9 +43,17 @@ class FeedbackDashboard < Administrate::BaseDashboard
   tutor
   matching_number
   identity
+  date_of_session
+  start_time
+  end_time
+  understand_concepts
+  elaborate
+  topics_covered
+  other_feedbacks
   observe_code_of_conduct
   comfortable_with_tutor
-  other_feedbacks
+  difficulties_with_tutoring
+  platform
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
